@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reparaciones Profesionales - Clara Visión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="estilos-reparaciones.css">
+</head>
+<body>
+    <!-- Botones de navegación fijos -->
+    <div class="navigation-buttons">
+        <button class="btn-nav btn-home" onclick="window.location.href='index.html'">
+            <i class="fas fa-home"></i>
+            <span class="btn-text">Inicio</span>
+        </button>
+        <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'">
+            <i class="fas fa-glasses"></i>
+            <span class="btn-text">Recetados</span>
+        </button>
+        <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'">
+            <i class="fas fa-eye"></i>
+            <span class="btn-text">Contacto</span>
+        </button>
+        <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'">
+            <i class="fas fa-sun"></i>
+            <span class="btn-text">Sol</span>
+        </button>
+        <button class="btn-nav btn-theme" onclick="toggleTheme()">
+            <i class="fas fa-moon"></i>
+            <span class="btn-text">Tema</span>
+        </button>
+    </div>
+
+    <!-- Elementos de fondo profesionales -->
+    <div class="professional-background">
+        <div class="floating-tool tool-1"><i class="fas fa-screwdriver"></i></div>
+        <div class="floating-tool tool-2"><i class="fas fa-cog"></i></div>
+        <div class="floating-tool tool-3"><i class="fas fa-wrench"></i></div>
+        <div class="precision-line line-1"></div>
+        <div class="precision-line line-2"></div>
+        <div class="precision-line line-3"></div>
+    </div>
+
+    <div class="container">
+        <section class="section-reparaciones">
+            <!-- Encabezado principal -->
+            <div class="professional-header">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                    <div class="icon-shine"></div>
+                </div>
+                <h1>Reparaciones Profesionales</h1>
+                <h2>Precisión y Calidad Garantizada</h2>
+                <p class="professional-description">
+                    Servicio técnico especializado con equipos de última generación y garantía total en cada reparación.
+                    Tu inversión en lentes está protegida con nosotros.
+                </p>
+            </div>
+
+            <!-- Certificaciones y garantías -->
+            <div class="trust-badges">
+                <div class="badge-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Garantía Total</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Técnicos Certificados</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-microscope"></i>
+                    <span>Tecnología Avanzada</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Servicio Rápido</span>
+                </div>
+            </div>
+
+            <!-- Grid de servicios de reparación -->
+            <div class="grid-reparaciones">
+                <!-- Ajuste de monturas -->
+                <div class="reparacion-card adjustment-service">
+                    <div class="service-overlay"></div>
+                    <div class="quality-badge precision-badge">
+                        <i class="fas fa-crosshairs"></i>
+                        Precisión
+                    </div>
+                    <div class="service-icon-card">
+                        <i class="fas fa-adjust"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ajuste de Monturas</h3>
+                        <p class="service-subtitle">Calibración Profesional</p>
+                        <p>Ajuste milimétrico para comodidad perfecta. Equipos especializados que garantizan el ajuste ideal sin dañar la montura.</p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-ruler-combined"></i>
+                                Medición Exacta
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                Sin Daños
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-stopwatch"></i>
+                                15 Minutos
+                            </div>
+                        </div>
+
+                        <div class="guarantee-info">
+                            <i class="fas fa-shield-check"></i>
+                            <span>Garantía de satisfacción o reajuste gratuito</span>
+                        </div>
+
+                        <button class="btn-service">
+                            <span>Solicitar Ajuste</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cambio de cristales -->
+                <div class="reparacion-card lens-service">
+                    <div class="service-overlay"></div>
+                    <div class="quality-badge expert-badge">
+                        <i class="fas fa-gem"></i>
+                        Premium
+                    </div>
+                    <div class="service-icon-card">
+                        <i class="fas fa-eye-dropper"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Cambio de Cristales</h3>
+                        <p class="service-subtitle">Instalación Especializada</p>
+                        <p>Reemplazo profesional con cristales de la más alta calidad. Proceso controlado que preserva la integridad de tu montura.</p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-gem"></i>
+                                Cristales Premium
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-microscope"></i>
+                                Proceso Controlado
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                24-48 Horas
+                            </div>
+                        </div>
+
+                        <div class="guarantee-info">
+                            <i class="fas fa-shield-check"></i>
+                            <span>Garantía total en cristales y montaje</span>
+                        </div>
+
+                        <button class="btn-service">
+                            <span>Cambiar Cristales</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Limpieza profunda -->
+                <div class="reparacion-card cleaning-service">
+                    <div class="service-overlay"></div>
+                    <div class="quality-badge care-badge">
+                        <i class="fas fa-sparkles"></i>
+                        Cuidado
+                    </div>
+                    <div class="service-icon-card">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Limpieza Profunda</h3>
+                        <p class="service-subtitle">Restauración Completa</p>
+                        <p>Limpieza ultrasónica profesional que elimina residuos imposibles de quitar en casa. Deja tus lentes como nuevos.</p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-sound"></i>
+                                Ultrasonido
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-virus"></i>
+                                Desinfección
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-bolt"></i>
+                                Inmediato
+                            </div>
+                        </div>
+
+                        <div class="guarantee-info">
+                            <i class="fas fa-shield-check"></i>
+                            <span>Limpieza completa y segura garantizada</span>
+                        </div>
+
+                        <button class="btn-service">
+                            <span>Limpiar Lentes</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mantenimiento preventivo -->
+                <div class="reparacion-card maintenance-service">
+                    <div class="service-overlay"></div>
+                    <div class="quality-badge protection-badge">
+                        <i class="fas fa-tools"></i>
+                        Prevención
+                    </div>
+                    <div class="service-icon-card">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Mantenimiento Preventivo</h3>
+                        <p class="service-subtitle">Cuidado Integral</p>
+                        <p>Revisión completa y mantenimiento que prolonga la vida útil de tus lentes. Prevención es la mejor inversión.</p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-search"></i>
+                                Inspección Completa
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-wrench"></i>
+                                Ajustes Menores
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-calendar-check"></i>
+                                Programable
+                            </div>
+                        </div>
+
+                        <div class="guarantee-info">
+                            <i class="fas fa-shield-check"></i>
+                            <span>Evaluación profesional detallada</span>
+                        </div>
+
+                        <button class="btn-service">
+                            <span>Programar Revisión</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Emergencias -->
+                <div class="reparacion-card emergency-service">
+                    <div class="service-overlay"></div>
+                    <div class="quality-badge emergency-badge">
+                        <i class="fas fa-bolt"></i>
+                        Urgente
+                    </div>
+                    <div class="service-icon-card">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Servicio de Emergencia</h3>
+                        <p class="service-subtitle">Atención Inmediata</p>
+                        <p>Para cuando necesitas tus lentes urgentemente. Atención prioritaria y soluciones rápidas que te devuelven la tranquilidad.</p>
+                        
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-phone-alt"></i>
+                                Llamada Directa
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-rocket"></i>
+                                Prioridad Total
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-clock"></i>
+                                Mismo Día
+                            </div>
+                        </div>
+
+                        <div class="guarantee-info">
+                            <i class="fas fa-shield-check"></i>
+                            <span>Solución inmediata o lentes de respaldo</span>
+                        </div>
+
+                        <button class="btn-service emergency-btn">
+                            <span>Emergencia</span>
+                            <i class="fas fa-phone"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de proceso profesional -->
+            <div class="process-section">
+                <h3>Nuestro Proceso Profesional</h3>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <h4>Diagnóstico Preciso</h4>
+                        <p>Evaluación detallada con equipos especializados para identificar el problema exacto.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h4>Presupuesto Transparente</h4>
+                        <p>Cotización clara con todos los detalles, sin sorpresas ni costos ocultos.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon"><i class="fas fa-tools"></i></div>
+                        <h4>Reparación Experta</h4>
+                        <p>Trabajo realizado con herramientas profesionales y técnicas especializadas.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                        <h4>Control de Calidad</h4>
+                        <p>Verificación rigurosa de la reparación antes de devolver tus lentes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA de confianza -->
+            <div class="trust-cta">
+                <div class="cta-content">
+                    <h3>Tu Tranquilidad es Nuestra Prioridad</h3>
+                    <p>Confía en nuestro equipo técnico especializado. Cada reparación está respaldada por nuestra garantía de calidad y satisfacción total.</p>
+                    
+                    <div class="cta-features">
+                        <div class="cta-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Garantía Total</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-headset"></i>
+                            <span>Soporte Completo</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-award"></i>
+                            <span>Calidad Asegurada</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-cta-trust">
+                        <span>Confía en Nosotros</span>
+                        <i class="fas fa-handshake"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Función para alternar tema
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Actualizar icono del botón
+            const themeIcon = document.querySelector('.btn-theme i');
+            themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Cargar tema guardado
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            const themeIcon = document.querySelector('.btn-theme i');
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        // Animación de aparición de tarjetas
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reparacion-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

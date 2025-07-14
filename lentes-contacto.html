@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lentes de Contacto | Clara Visión</title>
+<link rel="stylesheet" href="estilos-contacto.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Botones de navegación fijos -->
+<div class="navigation-buttons">
+    <!-- Botón de regreso -->
+    <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
+        <i class="fas fa-home"></i>
+        <span class="btn-text">Inicio</span>
+    </button>
+    
+    <!-- Botón de lentes recetados -->
+    <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
+        <i class="fas fa-glasses"></i>
+        <span class="btn-text">Lentes Recetados</span>
+    </button>
+    
+    <!-- Botón de lentes de sol -->
+    <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
+        <i class="fas fa-sun"></i>
+        <span class="btn-text">Lentes de Sol</span>
+    </button>
+    
+    <!-- Botón de reparaciones -->
+    <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
+        <i class="fas fa-tools"></i>
+        <span class="btn-text">Reparaciones</span>
+    </button>
+    
+    <!-- Botón de modo nocturno -->
+    <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
+        <i class="fas fa-moon" id="theme-icon"></i>
+        <span class="btn-text">Modo Nocturno</span>
+    </button>
+</div>
+
+<section class="section-coming-soon">
+    <div class="container">
+        <!-- Animación de trabajo en progreso -->
+        <div class="working-animation">
+            <div class="gear gear-1">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="gear gear-2">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="gear gear-3">
+                <i class="fas fa-cog"></i>
+            </div>
+        </div>
+
+        <a href="lentes-contacto.html" class="coming-soon-link">
+            <div class="coming-soon-content">
+                <h1>Lentes de Contacto</h1>
+                <h2>¡Próximamente!</h2>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="progress-text">Preparando algo increíble... 75%</span>
+                </div>
+                
+                <p class="main-description">
+                    Estamos trabajando arduamente para traerte la mejor selección de lentes de contacto con las marcas más reconocidas del mercado.
+                </p>
+                
+                <div class="coming-soon-image">
+                    <div class="floating-elements">
+                        <div class="floating-contact floating-1">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="floating-contact floating-2">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="floating-contact floating-3">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="floating-contact floating-4">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                    <div class="main-contact-lens">
+                        <i class="fas fa-circle"></i>
+                        <div class="lens-shine"></div>
+                    </div>
+                </div>
+                
+            <div class="notify-section">
+                <h3>¡Sé el primero en saberlo!</h3>
+                <p>Déjanos tu contacto y te avisaremos cuando tengamos disponibles nuestros lentes de contacto</p>
+                
+                <div class="notify-form">
+                    <input type="email" placeholder="Tu correo electrónico" class="email-input" onclick="event.stopPropagation()">
+                    <button class="notify-btn" onclick="event.stopPropagation()">
+                        <i class="fas fa-bell"></i>
+                        Notificarme
+                    </button>
+                </div>
+            </div>
+            
+            <div class="contact-cta">
+                <p>Mientras tanto, consultanos por nuestros otros servicios</p>
+                <button class="btn-contact" onclick="event.stopPropagation(); window.location.href='index.html#contacto'">
+                    <i class="fas fa-phone"></i>
+                    Contactanos Ahora
+                </button>
+            </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<script>
+// Funcionalidad del modo nocturno
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Verificar tema guardado
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+    }
+
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = body.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            body.removeAttribute('data-theme');
+            themeIcon.className = 'fas fa-moon';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fas fa-sun';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

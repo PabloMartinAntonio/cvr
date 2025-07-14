@@ -1,3 +1,598 @@
+/* ========================================
+   PROFESSIONAL JAVASCRIPT ARCHITECTURE
+   ======================================== */
+
+// Performance and UX optimizations
+class SiteController {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.initializeComponents());
+        } else {
+            this.initializeComponents();
+        }
+    }
+
+    initializeComponents() {
+        this.initHeader();
+        this.initSmoothScrolling();
+        this.initIntersectionObserver();
+        this.initLazyLoading();
+        this.initPerformanceOptimizations();
+        this.initAccessibility();
+    }
+
+    // Professional Header with scroll effects
+    initHeader() {
+        const header = document.querySelector('.header');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (!header) return;
+
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        // Header scroll effects
+        const updateHeader = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Add scrolled class for styling
+            if (currentScrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Hide/show header on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        // Throttled scroll listener
+        const onScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Mobile menu toggle
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.classList.remove('nav-open');
+                }
+            });
+        }
+
+        // Active link highlighting
+        this.updateActiveNavLinks();
+    }
+
+    // Smooth scrolling with better performance
+    initSmoothScrolling() {
+        // Handle anchor links
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href^="#"]');
+            if (!link) return;
+
+            const href = link.getAttribute('href');
+            if (href === '#') return;
+
+            e.preventDefault();
+            this.smoothScrollTo(href);
+        });
+    }
+
+    smoothScrollTo(target) {
+        const element = document.querySelector(target);
+        if (!element) return;
+
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+        const targetPosition = element.offsetTop - headerHeight - 20;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+
+        // Update URL without triggering scroll
+        if (history.pushState) {
+            history.pushState(null, null, target);
+        }
+    }
+
+    // Intersection Observer for animations and active states
+    initIntersectionObserver() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        // Animate elements on scroll
+        const animateObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    animateObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements with animation classes
+        document.querySelectorAll('.card, .section-header, .feature-item').forEach(el => {
+            animateObserver.observe(el);
+        });
+
+        // Active section highlighting in navigation
+        const sections = document.querySelectorAll('section[id]');
+        if (sections.length > 0) {
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.updateActiveNavLinks(entry.target.id);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            sections.forEach(section => sectionObserver.observe(section));
+        }
+    }
+
+    // Lazy loading for images and videos
+    initLazyLoading() {
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('loading');
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                img.classList.add('loading');
+                imageObserver.observe(img);
+            });
+        }
+    }
+
+    // Performance optimizations
+    initPerformanceOptimizations() {
+        // Preload critical resources
+        this.preloadCriticalResources();
+
+        // Debounced resize handler
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.handleResize();
+            }, 150);
+        });
+
+        // Preload pages on hover (for better UX)
+        this.initPagePreloading();
+    }
+
+    preloadCriticalResources() {
+        const criticalImages = [
+            'logo.png',
+            'sinfondo.png',
+            'conlogo.png'
+        ];
+
+        criticalImages.forEach(src => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = src;
+            document.head.appendChild(link);
+        });
+    }
+
+    initPagePreloading() {
+        const internalLinks = document.querySelectorAll('a[href]:not([href^="http"]):not([href^="#"]):not([href^="tel"]):not([href^="mailto"])');
+        
+        internalLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                const href = link.getAttribute('href');
+                this.preloadPage(href);
+            }, { once: true });
+        });
+    }
+
+    preloadPage(href) {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = href;
+        document.head.appendChild(link);
+    }
+
+    // Accessibility improvements
+    initAccessibility() {
+        // Enhanced keyboard navigation
+        this.initKeyboardNavigation();
+        
+        // Focus management
+        this.initFocusManagement();
+        
+        // Screen reader improvements
+        this.initAriaLive();
+    }
+
+    initKeyboardNavigation() {
+        // Escape key handling
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close mobile menu
+                const navToggle = document.querySelector('.nav-toggle.active');
+                const navMenu = document.querySelector('.nav-menu.active');
+                if (navToggle && navMenu) {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.classList.remove('nav-open');
+                }
+                
+                // Close any open modals
+                const openModal = document.querySelector('.modal.show');
+                if (openModal && window.closeEyeCareModal) {
+                    window.closeEyeCareModal();
+                }
+            }
+        });
+
+        // Tab trap for modals
+        this.initModalTabTrap();
+    }
+
+    initModalTabTrap() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                const modal = document.querySelector('.modal.show');
+                if (modal) {
+                    const focusableElements = modal.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    
+                    if (focusableElements.length === 0) return;
+                    
+                    const firstElement = focusableElements[0];
+                    const lastElement = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            lastElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            firstElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    initFocusManagement() {
+        // Skip to main content link
+        const skipLink = document.createElement('a');
+        skipLink.href = '#main-content';
+        skipLink.textContent = 'Saltar al contenido principal';
+        skipLink.className = 'skip-link';
+        skipLink.style.cssText = `
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-500);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 10000;
+            transition: top 0.3s;
+        `;
+        
+        skipLink.addEventListener('focus', () => {
+            skipLink.style.top = '6px';
+        });
+        
+        skipLink.addEventListener('blur', () => {
+            skipLink.style.top = '-40px';
+        });
+        
+        document.body.insertBefore(skipLink, document.body.firstChild);
+    }
+
+    initAriaLive() {
+        // Create aria-live region for announcements
+        const liveRegion = document.createElement('div');
+        liveRegion.setAttribute('aria-live', 'polite');
+        liveRegion.setAttribute('aria-atomic', 'true');
+        liveRegion.className = 'sr-only';
+        liveRegion.style.cssText = `
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        `;
+        document.body.appendChild(liveRegion);
+        
+        window.announceToScreenReader = (message) => {
+            liveRegion.textContent = message;
+            setTimeout(() => {
+                liveRegion.textContent = '';
+            }, 1000);
+        };
+    }
+
+    updateActiveNavLinks(activeSection = null) {
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            
+            if (activeSection) {
+                const href = link.getAttribute('href');
+                if (href === `#${activeSection}` || 
+                    (href.includes('.html') && href.includes(activeSection))) {
+                    link.classList.add('active');
+                }
+            }
+        });
+    }
+
+    handleResize() {
+        // Close mobile menu on resize to desktop
+        if (window.innerWidth > 1024) {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle && navMenu) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        }
+
+        // Recalculate any layout-dependent features
+        this.updateActiveNavLinks();
+    }
+}
+
+// Initialize the site controller
+new SiteController();
+
+// Global utility functions for backward compatibility
+window.scrollToSection = function(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+        const targetPosition = element.offsetTop - headerHeight - 20;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+};
+
+// Enhanced form handling
+class FormHandler {
+    constructor() {
+        this.initForms();
+    }
+
+    initForms() {
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => this.enhanceForm(form));
+    }
+
+    enhanceForm(form) {
+        // Real-time validation
+        const inputs = form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('input', () => this.clearFieldError(input));
+        });
+
+        // Enhanced form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleFormSubmission(form);
+        });
+    }
+
+    validateField(field) {
+        const value = field.value.trim();
+        const type = field.type;
+        const required = field.hasAttribute('required');
+        
+        let isValid = true;
+        let message = '';
+
+        // Required field validation
+        if (required && !value) {
+            isValid = false;
+            message = 'Este campo es obligatorio';
+        }
+
+        // Email validation
+        if (type === 'email' && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                message = 'Ingresa un email válido';
+            }
+        }
+
+        // Phone validation
+        if (type === 'tel' && value) {
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            if (!phoneRegex.test(value)) {
+                isValid = false;
+                message = 'Ingresa un teléfono válido';
+            }
+        }
+
+        this.showFieldFeedback(field, isValid, message);
+        return isValid;
+    }
+
+    showFieldFeedback(field, isValid, message) {
+        // Remove existing feedback
+        const existingFeedback = field.parentNode.querySelector('.field-feedback');
+        if (existingFeedback) {
+            existingFeedback.remove();
+        }
+
+        // Add field state classes
+        field.classList.toggle('field-error', !isValid);
+        field.classList.toggle('field-success', isValid && field.value.trim());
+
+        // Add feedback message for errors
+        if (!isValid && message) {
+            const feedback = document.createElement('div');
+            feedback.className = 'field-feedback field-error-message';
+            feedback.textContent = message;
+            feedback.style.cssText = `
+                color: var(--error);
+                font-size: var(--font-size-sm);
+                margin-top: var(--space-1);
+                display: flex;
+                align-items: center;
+                gap: var(--space-1);
+            `;
+            
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-exclamation-circle';
+            feedback.insertBefore(icon, feedback.firstChild);
+            
+            field.parentNode.appendChild(feedback);
+        }
+    }
+
+    clearFieldError(field) {
+        field.classList.remove('field-error');
+        const errorMessage = field.parentNode.querySelector('.field-error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    }
+
+    handleFormSubmission(form) {
+        // Validate all fields
+        const fields = form.querySelectorAll('input, select, textarea');
+        let isFormValid = true;
+
+        fields.forEach(field => {
+            if (!this.validateField(field)) {
+                isFormValid = false;
+            }
+        });
+
+        if (!isFormValid) {
+            // Focus first invalid field
+            const firstError = form.querySelector('.field-error');
+            if (firstError) {
+                firstError.focus();
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return;
+        }
+
+        // Show loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) {
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitButton.disabled = true;
+
+            // Simulate form submission (replace with actual submission logic)
+            setTimeout(() => {
+                this.showFormSuccess(form);
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        }
+    }
+
+    showFormSuccess(form) {
+        // Create success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'form-success-message';
+        successMessage.innerHTML = `
+            <div style="
+                background: var(--success);
+                color: white;
+                padding: var(--space-4);
+                border-radius: var(--radius-lg);
+                margin: var(--space-4) 0;
+                display: flex;
+                align-items: center;
+                gap: var(--space-2);
+                animation: slideIn 0.3s ease-out;
+            ">
+                <i class="fas fa-check-circle"></i>
+                <span>¡Mensaje enviado con éxito! Te contactaremos pronto.</span>
+            </div>
+        `;
+
+        form.appendChild(successMessage);
+
+        // Clear form
+        form.reset();
+
+        // Remove success message after 5 seconds
+        setTimeout(() => {
+            successMessage.remove();
+        }, 5000);
+
+        // Announce to screen readers
+        if (window.announceToScreenReader) {
+            window.announceToScreenReader('Formulario enviado con éxito');
+        }
+    }
+}
+
+// Initialize form handler
+new FormHandler();
+
 // Theme Toggle Functionality
 function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
@@ -24,6 +619,68 @@ function updateThemeIcon(theme) {
         themeIcon.className = 'fas fa-moon';
     } else {
         themeIcon.className = 'fas fa-sun';
+    }
+}
+
+// Contact Form Auto-Selection
+function goToContactForm(motivo) {
+    // Si estamos en la página principal, hacer scroll y seleccionar motivo
+    if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+        scrollToSection('contacto');
+        setTimeout(() => {
+            const asuntoSelect = document.getElementById('asunto');
+            if (asuntoSelect) {
+                asuntoSelect.value = motivo;
+                asuntoSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                // Destacar el formulario brevemente
+                const form = asuntoSelect.closest('form');
+                if (form) {
+                    form.style.transform = 'scale(1.02)';
+                    form.style.transition = 'transform 0.3s ease';
+                    setTimeout(() => {
+                        form.style.transform = 'scale(1)';
+                    }, 500);
+                }
+            }
+        }, 1000); // Esperar a que termine el scroll
+    } else {
+        // Si estamos en otra página, redirigir al index con parámetros
+        window.location.href = `index.html#contacto?motivo=${motivo}`;
+    }
+}
+
+// Función para manejar parámetros de URL al cargar la página
+function handleURLParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const hash = window.location.hash;
+    
+    // Buscar motivo en el hash (formato: #contacto?motivo=valor)
+    if (hash.includes('contacto') && hash.includes('motivo=')) {
+        const motivoMatch = hash.match(/motivo=([^&]+)/);
+        if (motivoMatch) {
+            const motivo = motivoMatch[1];
+            setTimeout(() => {
+                scrollToSection('contacto');
+                setTimeout(() => {
+                    const asuntoSelect = document.getElementById('asunto');
+                    if (asuntoSelect) {
+                        asuntoSelect.value = motivo;
+                        asuntoSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                        // Destacar el formulario
+                        const form = asuntoSelect.closest('form');
+                        if (form) {
+                            form.style.transform = 'scale(1.02)';
+                            form.style.transition = 'transform 0.3s ease';
+                            form.style.boxShadow = '0 0 20px rgba(0, 151, 178, 0.3)';
+                            setTimeout(() => {
+                                form.style.transform = 'scale(1)';
+                                form.style.boxShadow = '';
+                            }, 1000);
+                        }
+                    }
+                }, 1000);
+            }, 500);
+        }
     }
 }
 
@@ -258,14 +915,19 @@ function initStatsCounter() {
 function initParallax() {
     const heroImage = document.querySelector('.hero-image img');
 
-    // Evita que afecte al logo
-    if (heroImage && !heroImage.classList.contains('logo-normal')) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
+    // Evita que afecte al logo y a imágenes específicas como conlogo.png
+    if (heroImage && !heroImage.classList.contains('logo-normal') && !heroImage.src.includes('conlogo.png')) {
+        const heroImageContainer = document.querySelector('.hero-image');
+        
+        // Solo aplicar parallax si la imagen no tiene position fixed
+        if (heroImageContainer && getComputedStyle(heroImageContainer).position !== 'fixed') {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = scrolled * 0.5;
 
-            heroImage.style.transform = `translateY(${parallax}px)`;
-        });
+                heroImage.style.transform = `translateY(${parallax}px)`;
+            });
+        }
     }
 }
 
@@ -321,6 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNav();
     initStatsCounter();
     initParallax();
+    handleURLParameters();
 
     setTimeout(hideLoading, 1000);
 });
@@ -379,3 +1042,320 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// ===== MODAL FUNCTIONALITY =====
+
+// Datos de productos para los modales
+const productData = {
+    clasico: {
+        title: "Lente Clásico",
+        image: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Acetato Premium",
+            peso: "18g",
+            tipo: "Monofocal/Progresivo",
+            garantia: "2 años"
+        },
+        features: [
+            "Marco resistente y duradero",
+            "Diseño atemporal y elegante",
+            "Adaptable a cualquier rostro",
+            "Disponible en múltiples colores",
+            "Cristales anti-reflejantes incluidos",
+            "Ajuste profesional gratuito"
+        ],
+        description: "Nuestro modelo clásico combina tradición y calidad. Diseñado para personas que valoran la elegancia atemporal, estos lentes ofrecen comodidad excepcional y durabilidad garantizada.",
+        price: "Desde $2,500"
+    },
+    moderno: {
+        title: "Lente Moderno",
+        image: "https://images.unsplash.com/photo-1556306645-d6ee0323e57f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Titanio",
+            peso: "12g",
+            tipo: "Multifocal",
+            garantia: "3 años"
+        },
+        features: [
+            "Marco ultra-liviano de titanio",
+            "Tecnología anti-azul integrada",
+            "Diseño minimalista contemporáneo",
+            "Resistente a la corrosión",
+            "Bisagras reforzadas",
+            "Cristales fotocromáticos disponibles"
+        ],
+        description: "La perfecta fusión entre tecnología y estilo. Ideales para profesionales modernos que buscan funcionalidad sin comprometer la estética.",
+        price: "Desde $3,200"
+    },
+    deportivo: {
+        title: "Lente Deportivo",
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "TR90",
+            peso: "15g",
+            tipo: "Deportivo",
+            garantia: "2 años"
+        },
+        features: [
+            "Material TR90 ultra-flexible",
+            "Resistente a impactos",
+            "Protección UV 100%",
+            "Antideslizante en nariz y patillas",
+            "Diseño aerodinámico",
+            "Colores vibrantes disponibles"
+        ],
+        description: "Especialmente diseñados para personas activas. Combinan protección, comodidad y estilo para acompañarte en todas tus actividades deportivas.",
+        price: "Desde $2,800"
+    },
+    vintage: {
+        title: "Lente Vintage",
+        image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Acetato Clásico",
+            peso: "22g",
+            tipo: "Redondo/Aviador",
+            garantia: "2 años"
+        },
+        features: [
+            "Inspiración retro auténtica",
+            "Acabados artesanales únicos",
+            "Formas geométricas clásicas",
+            "Colores earth tone",
+            "Detalles metálicos dorados",
+            "Edición limitada"
+        ],
+        description: "Revive la elegancia de décadas pasadas con estos diseños únicos. Perfectos para quienes aprecian el estilo retro con un toque contemporáneo.",
+        price: "Desde $3,500"
+    },
+    ejecutivo: {
+        title: "Lente Ejecutivo",
+        image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Titanio Premium",
+            peso: "14g",
+            tipo: "Progresivo Premium",
+            garantia: "5 años"
+        },
+        features: [
+            "Materiales de lujo exclusivos",
+            "Tecnología progresiva avanzada",
+            "Diseño ejecutivo sofisticado",
+            "Tratamientos premium incluidos",
+            "Estuche de cuero genuino",
+            "Servicio VIP personalizado"
+        ],
+        description: "La máxima expresión en lentes de lujo. Diseñados para ejecutivos y profesionales que exigen lo mejor en calidad, tecnología y prestigio.",
+        price: "Desde $5,500"
+    },
+    juvenil: {
+        title: "Lente Juvenil",
+        image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Plástico Flexible",
+            peso: "16g",
+            tipo: "Juvenil",
+            garantia: "2 años"
+        },
+        features: [
+            "Diseños trendy y frescos",
+            "Colores vibrantes únicos",
+            "Extra resistente para uso diario",
+            "Protección total para estudiantes",
+            "Ajuste cómodo todo el día",
+            "Precio accesible para jóvenes"
+        ],
+        description: "Expresión y personalidad para los más jóvenes. Diseños frescos que combinan diversión, comodidad y protección visual adecuada para el estudio.",
+        price: "Desde $1,800"
+    },
+    // ===== LENTES DE SOL PRODUCTS =====
+    'aviador': {
+        title: "Aviador Premium",
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Titanio Premium",
+            peso: "16g",
+            tipo: "Aviador Polarizado",
+            garantia: "3 años"
+        },
+        features: [
+            "Lentes polarizadas de alta definición",
+            "Marco de titanio ultraliviano",
+            "Protección UV400 total",
+            "Diseño atemporal clásico",
+            "Bisagras reforzadas premium",
+            "Estuche de cuero incluido"
+        ],
+        description: "El clásico aviador reimaginado con materiales premium. Marcos de titanio que combinan durabilidad excepcional con peso mínimo, ideal para uso prolongado con estilo atemporal.",
+        price: "Desde $4,200"
+    },
+    'ejecutivo-sol': {
+        title: "Ejecutivo Elite",
+        image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Acetato Italiano",
+            peso: "18g",
+            tipo: "Rectangular Elegante",
+            garantia: "3 años"
+        },
+        features: [
+            "Acetato italiano de primera calidad",
+            "Lentes antirreflejantes avanzadas",
+            "Diseño ejecutivo sofisticado",
+            "Tratamiento oleofóbico",
+            "Ajuste ergonómico perfecto",
+            "Certificación de calidad europea"
+        ],
+        description: "Sofisticación para el ejecutivo moderno. Cada detalle está pensado para proyectar éxito y elegancia en reuniones importantes y eventos corporativos.",
+        price: "Desde $3,800"
+    },
+    'deportivo-sol': {
+        title: "Deportivo Pro",
+        image: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "TR90 Flexble",
+            peso: "14g",
+            tipo: "Deportivo Wrap",
+            garantia: "2 años"
+        },
+        features: [
+            "Material TR90 ultra-resistente",
+            "Tecnología anti-impacto certificada",
+            "Grip antideslizante en nariz y patillas",
+            "Ventilación optimizada anti-empañe",
+            "Lentes intercambiables disponibles",
+            "Resistente a temperaturas extremas"
+        ],
+        description: "Diseñados para atletas de alto rendimiento. Combinan protección máxima con comodidad excepcional para acompañarte en tus actividades más exigentes.",
+        price: "Desde $3,200"
+    },
+    'vintage-sol': {
+        title: "Vintage Luxury",
+        image: "https://images.unsplash.com/photo-1556306645-d6ee0323e57f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Acetato Artesanal",
+            peso: "20g",
+            tipo: "Retro Round",
+            garantia: "3 años"
+        },
+        features: [
+            "Fabricación artesanal única",
+            "Cristales minerales de alta calidad",
+            "Acabados en tonos earth exclusivos",
+            "Detalles metálicos dorados",
+            "Inspiración vintage auténtica",
+            "Pieza de colección limitada"
+        ],
+        description: "Revive la elegancia de décadas pasadas con esta pieza única. Combina la nostalgia del diseño retro con la tecnología de protección más avanzada.",
+        price: "Desde $4,800"
+    },
+    'femenino-sol': {
+        title: "Femenino Elegance",
+        image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Acetato con Swarovski",
+            peso: "17g",
+            tipo: "Cat-Eye Elegante",
+            garantia: "3 años"
+        },
+        features: [
+            "Cristales Swarovski genuinos",
+            "Formas orgánicas femeninas",
+            "Colores exclusivos de temporada",
+            "Diseño que realza las facciones",
+            "Acabados nacarados únicos",
+            "Edición especial para damas"
+        ],
+        description: "Diseños exclusivos que celebran la feminidad. Cada par es una obra de arte que combina elegancia sofisticada con detalles únicos y brillantes.",
+        price: "Desde $5,200"
+    },
+    'limitada-sol': {
+        title: "Edición Limitada",
+        image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        specs: {
+            material: "Materiales Exóticos",
+            peso: "19g",
+            tipo: "Avant-garde",
+            garantia: "5 años"
+        },
+        features: [
+            "Pieza numerada con certificado",
+            "Materiales exóticos exclusivos",
+            "Diseño de vanguardia único",
+            "Tecnología experimental avanzada",
+            "Colección museum-quality",
+            "Inversión en arte portable"
+        ],
+        description: "La máxima expresión del diseño y la innovación. Cada pieza es única, numerada y viene con certificado de autenticidad. Una verdadera obra de arte.",
+        price: "Desde $8,500"
+    }
+};
+
+// Función para abrir modal
+function openProductModal(productId) {
+    const modal = document.getElementById('productModal');
+    const product = productData[productId];
+    
+    if (!modal || !product) return;
+    
+    // Actualizar contenido del modal
+    document.getElementById('modalTitle').textContent = product.title;
+    document.getElementById('modalImage').src = product.image;
+    document.getElementById('modalImage').alt = product.title;
+    
+    // Actualizar especificaciones
+    document.getElementById('specMaterial').textContent = product.specs.material;
+    document.getElementById('specWeight').textContent = product.specs.peso;
+    document.getElementById('specType').textContent = product.specs.tipo;
+    document.getElementById('specWarranty').textContent = product.specs.garantia;
+    
+    // Actualizar características
+    const featuresList = document.getElementById('featuresList');
+    featuresList.innerHTML = product.features.map(feature => `<li>${feature}</li>`).join('');
+    
+    // Actualizar descripción
+    document.getElementById('modalDescription').textContent = product.description;
+    
+    // Actualizar precio
+    document.getElementById('modalPrice').textContent = product.price;
+    
+    // Mostrar modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevenir scroll en el fondo
+}
+
+// Función para cerrar modal
+function closeModal() {
+    const modal = document.getElementById('productModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restaurar scroll
+    }
+}
+
+// Event listeners para cerrar modal
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('productModal');
+    if (modal) {
+        // Cerrar con botón X
+        const closeBtn = modal.querySelector('.close-modal');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeModal);
+        }
+        
+        // Cerrar al hacer clic fuera del modal
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
+});
+
+// ===== END MODAL FUNCTIONALITY =====

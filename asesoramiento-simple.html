@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesoramiento Personalizado - Clara Visión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS inline optimizado para carga rápida */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0097B2;
+            --primary-dark: #007A93;
+            --background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navegación simplificada */
+        .navigation-buttons {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .btn-nav {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px var(--shadow);
+            font-size: 1.1rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-nav:hover {
+            transform: scale(1.05);
+            background: var(--primary-dark);
+        }
+
+        .btn-glasses { background: #FF6B35; }
+        .btn-contacts { background: #10B981; }
+        .btn-sunglasses { background: #F7B731; }
+        .btn-repairs { background: #0097B2; }
+        .btn-theme { background: #6C5CE7; }
+
+        /* Sección principal */
+        .section-asesoramiento {
+            padding: 2rem 0;
+            min-height: 100vh;
+            margin-left: 80px;
+        }
+
+        .advisory-header {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .advisory-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .advisory-header h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #d97706;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .expertise-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Servicios */
+        .advisory-services {
+            margin-bottom: 4rem;
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: transform 0.2s ease;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            background: var(--primary-color);
+        }
+
+        .card-header h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .advisory-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+
+        .cta-content h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-asesoramiento {
+                margin-left: 0;
+                padding-top: 80px;
+            }
+            
+            .advisory-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .advisory-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botones de navegación fijos -->
+    <div class="navigation-buttons">
+        <button class="btn-nav btn-home" onclick="window.location.href='index.html'">
+            <i class="fas fa-home"></i>
+        </button>
+        <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'">
+            <i class="fas fa-glasses"></i>
+        </button>
+        <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'">
+            <i class="fas fa-eye"></i>
+        </button>
+        <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'">
+            <i class="fas fa-tools"></i>
+        </button>
+        <button class="btn-nav btn-theme" onclick="toggleTheme()">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <section class="section-asesoramiento">
+            <!-- Encabezado principal -->
+            <div class="advisory-header">
+                <h1>Asesoramiento Personalizado</h1>
+                <h2>Tu Visión Es Nuestra Prioridad</h2>
+                <p class="expertise-description">
+                    Nuestro equipo de especialistas te acompañará en cada paso para encontrar la solución visual perfecta. 
+                    Combinamos experiencia profesional con atención personalizada para garantizar tu satisfacción total.
+                </p>
+            </div>
+
+            <!-- Servicios de asesoramiento -->
+            <div class="advisory-services">
+                <h3 class="services-title">Nuestros Servicios de Asesoramiento</h3>
+                
+                <div class="services-grid">
+                    <!-- Consulta inicial -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="service-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4>Consulta Inicial</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Evaluación completa de tus necesidades visuales y estilo de vida para recomendarte la mejor opción.</p>
+                        </div>
+                    </div>
+
+                    <!-- Selección personalizada -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="service-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h4>Selección Personalizada</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Te ayudamos a elegir entre nuestra amplia gama de productos el que mejor se adapte a ti.</p>
+                        </div>
+                    </div>
+
+                    <!-- Soporte técnico -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="service-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <h4>Soporte Técnico</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Asesoramiento continuo sobre el uso y mantenimiento de tus lentes para una experiencia óptima.</p>
+                        </div>
+                    </div>
+
+                    <!-- Seguimiento -->
+                    <div class="service-card">
+                        <div class="card-header">
+                            <div class="service-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Seguimiento</h4>
+                        </div>
+                        <div class="card-content">
+                            <p>Revisiones periódicas para asegurar tu satisfacción y ajustar cualquier aspecto necesario.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to action -->
+            <div class="advisory-cta">
+                <div class="cta-content">
+                    <h3>¿Listo para comenzar?</h3>
+                    <p>Agenda tu consulta gratuita y descubre cómo podemos mejorar tu visión</p>
+                    <a href="mailto:info@claravision.com" class="btn-primary">
+                        <i class="fas fa-calendar"></i>
+                        Agendar Consulta
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

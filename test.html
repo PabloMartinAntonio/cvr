@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test CSS</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fallback styles for testing */
+        .test-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border: 1px solid #ddd;
+        }
+        .test-primary {
+            color: #0097b2;
+        }
+        .test-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">Test de CSS</h1>
+        <p>Probando las clases CSS:</p>
+        
+        <div class="hero-text">
+            <h2>Tu mejor punto de <span class="text-primary">vista</span></h2>
+            <p>Este texto debería verse con los estilos del hero.</p>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <h3 class="test-primary">Clase de prueba con color primario</h3>
+            <div class="container">
+                <p>Este contenido está dentro de un container.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <button class="btn btn-primary">Botón Primario</button>
+            <button class="btn btn-outline">Botón Outline</button>
+        </div>
+    </div>
+
+    <!-- Test de variables CSS -->
+    <script>
+        console.log('Testeando variables CSS...');
+        const root = getComputedStyle(document.documentElement);
+        console.log('--primary-color:', root.getPropertyValue('--primary-color'));
+        console.log('--text-primary:', root.getPropertyValue('--text-primary'));
+        console.log('--background:', root.getPropertyValue('--background'));
+    </script>
+</body>
+</html>

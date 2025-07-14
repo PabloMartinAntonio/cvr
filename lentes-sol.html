@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lentes de Sol | Clara Visión</title>
+<link rel="stylesheet" href="estilos-sol.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Botones de navegación fijos -->
+<div class="navigation-buttons">
+    <!-- Botón de regreso -->
+    <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
+        <i class="fas fa-home"></i>
+        <span class="btn-text">Inicio</span>
+    </button>
+    
+    <!-- Botón de lentes recetados -->
+    <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
+        <i class="fas fa-glasses"></i>
+        <span class="btn-text">Lentes Recetados</span>
+    </button>
+    
+    <!-- Botón de lentes de contacto -->
+    <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
+        <i class="fas fa-eye"></i>
+        <span class="btn-text">Lentes de Contacto</span>
+    </button>
+    
+    <!-- Botón de reparaciones -->
+    <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
+        <i class="fas fa-tools"></i>
+        <span class="btn-text">Reparaciones</span>
+    </button>
+    
+    <!-- Botón de modo nocturno -->
+    <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
+        <i class="fas fa-moon" id="theme-icon"></i>
+        <span class="btn-text">Modo Nocturno</span>
+    </button>
+</div>
+
+<!-- Elementos de fondo elegantes -->
+<div class="elegant-background">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="light-ray ray-1"></div>
+    <div class="light-ray ray-2"></div>
+</div>
+
+<section class="section-lentes-sol">
+    <div class="container">
+        <!-- Encabezado elegante -->
+        <div class="premium-header">
+            <div class="luxury-icon">
+                <i class="fas fa-eye"></i>
+                <div class="icon-glow"></div>
+            </div>
+            <h1>Lentes de Sol Premium</h1>
+            <h2>Elegancia y Protección Superior</h2>
+            <p class="premium-description">
+                Descubre nuestra colección exclusiva de lentes de sol. Diseños sofisticados con tecnología avanzada de protección UV y materiales de la más alta calidad.
+            </p>
+        </div>
+
+        <!-- Grid de productos premium -->
+        <div class="grid-lentes-sol">
+            <!-- Producto 1 - Aviador Premium -->
+            <div class="lente-sol-card premium-card">
+                <div class="card-overlay"></div>
+                <div class="quality-badge">
+                    <i class="fas fa-crown"></i>
+                    <span>Premium</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Aviador Premium">
+                <div class="card-content">
+                    <h3>Aviador Premium</h3>
+                    <p class="product-subtitle">Colección Clásica</p>
+                    <p>Diseño atemporal con marcos de titanio y lentes polarizadas de alta definición. La elegancia que trasciende el tiempo.</p>
+                    <div class="premium-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>UV400 Protection</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-gem"></i>
+                            <span>Titanio Premium</span>
+                        </div>
+                    </div>
+                    <button class="btn-premium" onclick="openProductModal('aviador')">
+                        <span>Ver Detalles</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 2 - Ejecutivo Elite -->
+            <div class="lente-sol-card executive-card">
+                <div class="card-overlay"></div>
+                <div class="quality-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Elite</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Ejecutivo Elite">
+                <div class="card-content">
+                    <h3>Ejecutivo Elite</h3>
+                    <p class="product-subtitle">Colección Profesional</p>
+                    <p>Sofisticación para el ejecutivo moderno. Marcos de acetato italiano con lentes antirreflejantes de última generación.</p>
+                    <div class="premium-features">
+                        <div class="feature-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Profesional</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-award"></i>
+                            <span>Acetato Italiano</span>
+                        </div>
+                    </div>
+                    <button class="btn-premium" onclick="openProductModal('ejecutivo-sol')">
+                        <span>Ver Detalles</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 3 - Deportivo Pro -->
+            <div class="lente-sol-card sport-card">
+                <div class="card-overlay"></div>
+                <div class="quality-badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Sport Pro</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Deportivo Pro">
+                <div class="card-content">
+                    <h3>Deportivo Pro</h3>
+                    <p class="product-subtitle">Colección Deportiva</p>
+                    <p>Rendimiento superior para atletas exigentes. Tecnología anti-impacto con materiales ultralivianos y grip antideslizante.</p>
+                    <div class="premium-features">
+                        <div class="feature-item">
+                            <i class="fas fa-running"></i>
+                            <span>Anti-impacto</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-feather"></i>
+                            <span>Ultraliviano</span>
+                        </div>
+                    </div>
+                    <button class="btn-premium" onclick="openProductModal('deportivo-sol')">
+                        <span>Ver Detalles</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 4 - Vintage Luxury -->
+            <div class="lente-sol-card vintage-card">
+                <div class="card-overlay"></div>
+                <div class="quality-badge">
+                    <i class="fas fa-history"></i>
+                    <span>Vintage</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1556306645-d6ee0323e57f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Vintage Luxury">
+                <div class="card-content">
+                    <h3>Vintage Luxury</h3>
+                    <p class="product-subtitle">Colección Heritage</p>
+                    <p>Inspiración retro con tecnología moderna. Marcos artesanales con acabados únicos y lentes de cristal mineral.</p>
+                    <div class="premium-features">
+                        <div class="feature-item">
+                            <i class="fas fa-palette"></i>
+                            <span>Artesanal</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-diamond"></i>
+                            <span>Cristal Mineral</span>
+                        </div>
+                    </div>
+                    <button class="btn-premium" onclick="openProductModal('vintage-sol')">
+                        <span>Ver Detalles</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 5 - Femenino Elegance -->
+            <div class="lente-sol-card feminine-card">
+                <div class="card-overlay"></div>
+                <div class="quality-badge">
+                    <i class="fas fa-heart"></i>
+                    <span>Elegance</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Femenino Elegance">
+                <div class="card-content">
+                    <h3>Femenino Elegance</h3>
+                    <p class="product-subtitle">Colección Dama</p>
+                    <p>Diseños exclusivos que realzan la feminidad. Detalles en cristales Swarovski y marcos con formas orgánicas.</p>
+                    <div class="premium-features">
+                        <div class="feature-item">
+                            <i class="fas fa-gem"></i>
+                            <span>Swarovski</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-magic"></i>
+                            <span>Exclusivo</span>
+                        </div>
+                    </div>
+                    <button class="btn-premium" onclick="openProductModal('femenino-sol')">
+                        <span>Ver Detalles</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Producto 6 - Edición Limitada -->
+            <div class="lente-sol-card limited-card">
+                <div class="card-overlay"></div>
+                <div class="quality-badge limited-badge">
+                    <i class="fas fa-certificate"></i>
+                    <span>Limited</span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Edición Limitada">
+                <div class="card-content">
+                    <h3>Edición Limitada</h3>
+                    <p class="product-subtitle">Colección Exclusiva</p>
+                    <p>Piezas únicas numeradas con certificado de autenticidad. Materiales exóticos y diseño de vanguardia.</p>
+                    <div class="premium-features">
+                        <div class="feature-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>Numerado</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-crown"></i>
+                            <span>Exclusivo</span>
+                        </div>
+                    </div>
+                    <button class="btn-premium" onclick="openProductModal('limitada-sol')">
+                        <span>Ver Detalles</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Premium -->
+        <div class="premium-cta">
+            <div class="cta-content">
+                <h3>Experiencia Clara Visión</h3>
+                <p>Descubre la diferencia de la calidad premium. Asesoramiento personalizado y garantía de satisfacción total.</p>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Asesoramiento Experto</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-shield-check"></i>
+                        <span>Garantía Premium</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-truck"></i>
+                        <span>Entrega Especializada</span>
+                    </div>
+                </div>
+                <button class="btn-cta-premium" onclick="window.location.href='index.html#contacto'">
+                    <i class="fas fa-phone"></i>
+                    <span>Consultar Colección</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal para detalles del producto -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Título del Producto</h2>
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modalImage" src="" alt="" class="modal-image">
+            
+            <div class="modal-specs">
+                <div class="spec-item">
+                    <div class="spec-label">Material</div>
+                    <div class="spec-value" id="specMaterial">-</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Peso</div>
+                    <div class="spec-value" id="specWeight">-</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Tipo</div>
+                    <div class="spec-value" id="specType">-</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Garantía</div>
+                    <div class="spec-value" id="specWarranty">-</div>
+                </div>
+            </div>
+            
+            <div class="modal-features">
+                <h4><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 8px;"></i>Características destacadas</h4>
+                <ul class="features-list" id="featuresList">
+                    <!-- Se llenan dinámicamente -->
+                </ul>
+            </div>
+            
+            <div class="modal-description">
+                <h4><i class="fas fa-info-circle" style="color: var(--primary-color); margin-right: 8px;"></i>Descripción</h4>
+                <p id="modalDescription">-</p>
+            </div>
+            
+            <div class="modal-price">
+                <div class="price-label">Precio estimado</div>
+                <div class="price-value" id="modalPrice">-</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn secondary" onclick="goToContactForm('productos')">
+                <i class="fas fa-envelope"></i> Consultar
+            </button>
+            <button class="modal-btn primary" onclick="goToContactForm('examen')">
+                <i class="fas fa-calendar-check"></i> Agendar Examen
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// Funcionalidad del modo nocturno
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // Verificar tema guardado
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+    }
+
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = body.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            body.removeAttribute('data-theme');
+            themeIcon.className = 'fas fa-moon';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fas fa-sun';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

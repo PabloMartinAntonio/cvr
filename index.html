@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header" id="header">
@@ -47,7 +48,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h2>Tu mejor punto de <span class="text-primary"> vista</span></h2>
-                    <p>En Clara Vision comenzamos nuestro camino con una misión clara: cuidar tu visión con calidad, confianza y estilo. Ofrecemos atención personalizada, lentes recetados y de sol con la mejor tecnología, y un compromiso real con tu bienestar visual. Tu mirada es nuestro enfoque</p>
+                    <p>En Clara Vision comenzamos nuestro camino con un objetivo definido: cuidar tu visión con calidad, confianza y estilo. Ofrecemos atención personalizada, lentes recetados y de sol con la mejor tecnología, y un compromiso real con tu bienestar visual. Tu mirada es nuestro enfoque</p> 
                     <div class="hero-buttons">
                         <button class="btn btn-primary" onclick="scrollToSection('contacto')">
                             <i class="fas fa-calendar-alt"></i>
@@ -60,7 +61,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="logo.png" alt="Foto de perfil" class="logo-normal">
+                    <img src="conlogo.png" alt="Foto de perfil" class="logo-normal">
                 <div class="hero-badge">
     <!-- opcional -->
         </div>
@@ -84,11 +85,11 @@
     <section id="nosotros" class="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text">    
                     <h2>Nuestra Historia</h2>
                     <p>Detrás de cada par de anteojos hay una historia... y esta es la nuestra.</p>
                     <p>Contamos con un equipo de profesionales altamente capacitados y tecnología de última generación para garantizar el mejor cuidado para tu visión.</p>
-                    
+                    <div>
                     <div class="stats-grid">
                         <div class="stat">
                             <div class="stat-number">15+</div>
@@ -108,13 +109,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="sinF.png" alt="Optometrista profesional">
-                    <div class="about-badge">
-                        <i class="fas fa-certificate"></i>
-                        <div>
-                            <p>Certificados</p>
-                            <span>Profesionales</span>
+                <section id="video-aylen">
+                    <div class="video-responsive">
+                       <!-- <img src="sinfondo.png" alt="imagen-aylen" style="width: 100%; height: auto;">
+                    <div>   --> 
+                </section>
                         </div>
                     </div>
                 </div>
@@ -131,16 +130,7 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Examen Visual Completo</h3>
-                    <p>Evaluación integral de tu salud visual con equipos de última generación para detectar cualquier problema de visión.</p>
-                    <button class="service-btn" onclick="scrollToSection('contacto')">
-                        Agendar examen <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
+                
                 
                 <div class="service-card">
                     <div class="service-icon">
@@ -331,7 +321,10 @@
                                 <input type="text" id="apellido" name="apellido" required>
                             </div>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+                        </div>
                         <div class="form-group">
                             <label for="asunto">Asunto *</label>
                             <select id="asunto" name="asunto" required>

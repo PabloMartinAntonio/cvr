@@ -2,16 +2,16 @@
 function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    
+
     // Check for saved theme preference or default to 'light'
     const currentTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-theme', currentTheme);
     updateThemeIcon(currentTheme);
-    
+
     themeToggle.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
+
         body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
@@ -31,11 +31,13 @@ function updateThemeIcon(theme) {
 function initMobileNav() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
-    
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-    
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
     // Close menu when clicking on nav links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
@@ -52,7 +54,7 @@ function scrollToSection(sectionId) {
         const headerHeight = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-        
+
         window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
@@ -68,28 +70,25 @@ function initHeaderScroll() {
         const isDark = document.body.getAttribute('data-theme') === 'dark';
 
         if (window.scrollY > 100) {
-            // Fondo 100% opaco según el tema activo
             header.style.background = isDark ? '#1e293b' : '#ffffff';
-            header.style.backdropFilter = 'none'; // Por si quedaba algo
+            header.style.backdropFilter = 'none';
         } else {
-            // Volver a usar la variable CSS original
             header.style.background = 'var(--header-bg)';
             header.style.backdropFilter = 'none';
         }
     });
 }
 
-
-
 // Contact Form
 function initContactForm() {
     const form = document.getElementById('contact-form');
+    if (!form) return;
     const submitBtn = form.querySelector('.btn-submit');
     const submitText = submitBtn.querySelector('.submit-text');
-    
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         // Get form data
         const formData = new FormData(form);
         const data = {
@@ -98,17 +97,17 @@ function initContactForm() {
             asunto: formData.get('asunto'),
             mensaje: formData.get('mensaje')
         };
-        
+
         // Validate form
         if (!data.nombre || !data.apellido || !data.asunto || !data.mensaje) {
             showMessage('Por favor, completa todos los campos obligatorios.', 'error');
             return;
         }
-        
+
         // Show loading state
         submitBtn.disabled = true;
         submitText.innerHTML = '<i class="loading"></i> Enviando...';
-        
+
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
@@ -117,9 +116,9 @@ function initContactForm() {
                 },
                 body: JSON.stringify(data)
             });
-            
+
             const result = await response.json();
-            
+
             if (response.ok && result.success) {
                 showMessage('¡Mensaje enviado! Te contactaremos pronto.', 'success');
                 form.reset();
@@ -141,17 +140,17 @@ function showMessage(message, type) {
     // Remove existing messages
     const existingMessages = document.querySelectorAll('.success-message, .error-message');
     existingMessages.forEach(msg => msg.remove());
-    
+
     // Create new message
     const messageDiv = document.createElement('div');
     messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
     messageDiv.textContent = message;
     messageDiv.style.display = 'block';
-    
+
     // Insert after form
     const form = document.getElementById('contact-form');
     form.parentNode.insertBefore(messageDiv, form.nextSibling);
-    
+
     // Auto hide after 5 seconds
     setTimeout(() => {
         messageDiv.style.opacity = '0';
@@ -167,7 +166,7 @@ function initScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -176,7 +175,7 @@ function initScrollAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements that should animate on scroll
     const animateElements = document.querySelectorAll('.service-card, .product-card, .stat');
     animateElements.forEach(el => {
@@ -191,19 +190,19 @@ function initScrollAnimations() {
 function initActiveNav() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     window.addEventListener('scroll', () => {
         let current = '';
-        
+
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
             const sectionHeight = section.clientHeight;
-            
+
             if (sectionTop <= 100 && sectionTop + sectionHeight > 100) {
                 current = section.getAttribute('id');
             }
         });
-        
+
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
@@ -216,18 +215,18 @@ function initActiveNav() {
 // Statistics counter animation
 function initStatsCounter() {
     const stats = document.querySelectorAll('.stat-number');
-    
+
     const animateValue = (element, start, end, duration) => {
         const increment = end / (duration / 16);
         let current = start;
-        
+
         const timer = setInterval(() => {
             current += increment;
             if (current >= end) {
                 current = end;
                 clearInterval(timer);
             }
-            
+
             if (element.textContent.includes('+')) {
                 element.textContent = Math.floor(current) + '+';
             } else if (element.textContent.includes('%')) {
@@ -237,13 +236,13 @@ function initStatsCounter() {
             }
         }, 16);
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const element = entry.target;
                 const finalValue = parseInt(element.textContent);
-                
+
                 if (!element.classList.contains('animated')) {
                     element.classList.add('animated');
                     animateValue(element, 0, finalValue, 2000);
@@ -251,7 +250,7 @@ function initStatsCounter() {
             }
         });
     }, { threshold: 0.5 });
-    
+
     stats.forEach(stat => observer.observe(stat));
 }
 
@@ -270,11 +269,10 @@ function initParallax() {
     }
 }
 
-
 // Loading state management
 function showLoading() {
     document.body.style.overflow = 'hidden';
-    
+
     const loader = document.createElement('div');
     loader.id = 'page-loader';
     loader.innerHTML = `
@@ -296,7 +294,7 @@ function showLoading() {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(loader);
 }
 
@@ -313,10 +311,8 @@ function hideLoading() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Show loading initially
     showLoading();
-    
-    // Initialize all functionality
+
     initThemeToggle();
     initMobileNav();
     initHeaderScroll();
@@ -325,8 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNav();
     initStatsCounter();
     initParallax();
-    
-    // Hide loading after everything is initialized
+
     setTimeout(hideLoading, 1000);
 });
 
@@ -342,7 +337,7 @@ document.addEventListener('visibilitychange', () => {
 // Error handling for images
 document.addEventListener('DOMContentLoaded', () => {
     const images = document.querySelectorAll('img');
-    
+
     images.forEach(img => {
         img.addEventListener('error', function() {
             this.style.opacity = '0.5';
@@ -356,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         const navMenu = document.getElementById('nav-menu');
-        navMenu.classList.remove('active');
+        if (navMenu) navMenu.classList.remove('active');
     }
 });
 
@@ -370,3 +365,17 @@ if ('serviceWorker' in navigator) {
         // navigator.serviceWorker.register('/sw.js');
     });
 }
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth <= 480) {
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Cierra otros acordeones
+                document.querySelectorAll('.service-card').forEach(c => {
+                    if (c !== card) c.classList.remove('active');
+                });
+                // Toggle el actual
+                card.classList.toggle('active');
+            });
+        });
+    }
+});

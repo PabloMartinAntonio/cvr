@@ -60,16 +60,17 @@ body {
     box-shadow: 0 2px 10px var(--shadow);
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
 
 .nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -99,7 +100,7 @@ body {
 }
 
 .brand-text h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.2rem;
@@ -112,8 +113,9 @@ body {
 
 .nav-menu {
     display: flex;
+    flex-direction: row;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
@@ -187,9 +189,10 @@ body {
 }
 
 .hero-content {
-    display: grid;
+    display: flex;
+    flex-direction: row; 
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
     
 }
@@ -200,7 +203,7 @@ body {
     color: var(--text-primary);
     margin-bottom: 1.5rem;
     line-height: 1.2;
-    transform: translateX(50px) translateY(-80px);
+    transform: translateX(0px) translateY(-100px);
 }
 
 .text-primary {
@@ -212,7 +215,7 @@ body {
     color: var(--text-secondary);
     margin-bottom: 2rem;
     line-height: 1.6;
-    transform: matrix(1, 0, 0, 1, 50, -80);
+    transform: matrix(1, 0, 0, 1, 0, -80);
 }
 
 .hero-buttons {
@@ -267,12 +270,12 @@ body {
 .logo-normal {
     width: 450px;
     height: 450px;
-    border-radius: 50%;
+    
     object-fit: contain;
-    background-color: white;
+    
     padding: px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateX(90px) translateY(-80px);
+    
+    transform: translateX(0px) translateY(-80px);
 }
 
 
@@ -459,14 +462,14 @@ body {
 
 /* About Section */
 .about {
-    padding: 5rem 0;
+    padding: 2.5rem 0;
     background: var(--card-bg);
 }
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
     align-items: center;
 }
 
@@ -487,8 +490,8 @@ body {
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 1rem;
+    
 }
 
 .stat {
@@ -862,8 +865,57 @@ body {
     }
 
     .services-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
     }
+    .service-card {
+        padding: 0.7rem 0.5rem;
+        font-size: 0.95rem;
+        border-radius: 0.7rem;
+        box-shadow: 0 2px 8px var(--shadow);
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+    .service-card h3, .service-icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .service-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+        margin-left: 0.7rem;
+    }
+    .service-card p,
+    .service-btn {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        margin-bottom: 0;
+        pointer-events: none;
+    }
+    .service-card.active p,
+    .service-card.active .service-btn {
+        max-height: 200px;
+        opacity: 1;
+        margin-bottom: 0.5rem;
+        pointer-events: auto;
+    }
+    .service-icon {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+    .service-btn {
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+        margin-top: 0.3rem;
+    }
+
 
     .products-grid {
         grid-template-columns: 1fr;
@@ -880,7 +932,7 @@ body {
     .brand-text p {
         font-size: 0.8rem;
     }
-}
+
 
 /* Loading animation */
 .loading {
@@ -892,6 +944,112 @@ body {
     border-top-color: white;
     animation: spin 1s ease-in-out infinite;
 }
+
+
+.imagen-responsive {
+position: relative;
+padding-bottom: 56.25%; /* proporción 16:9 */
+height: 0;
+overflow: hidden;
+max-width: 100%;
+background: #000;
+border-radius: 12px;
+box-shadow: 0 0 20px rgba(0,0,0,0.2);
+margin-top: 2rem;
+}
+
+.imagen-responsive img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+@media (max-width: 600px) {
+    .imagen-responsive {
+        padding-bottom: 75%; 
+    }
+}
+
+@media (max-width: 900px) {
+    .nav-menu {
+        flex-direction: column;
+        position: fixed;
+        top: 80px;
+        left: -100vw;
+        width: 100vw;
+        height: calc(100vh - 80px);
+        background: var(--header-bg);
+        transition: left 0.3s;
+        z-index: 999;
+        padding-top: 2rem;
+        gap: 2rem;
+    }
+    .nav-menu.active {
+        left: 0;
+    }
+    .nav-toggle {
+        display: flex !important;
+    }
+    .hero-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .logo-normal {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+        transform: none;
+    }
+    .hero-text h2 {
+        font-size: 2rem;
+        transform: none;
+    }
+    .hero-text p {
+        font-size: 1rem;
+        transform: none;
+    }
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .about-content {
+        gap: 1rem;
+    }
+    .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.7rem;
+        justify-items: center;
+    }
+    .stat {
+        width: 100%;
+        text-align: center;
+    }
+    }
+    .imagen-responsive {
+        padding-bottom: 100%; /* cuadrada si es necesario */
+    }
+    .about-image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* ...existing code... */
 
 @keyframes spin {
     to { transform: rotate(360deg); }

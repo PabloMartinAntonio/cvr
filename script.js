@@ -19,6 +19,7 @@ class SiteController {
 
     initializeComponents() {
         this.initHeader();
+        this.initThemeToggle();
         this.initSmoothScrolling();
         this.initIntersectionObserver();
         this.initLazyLoading();
@@ -42,16 +43,16 @@ class SiteController {
             const currentScrollY = window.scrollY;
             
             // Add scrolled class for styling
-            if (currentScrollY > 100) {
+            if (currentScrollY > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
 
-            // Hide/show header on scroll
-            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+            // Hide/show header on scroll - immediately when scrolling down
+            if (currentScrollY > lastScrollY && currentScrollY > 10) {
                 header.classList.add('hidden');
-            } else {
+            } else if (currentScrollY < lastScrollY) {
                 header.classList.remove('hidden');
             }
 
@@ -71,7 +72,10 @@ class SiteController {
 
         // Mobile menu toggle
         if (navToggle && navMenu) {
-            navToggle.addEventListener('click', () => {
+            navToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
                 navToggle.classList.toggle('active');
                 navMenu.classList.toggle('active');
                 document.body.classList.toggle('nav-open');
@@ -377,6 +381,50 @@ class SiteController {
         });
     }
 
+    // Theme Toggle functionality
+    initThemeToggle() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (!themeToggle) return;
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+        this.updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            this.updateThemeIcon(newTheme);
+        });
+    }
+
+    updateThemeIcon(theme) {
+        const themeIcon = document.getElementById('theme-icon');
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        if (!themeIcon) return;
+        
+        if (themeToggle) {
+            themeToggle.classList.add('rotating');
+            setTimeout(() => {
+                themeToggle.classList.remove('rotating');
+            }, 600);
+        }
+        
+        if (theme === 'light') {
+            // Modo claro: usar anteojos normales (transparentes/claros)
+            themeIcon.className = 'fas fa-glasses';
+        } else {
+            // Modo oscuro: usar anteojos de sol (oscuros)
+            themeIcon.className = 'fas fa-low-vision';
+        }
+    }
+
     handleResize() {
         // Close mobile menu on resize to desktop
         if (window.innerWidth > 1024) {
@@ -592,35 +640,6 @@ class FormHandler {
 
 // Initialize form handler
 new FormHandler();
-
-// Theme Toggle Functionality
-function initThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Check for saved theme preference or default to 'light'
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
-
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    });
-}
-
-function updateThemeIcon(theme) {
-    const themeIcon = document.getElementById('theme-icon');
-    if (theme === 'light') {
-        themeIcon.className = 'fas fa-moon';
-    } else {
-        themeIcon.className = 'fas fa-sun';
-    }
-}
 
 // Contact Form Auto-Selection
 function goToContactForm(motivo) {
@@ -975,7 +994,6 @@ function hideLoading() {
 document.addEventListener('DOMContentLoaded', () => {
     showLoading();
 
-    initThemeToggle();
     initMobileNav();
     initHeaderScroll();
     initContactForm();
@@ -1359,3 +1377,164 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== END MODAL FUNCTIONALITY =====
+
+// ===== GOOGLE MAPS FUNCTIONALITY =====
+function openGoogleMaps() {
+    const address = "Bv. España 327, Villa María, Córdoba, Argentina";
+    const encodedAddress = encodeURIComponent(address);
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+    
+    // Abrir en una nueva pestaña
+    window.open(googleMapsUrl, '_blank');
+}
+
+// ===== EYE CARE MODAL FUNCTIONALITY =====
+function showEyeCareModal() {
+    const modal = document.getElementById('eye-care-modal');
+    
+    // Mostrar el modal y aplicar la animación
+    modal.style.display = 'flex';
+    
+    // Pequeño delay para que se aplique el display antes de la transición
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+    
+    // Cerrar modal al hacer click en el overlay (fuera del contenido)
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeEyeCareModal();
+        }
+    });
+}
+
+function resetEyeCareModal() {
+    localStorage.removeItem('eyeCareFirstVisit');
+    localStorage.removeItem('eyeCareLastClosed');
+    console.log('Modal system reset. Refresh the page to see the modal again.');
+}
+
+function closeEyeCareModal() {
+    const modal = document.getElementById('eye-care-modal');
+    
+    // Agregar clase de fade-out
+    modal.classList.add('fade-out');
+    
+    // Después de la animación, ocultar completamente
+    setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('show', 'fade-out');
+    }, 400); // Tiempo de la transición CSS
+    
+    // Guardar timestamp de cuándo se cerró el modal
+    const currentTime = new Date().getTime();
+    localStorage.setItem('eyeCareLastClosed', currentTime.toString());
+}
+
+// Eye Care Modal Auto-show Logic
+function initEyeCareModal() {
+    // Verificar si es la primera vez que visita el sitio
+    const firstVisit = localStorage.getItem('eyeCareFirstVisit');
+    const lastClosed = localStorage.getItem('eyeCareLastClosed');
+    const currentTime = new Date().getTime();
+    
+    let shouldShowModal = false;
+    
+    // Si es la primera visita, mostrar el modal
+    if (!firstVisit) {
+        shouldShowModal = true;
+        localStorage.setItem('eyeCareFirstVisit', 'true');
+    }
+    // Si ya se cerró antes, verificar si han pasado 5 minutos (300000 ms)
+    else if (lastClosed) {
+        const timeSinceClose = currentTime - parseInt(lastClosed);
+        if (timeSinceClose >= 300000) { // 5 minutos = 300000 ms
+            shouldShowModal = true;
+        }
+    }
+    
+    // Mostrar el modal si se cumple alguna condición
+    if (shouldShowModal) {
+        setTimeout(() => {
+            showEyeCareModal();
+        }, 1000); // Delay de 1 segundo para que se cargue completamente la página
+    }
+        
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeEyeCareModal();
+        }
+    });
+}
+
+// ===== SERVICE WORKER REGISTRATION =====
+function initServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('Service Worker registrado:', registration);
+                })
+                .catch(error => {
+                    console.log('Error al registrar Service Worker:', error);
+                });
+        });
+    }
+}
+
+// ===== PERFORMANCE MONITORING =====
+function initPerformanceMonitoring() {
+    if ('performance' in window) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                const metrics = {
+                    loadTime: perfData.loadEventEnd - perfData.loadEventStart,
+                    domContentLoaded: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
+                    firstPaint: performance.getEntriesByType('paint')[0]?.startTime,
+                    firstContentfulPaint: performance.getEntriesByType('paint')[1]?.startTime
+                };
+                
+                // Send metrics to service worker
+                if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                    navigator.serviceWorker.controller.postMessage({
+                        type: 'PERFORMANCE_METRICS',
+                        metrics: metrics
+                    });
+                }
+                
+                console.log('Performance Metrics:', metrics);
+            }, 0);
+        });
+    }
+}
+
+// Initialize all HTML functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    initEyeCareModal();
+    initServiceWorker();
+    initPerformanceMonitoring();
+    initWhatsApp();
+});
+
+// WhatsApp functionality
+function initWhatsApp() {
+    const whatsappBtn = document.getElementById('whatsapp-btn');
+    
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Phone number (to be configured)
+            const phoneNumber = '5491123456789'; // Replace with actual number
+            const message = encodeURIComponent('¡Hola! Me interesa conocer más sobre los servicios de Clara Visión.');
+            
+            // WhatsApp URL
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+        });
+    }
+}

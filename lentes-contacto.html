@@ -37,8 +37,8 @@
     
     <!-- Botón de modo nocturno -->
     <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-        <i class="fas fa-moon" id="theme-icon"></i>
-        <span class="btn-text">Modo Nocturno</span>
+        <i class="fas fa-glasses" id="theme-icon"></i>
+        <span class="btn-text">Tema</span>
     </button>
 </div>
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.setAttribute('data-theme', 'dark');
-        themeIcon.className = 'fas fa-sun';
+        themeIcon.className = 'fas fa-low-vision';
     }
 
     themeToggle.addEventListener('click', function() {
@@ -138,11 +138,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (currentTheme === 'dark') {
             body.removeAttribute('data-theme');
-            themeIcon.className = 'fas fa-moon';
+            themeIcon.className = 'fas fa-glasses';
             localStorage.setItem('theme', 'light');
         } else {
             body.setAttribute('data-theme', 'dark');
-            themeIcon.className = 'fas fa-sun';
+            themeIcon.className = 'fas fa-low-vision';
             localStorage.setItem('theme', 'dark');
         }
     });

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0">
     <title>Óptica Clara Visión - Cuidado Visual Profesional</title>
     <meta name="description" content="En Clara Visión, cuidamos tu visión con calidad, confianza y estilo. Ofrecemos atención personalizada, lentes recetados y de sol con la mejor tecnología, y un compromiso real con tu bienestar visual.">
     
@@ -54,9 +54,10 @@
         /* Critical CSS - Above the fold */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1030; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); }
-        .hero { padding-top: 120px; min-height: 100vh; display: flex; align-items: center; }
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1030; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); height: 80px; }
+        .hero { margin-top: 80px; padding-top: 0; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; }
         .container { max-width: 1440px; margin: 0 auto; padding: 0 1rem; }
+        .hero-text { margin-top: 0 !important; padding-top: 0 !important; }
     </style>
 </head>
 
@@ -110,6 +111,12 @@
                     </div>
                 </div>
                 
+                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="#inicio" class="nav-link">Inicio</a></li>
                     <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
@@ -118,16 +125,10 @@
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                     <li>
                         <button class="theme-toggle" id="theme-toggle" title="Cambiar tema" aria-label="Cambiar tema">
-                            <i id="theme-icon" class="fas fa-moon"></i>
+                            <i id="theme-icon" class="fas fa-glasses"></i>
                         </button>
                     </li>
                 </ul>
-                
-                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </nav>
         </div>
     </header>
@@ -154,16 +155,13 @@
                 </div>
                 <div class="hero-image">
                     <div class="hero-image-container">
-                        <img src="conlogo.png" alt="Clara Visión - Cuidado Visual Profesional" class="hero-main-image">
+                        <img src="conlogo.png" alt="Clara Visión - Cuidado Visual Profesional" class="hero-main-image" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-        </div>
-    </section>
+        </section>
 
-<!-- About Section -->
+        <!-- About Section -->
     <section id="nosotros" class="about">
         <div class="container">
             <div class="about-content">
@@ -171,29 +169,28 @@
                     <h2>Nuestra Historia</h2>
                     <p>Detrás de cada par de anteojos hay una historia... y esta es la nuestra.</p>
                     <p>Contamos con un equipo de profesionales altamente capacitados y tecnología de última generación para garantizar el mejor cuidado para tu visión.</p>
-                    <div>
-                    <div class="stats-grid">
-                        <div class="stat">
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Años de experiencia</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">5000+</div>
-                            <div class="stat-label">Clientes satisfechos</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Marcas disponibles</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Garantía</div>
-                        </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Años de experiencia</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Clientes satisfechos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Marcas disponibles</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Garantía</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Services Section -->
     <section id="servicios" class="services">
@@ -296,7 +293,7 @@
             
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Monturas Premium">
+                    <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Monturas Premium" loading="lazy" decoding="async">
                     <div class="product-content">
                         <h3>Monturas Premium</h3>
                         <p>Colección exclusiva de monturas de diseño con materiales de alta calidad.</p>
@@ -305,7 +302,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <img src="lente contacto.jpg" alt="Lentes de Contacto">
+                    <img src="lente contacto.jpg" alt="Lentes de Contacto" loading="lazy" decoding="async">
                     <div class="product-content">
                         <h3>Lentes de Contacto</h3>
                         <p>Tecnología avanzada en lentes de contacto para máximo confort y visión clara.</p>
@@ -314,7 +311,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Gafas de Sol">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Gafas de Sol" loading="lazy" decoding="async">
                     <div class="product-content">
                         <h3>Gafas de Sol</h3>
                         <p>Protección UV100% con estilo. Marcas reconocidas mundialmente.</p>
@@ -499,155 +496,14 @@
         </div>
     </footer>
 
-<script src="script.js"></script> 
+    <!-- WhatsApp Floating Button (Desktop Only) -->
+    <div class="whatsapp-float">
+        <a href="#" id="whatsapp-btn" class="whatsapp-btn" title="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
-<script>
-// Función para abrir Google Maps con la dirección del local
-function openGoogleMaps() {
-    const address = "Bv. España 327, Villa María, Córdoba, Argentina";
-    const encodedAddress = encodeURIComponent(address);
-    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-    
-    // Abrir en una nueva pestaña
-    window.open(googleMapsUrl, '_blank');
-}
-
-// Función para cerrar el modal de cuidado visual
-function closeEyeCareModal() {
-    const modal = document.getElementById('eye-care-modal');
-    
-    // Agregar clase de fade-out
-    modal.classList.add('fade-out');
-    
-    // Después de la animación, ocultar completamente
-    setTimeout(() => {
-        modal.style.display = 'none';
-        modal.classList.remove('show', 'fade-out');
-    }, 400); // Tiempo de la transición CSS
-    
-    // Guardar en localStorage que el usuario cerró el modal
-    localStorage.setItem('eyeCareModalClosed', 'true');
-}
-
-// Mostrar el modal de cuidado visual al cargar la página
-window.onload = function() {
-    // Verificar si el usuario ya cerró el modal antes
-    const modalClosed = localStorage.getItem('eyeCareModalClosed');
-    
-    if (!modalClosed) {
-        const modal = document.getElementById('eye-care-modal');
-        
-        // Mostrar el modal y aplicar la animación
-        modal.style.display = 'flex';
-        
-        // Pequeño delay para que se aplique el display antes de la transición
-        setTimeout(() => {
-            modal.classList.add('show');
-        }, 10);
-        
-        // Cerrar modal al hacer click en el overlay (fuera del contenido)
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeEyeCareModal();
-            }
-        });
-        
-        // Cerrar modal con la tecla Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeEyeCareModal();
-            }
-        });
-    }
-};
-</script>
-
-<!-- Service Worker Registration -->
-<script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('Service Worker registrado:', registration);
-            })
-            .catch(error => {
-                console.log('Error al registrar Service Worker:', error);
-            });
-    });
-}
-
-// Performance monitoring
-if ('performance' in window) {
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const perfData = performance.getEntriesByType('navigation')[0];
-            const metrics = {
-                loadTime: perfData.loadEventEnd - perfData.loadEventStart,
-                domContentLoaded: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
-                firstPaint: performance.getEntriesByType('paint')[0]?.startTime,
-                firstContentfulPaint: performance.getEntriesByType('paint')[1]?.startTime
-            };
-            
-            // Send metrics to service worker
-            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-                navigator.serviceWorker.controller.postMessage({
-                    type: 'PERFORMANCE_METRICS',
-                    metrics: metrics
-                });
-            }
-            
-            console.log('Performance Metrics:', metrics);
-        }, 0);
-    });
-}
-</script>
-
-<!-- Progressive Web App -->
-<script>
-// PWA Install prompt
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    
-    // Show install button or banner
-    const installButton = document.createElement('button');
-    installButton.textContent = 'Instalar App';
-    installButton.className = 'btn btn-primary install-button';
-    installButton.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        border-radius: 50px;
-        padding: 12px 24px;
-        font-size: 14px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    `;
-    
-    installButton.addEventListener('click', () => {
-        installButton.style.display = 'none';
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('Usuario aceptó instalar la PWA');
-            }
-            deferredPrompt = null;
-        });
-    });
-    
-    document.body.appendChild(installButton);
-    
-    // Auto hide after 10 seconds
-    setTimeout(() => {
-        if (installButton.parentNode) {
-            installButton.remove();
-        }
-    }, 10000);
-});
-</script>
-
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 
 </body>
 </html>

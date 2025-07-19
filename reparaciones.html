@@ -27,7 +27,7 @@
             <span class="btn-text">Sol</span>
         </button>
         <button class="btn-nav btn-theme" onclick="toggleTheme()">
-            <i class="fas fa-moon"></i>
+            <i class="fas fa-glasses"></i>
             <span class="btn-text">Tema</span>
         </button>
     </div>
@@ -364,7 +364,7 @@
             
             // Actualizar icono del botón
             const themeIcon = document.querySelector('.btn-theme i');
-            themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            themeIcon.className = newTheme === 'dark' ? 'fas fa-low-vision' : 'fas fa-glasses';
         }
 
         // Cargar tema guardado
@@ -373,7 +373,7 @@
             document.body.setAttribute('data-theme', savedTheme);
             
             const themeIcon = document.querySelector('.btn-theme i');
-            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-low-vision' : 'fas fa-glasses';
         });
 
         // Animación de aparición de tarjetas

@@ -493,11 +493,125 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button (Desktop Only) -->
-    <div class="whatsapp-float">
-        <a href="#" id="whatsapp-btn" class="whatsapp-btn" title="Contactar por WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+    <!-- ChatBot IA Flotante -->
+    <div class="chatbot-container" id="chatbot-container">
+        <div class="chatbot-toggle" id="chatbot-toggle" title="Abrir Asistente Virtual Clara">
+            <img src="Imgchatbot.png" alt="Asistente Clara" class="chatbot-toggle-img">
+            <span class="chatbot-notification" id="chatbot-notification">
+                <img src="Imgchatbot.png" alt="Asistente Clara" class="chatbot-notification-img">
+            </span>
+        </div>
+        
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <img src="Imgchatbot.png" alt="Asistente Clara" class="chatbot-avatar-img">
+                </div>
+                <div class="chatbot-info">
+                    <h4>Asistente Clara</h4>
+                    <span class="chatbot-status">En línea</span>
+                </div>
+                <button class="chatbot-close" id="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <img src="Imgchatbot.png" alt="Asistente Clara" class="message-avatar-img">
+                    </div>
+                    <div class="message-content">
+                        <p>¡Hola! 👋 Mi nombre es Clara ¿En qué puedo ayudarte hoy?</p>
+                        <span class="message-time">Ahora</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-suggestions" id="chatbot-suggestions">
+                <div class="suggestion-chip" data-message="¿Qué servicios ofrecen?">
+                    <i class="fas fa-eye"></i>
+                    Servicios
+                </div>
+                <div class="suggestion-chip" data-message="Quiero agendar una cita">
+                    <i class="fas fa-calendar"></i>
+                    Agendar Cita
+                </div>
+                <div class="suggestion-chip" data-message="¿Cuáles son sus horarios?">
+                    <i class="fas fa-clock"></i>
+                    Horarios
+                </div>
+                <div class="suggestion-chip" data-message="¿Dónde están ubicados?">
+                    <i class="fas fa-map-marker"></i>
+                    Ubicación
+                </div>
+                <div class="suggestion-chip" data-message="¿Tienen WhatsApp?">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </div>
+            </div>
+            
+            <div class="chatbot-input-container">
+                <div class="chatbot-input-wrapper">
+                    <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta aquí..." maxlength="500">
+                    <button class="chatbot-send" id="chatbot-send">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="chatbot-typing" id="chatbot-typing" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="chatbot-footer">
+                    <small class="ai-status" id="ai-status">
+                        <span class="status-indicator"></span>
+                        <span class="status-text">Sistema Local Inteligente</span>
+                    </small>
+                    <!-- Panel de configuración solo visible para propietarios -->
+                    <button class="ai-config-btn" id="ai-config-btn" title="Configuración (Solo Propietarios)" style="display: none;">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Panel de Configuración IA (Solo para propietarios) -->
+            <div class="ai-config-panel" id="ai-config-panel" style="display: none;">
+                <div class="config-header">
+                    <h4><i class="fas fa-robot"></i> Configuración IA (Propietario)</h4>
+                    <button class="config-close" id="config-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="config-content">
+                    <div class="config-option">
+                        <label for="api-key-input">API Key de OpenAI (para todo el sitio):</label>
+                        <div class="input-group">
+                            <input type="password" id="api-key-input" placeholder="sk-..." maxlength="60">
+                            <button class="toggle-visibility" id="toggle-api-key">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <small>⚠️ Esto activará IA para <strong>todos los usuarios</strong> del sitio. Obtén tu API key en <a href="https://platform.openai.com/api-keys" target="_blank">OpenAI Platform</a></small>
+                    </div>
+                    <div class="config-actions">
+                        <button class="btn-config btn-activate" id="activate-ai">
+                            <i class="fas fa-robot"></i>
+                            Activar IA para Todos
+                        </button>
+                        <button class="btn-config btn-toggle" id="toggle-mode">
+                            <i class="fas fa-toggle-off"></i>
+                            Alternar Modo
+                        </button>
+                    </div>
+                    <div class="config-info">
+                        <p><strong>Modo Actual:</strong> <span id="current-mode">Sistema Local</span></p>
+                        <p><strong>Estado:</strong> <span id="ai-connection-status">No configurado</span></p>
+                        <p><small>💡 Los usuarios no verán este panel - funciona automáticamente</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 <script src="script.js"></script>

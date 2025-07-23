@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lentes Recetados | Clara Visión</title>
-<link rel="stylesheet" href="estilos.css" />
+<link rel="stylesheet" href="estilos-recetados.css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -13,31 +13,37 @@
 <div class="navigation-buttons">
     <!-- Botón de regreso -->
     <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
-        <i class="fas fa-home"></i>
+        <span class="icon-text">🏠</span>
         <span class="btn-text">Inicio</span>
     </button>
     
     <!-- Botón de lentes de contacto -->
     <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
-        <i class="fas fa-eye"></i>
+        <span class="icon-text">👁️</span>
         <span class="btn-text">Lentes de Contacto</span>
     </button>
     
     <!-- Botón de lentes de sol -->
     <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
-        <i class="fas fa-sun"></i>
+        <span class="icon-text">🕶️</span>
         <span class="btn-text">Lentes de Sol</span>
     </button>
     
     <!-- Botón de reparaciones -->
     <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
-        <i class="fas fa-tools"></i>
+        <span class="icon-text">🔧</span>
         <span class="btn-text">Reparaciones</span>
+    </button>
+    
+    <!-- Botón de asesoramiento -->
+    <button class="btn-nav btn-consulting" onclick="window.location.href='asesoramiento.html'" title="Ver Asesoramiento">
+        <span class="icon-text">👨‍⚕️</span>
+        <span class="btn-text">Asesoramiento</span>
     </button>
     
     <!-- Botón de modo nocturno -->
     <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-        <i class="fas fa-glasses" id="theme-icon"></i>
+        <span class="icon-text" id="theme-icon">🌙</span>
         <span class="btn-text">Tema</span>
     </button>
 </div>

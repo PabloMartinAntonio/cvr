@@ -14,12 +14,11 @@
     
     <!-- Performance Optimizations -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="script.js" as="script">
     <link rel="preload" href="logo.png" as="image">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="estilos-asesoramiento.css?v=2025072101">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Theme Color -->
@@ -27,71 +26,58 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="nav-brand">
-                    <div class="logo-container">
-                        <img src="logo.png" alt="Óptica Clara Visión Logo" loading="eager">
-                    </div>
-                    <div class="brand-text">
-                        <h1>Óptica Clara Visión</h1>
-                        <p>Cuidado visual profesional</p>
-                    </div>
-                </div>
-                
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="index.html#nosotros" class="nav-link">Nosotros</a></li>
-                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
-                    <li><a href="index.html#productos" class="nav-link">Productos</a></li>
-                    <li><a href="#contacto-asesoramiento" class="nav-link">Contacto</a></li>
-                    <li>
-                        <button class="theme-toggle" id="theme-toggle" title="Cambiar tema" aria-label="Cambiar tema">
-                            <i id="theme-icon" class="fas fa-glasses"></i>
-                        </button>
-                    </li>
-                </ul>
-                
-                <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </div>
-    </header>
+    <!-- Botones de navegación fijos -->
+    <div class="navigation-buttons">
+        <!-- Botón de regreso -->
+        <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
+            <span class="icon-text">🏠</span>
+            <span class="btn-text">Inicio</span>
+        </button>
+        
+        <!-- Botón de lentes de contacto -->
+        <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
+            <span class="icon-text">👁️</span>
+            <span class="btn-text">Lentes de Contacto</span>
+        </button>
+        
+        <!-- Botón de lentes de sol -->
+        <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
+            <span class="icon-text">🕶️</span>
+            <span class="btn-text">Lentes de Sol</span>
+        </button>
+        
+        <!-- Botón de lentes recetados -->
+        <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
+            <span class="icon-text">👓</span>
+            <span class="btn-text">Lentes Recetados</span>
+        </button>
+        
+        <!-- Botón de reparaciones -->
+        <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
+            <span class="icon-text">🔧</span>
+            <span class="btn-text">Reparaciones</span>
+        </button>
+        
+        <!-- Botón de modo nocturno -->
+        <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
+            <span class="icon-text" id="theme-icon">🌙</span>
+            <span class="btn-text">Tema</span>
+        </button>
+    </div>
 
     <!-- Main Content -->
     <main id="main-content" role="main">
 
         <!-- Hero Section Asesoramiento -->
-        <section class="asesoramiento-hero section">
+        <section class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Asesoramiento <span class="text-primary">Personalizado</span></h1>
-                        <p class="hero-subtitle">Tu visión es única, y tu solución también debe serlo</p>
-                        <p class="hero-description">Nuestros especialistas en cuidado visual te acompañan en cada paso para encontrar la solución perfecta que se adapte a tu estilo de vida, necesidades específicas y preferencias personales.</p>
-                        <div class="hero-buttons">
-                            <button class="btn btn-primary btn-large" onclick="scrollToSection('contacto-asesoramiento')">
-                                <i class="fas fa-calendar-alt"></i>
-                                Agendar Consulta
-                            </button>
-                            <button class="btn btn-outline btn-large" onclick="scrollToSection('servicios-asesoramiento')">
-                                <i class="fas fa-info-circle"></i>
-                                Ver Servicios
-                            </button>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <div class="asesoramiento-icon-container">
-                            <div class="asesoramiento-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                        </div>
-                    </div>
+                <h1>Asesoramiento <span class="text-primary">Personalizado</span></h1>
+                <p>Tu visión es única, y tu solución también debe serlo. Nuestros especialistas en cuidado visual te acompañan en cada paso para encontrar la solución perfecta que se adapte a tu estilo de vida.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('contacto-asesoramiento')">
+                        <i class="fas fa-calendar-alt"></i>
+                        Agendar Consulta
+                    </button>
                 </div>
             </div>
         </section>
@@ -99,50 +85,44 @@
         <!-- Por qué elegirnos -->
         <section class="section">
             <div class="container">
-                <div class="section-header">
-                    <h2>¿Por qué elegir nuestro asesoramiento?</h2>
-                    <p>La experiencia y dedicación que necesitas para cuidar tu visión</p>
-                </div>
+                <h2>¿Por qué elegir nuestro asesoramiento?</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">La experiencia y dedicación que necesitas para cuidar tu visión</p>
                 
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <div class="service-content">
-                            <h3>Experiencia Profesional</h3>
-                            <p>Especialistas en el sector de la óptica y cuidado visual profesional.</p>
-                        </div>
+                        <h3>Experiencia Profesional</h3>
+                        <p>Especialistas en el sector de la óptica y cuidado visual profesional.</p>
+                        <button class="btn">Conocer más</button>
                     </div>
                     
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-user-check"></i>
                         </div>
-                        <div class="service-content">
-                            <h3>Atención Personalizada</h3>
-                            <p>Cada cliente recibe un plan de atención único, adaptado a sus necesidades específicas.</p>
-                        </div>
+                        <h3>Atención Personalizada</h3>
+                        <p>Cada cliente recibe un plan de atención único, adaptado a sus necesidades específicas.</p>
+                        <button class="btn">Conocer más</button>
                     </div>
                     
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-award"></i>
                         </div>
-                        <div class="service-content">
-                            <h3>Garantía de Calidad</h3>
-                            <p>Respaldamos cada recomendación con garantía completa y seguimiento post-venta.</p>
-                        </div>
+                        <h3>Garantía de Calidad</h3>
+                        <p>Respaldamos cada recomendación con garantía completa y seguimiento post-venta.</p>
+                        <button class="btn">Conocer más</button>
                     </div>
                     
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <div class="service-content">
-                            <h3>Tiempo Dedicado</h3>
-                            <p>Nos tomamos el tiempo necesario para entender tus necesidades sin prisa.</p>
-                        </div>
+                        <h3>Tiempo Dedicado</h3>
+                        <p>Nos tomamos el tiempo necesario para entender tus necesidades sin prisa.</p>
+                        <button class="btn">Conocer más</button>
                     </div>
                 </div>
             </div>
@@ -151,216 +131,57 @@
         <!-- Servicios de Asesoramiento -->
         <section id="servicios-asesoramiento" class="section">
             <div class="container">
-                <div class="section-header">
-                    <h2>Nuestros Servicios de Asesoramiento</h2>
-                    <p>Un proceso completo diseñado para encontrar tu solución visual perfecta</p>
-                </div>
+                <h2>Nuestro Proceso de Asesoramiento</h2>
                 
-                <div class="asesoramiento-process">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <div class="step-header">
-                                <div class="step-icon">
-                                    <i class="fas fa-comments"></i>
-                                </div>
-                                <h3>Consulta Inicial</h3>
-                            </div>
-                            <div class="step-body">
-                                <p>Conversamos sobre tu estilo de vida, actividades diarias y necesidades visuales específicas.</p>
-                                <ul class="step-features">
-                                    <li><i class="fas fa-check"></i> Análisis de necesidades</li>
-                                    <li><i class="fas fa-check"></i> Evaluación de estilo de vida</li>
-                                    <li><i class="fas fa-check"></i> Discusión de preferencias</li>
-                                </ul>
-                                <div class="step-duration">
-                                    <i class="fas fa-clock"></i>
-                                    <span>30-45 minutos</span>
-                                </div>
-                            </div>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
                         </div>
+                        <h3>Consulta Inicial</h3>
+                        <p>Conversamos sobre tu estilo de vida y necesidades visuales específicas durante 30-45 minutos.</p>
                     </div>
 
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <div class="step-header">
-                                <div class="step-icon">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                                <h3>Selección de Monturas</h3>
-                            </div>
-                            <div class="step-body">
-                                <p>Te ayudamos a elegir la montura perfecta considerando tu rostro, estilo y comodidad.</p>
-                                <ul class="step-features">
-                                    <li><i class="fas fa-check"></i> Análisis facial</li>
-                                    <li><i class="fas fa-check"></i> Prueba de monturas</li>
-                                    <li><i class="fas fa-check"></i> Asesoramiento de estilo</li>
-                                </ul>
-                                <div class="step-duration">
-                                    <i class="fas fa-clock"></i>
-                                    <span>45-60 minutos</span>
-                                </div>
-                            </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
                         </div>
+                        <h3>Selección de Monturas</h3>
+                        <p>Te ayudamos a elegir la montura perfecta considerando tu rostro, estilo y comodidad.</p>
                     </div>
 
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <div class="step-header">
-                                <div class="step-icon">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <h3>Elección de Lentes</h3>
-                            </div>
-                            <div class="step-body">
-                                <p>Recomendamos el tipo de lente ideal según tu graduación y actividades.</p>
-                                <ul class="step-features">
-                                    <li><i class="fas fa-check"></i> Materiales premium</li>
-                                    <li><i class="fas fa-check"></i> Tratamientos especiales</li>
-                                    <li><i class="fas fa-check"></i> Tecnología avanzada</li>
-                                </ul>
-                                <div class="step-duration">
-                                    <i class="fas fa-clock"></i>
-                                    <span>30 minutos</span>
-                                </div>
-                            </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
                         </div>
+                        <h3>Evaluación Visual</h3>
+                        <p>Realizamos una evaluación completa para determinar la graduación y tipo de lente ideal.</p>
                     </div>
 
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <div class="step-header">
-                                <div class="step-icon">
-                                    <i class="fas fa-thumbs-up"></i>
-                                </div>
-                                <h3>Seguimiento</h3>
-                            </div>
-                            <div class="step-body">
-                                <p>Te acompañamos después de la entrega para asegurar tu total satisfacción.</p>
-                                <ul class="step-features">
-                                    <li><i class="fas fa-check"></i> Ajustes gratuitos</li>
-                                    <li><i class="fas fa-check"></i> Revisiones periódicas</li>
-                                    <li><i class="fas fa-check"></i> Soporte continuo</li>
-                                </ul>
-                                <div class="step-duration">
-                                    <i class="fas fa-clock"></i>
-                                    <span>Permanente</span>
-                                </div>
-                            </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
                         </div>
+                        <h3>Seguimiento</h3>
+                        <p>Te acompañamos después de la entrega para asegurar tu completa satisfacción.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Formulario de Contacto -->
-        <section id="contacto-asesoramiento" class="contact section">
+        <!-- Contacto -->
+        <section id="contacto-asesoramiento" class="section">
             <div class="container">
-                <div class="section-header">
-                    <h2>Agenda tu Asesoramiento</h2>
-                    <p>Completa este formulario y nos contactaremos contigo para coordinar tu cita personalizada</p>
-                </div>
+                <h2>Agenda tu Asesoramiento</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Completa este formulario y nos contactaremos contigo para coordinar tu cita personalizada</p>
                 
-                <div class="contact-content">
-                    <div class="contact-form-container">
-                        <form id="asesoramiento-form" class="contact-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="nombre">Nombre *</label>
-                                    <input type="text" id="nombre" name="nombre" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="apellido">Apellido *</label>
-                                    <input type="text" id="apellido" name="apellido" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">Correo electrónico *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="telefono">Teléfono *</label>
-                                    <input type="tel" id="telefono" name="telefono" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="tipo-asesoramiento">Tipo de asesoramiento *</label>
-                                <select id="tipo-asesoramiento" name="tipo-asesoramiento" required>
-                                    <option value="">Selecciona una opción</option>
-                                    <option value="primera-vez">Primera vez usando lentes</option>
-                                    <option value="cambio-lentes">Cambio de lentes actuales</option>
-                                    <option value="lentes-sol">Lentes de sol recetados</option>
-                                    <option value="progresivos">Lentes progresivos</option>
-                                    <option value="ocupacionales">Lentes ocupacionales</option>
-                                    <option value="deportivos">Lentes deportivos</option>
-                                    <option value="otro">Otro</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="mensaje">Mensaje adicional</label>
-                                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos más sobre tus necesidades específicas..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary btn-submit">
-                                <i class="fas fa-paper-plane"></i>
-                                <span class="submit-text">Solicitar Asesoramiento</span>
-                            </button>
-                            
-                            <p class="form-note">* Campos obligatorios. Te contactaremos en menos de 24 horas para confirmar tu cita.</p>
-                        </form>
+                <div class="service-card" style="max-width: 600px; margin: 0 auto;">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
-
-                    <div class="contact-info">
-                        <h3>Información de Contacto</h3>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Dirección</h4>
-                                <p>Bv. España 327, Villa María - Córdoba</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Teléfono</h4>
-                                <p>+1 234 567 8900</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@claravision.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4>Horarios de Atención</h4>
-                                <p>Lun - Vie: 9:00 - 18:00</p>
-                                <p>Sáb: 9:00 - 14:00</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Solicitar Cita</h3>
+                    <p>Nos pondremos en contacto contigo en menos de 24 horas para confirmar tu cita de asesoramiento personalizado.</p>
+                    <button class="btn">Agendar Ahora</button>
                 </div>
             </div>
         </section>
@@ -431,6 +252,58 @@
                     });
             });
         }
+    </script>
+
+    <script>
+        // Funcionalidad del modo nocturno
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            // Verificar tema guardado
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+            }
+
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                
+                if (currentTheme === 'dark') {
+                    body.removeAttribute('data-theme');
+                    themeIcon.textContent = '🌙';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    themeIcon.textContent = '🌙';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        });
+
+        // Animaciones de aparición para elementos de asesoramiento
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('floating-consultation-element');
+                }
+            });
+        }, observerOptions);
+
+        // Observar tarjetas de servicios cuando se cargue la página
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.service-card, .consultation-content').forEach(card => {
+                observer.observe(card);
+            });
+        });
     </script>
 
 </body>

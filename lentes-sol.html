@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lentes de Sol | Clara Visión</title>
-<link rel="stylesheet" href="estilos-sol.css" />
+    <link rel="stylesheet" href="estilos-lentes-sol.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -13,31 +13,37 @@
 <div class="navigation-buttons">
     <!-- Botón de regreso -->
     <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
-        <i class="fas fa-home"></i>
+        <span class="icon-text">🏠</span>
         <span class="btn-text">Inicio</span>
-    </button>
-    
-    <!-- Botón de lentes recetados -->
-    <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
-        <i class="fas fa-glasses"></i>
-        <span class="btn-text">Lentes Recetados</span>
     </button>
     
     <!-- Botón de lentes de contacto -->
     <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
-        <i class="fas fa-eye"></i>
+        <span class="icon-text">👁️</span>
         <span class="btn-text">Lentes de Contacto</span>
+    </button>
+    
+    <!-- Botón de lentes recetados -->
+    <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
+        <span class="icon-text">🕶️</span>
+        <span class="btn-text">Lentes Recetados</span>
     </button>
     
     <!-- Botón de reparaciones -->
     <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
-        <i class="fas fa-tools"></i>
+        <span class="icon-text">🔧</span>
         <span class="btn-text">Reparaciones</span>
+    </button>
+    
+    <!-- Botón de asesoramiento -->
+    <button class="btn-nav btn-consulting" onclick="window.location.href='asesoramiento.html'" title="Ver Asesoramiento">
+        <span class="icon-text">👨‍⚕️</span>
+        <span class="btn-text">Asesoramiento</span>
     </button>
     
     <!-- Botón de modo nocturno -->
     <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-        <i class="fas fa-glasses" id="theme-icon"></i>
+        <span class="icon-text" id="theme-icon">🌙</span>
         <span class="btn-text">Tema</span>
     </button>
 </div>
@@ -51,7 +57,7 @@
     <div class="light-ray ray-2"></div>
 </div>
 
-<section class="section-lentes-sol">
+<section class="section-lentes-recetados">
     <div class="container">
         <!-- Encabezado elegante -->
         <div class="premium-header">
@@ -340,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.setAttribute('data-theme', 'dark');
-        themeIcon.className = 'fas fa-low-vision';
+        themeIcon.textContent = '🌙';
     }
 
     themeToggle.addEventListener('click', function() {
@@ -348,15 +354,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (currentTheme === 'dark') {
             body.removeAttribute('data-theme');
-            themeIcon.className = 'fas fa-glasses';
+            themeIcon.textContent = '🌙';
             localStorage.setItem('theme', 'light');
         } else {
             body.setAttribute('data-theme', 'dark');
-            themeIcon.className = 'fas fa-low-vision';
+            themeIcon.textContent = '🌙';
             localStorage.setItem('theme', 'dark');
         }
     });
 });
+</script>
+
+<!-- Botón flotante de WhatsApp -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+    <div class="whatsapp-tooltip">¡Contáctanos por WhatsApp!</div>
+</div>
+
+<script>
+// Función para abrir WhatsApp
+function openWhatsApp() {
+    const phoneNumber = "5493534123456"; // Reemplaza con el número real de la óptica
+    const message = encodeURIComponent("¡Hola! Me interesan los lentes de sol premium. ¿Podrían brindarme más información?");
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappURL, '_blank');
+}
 </script>
 
 </body>

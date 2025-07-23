@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="reparaciones-page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +7,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="estilos-reparaciones.css">
 </head>
-<body>
+<body class="reparaciones-page">>
     <!-- Botones de navegación fijos -->
     <div class="navigation-buttons">
-        <button class="btn-nav btn-home" onclick="window.location.href='index.html'">
-            <i class="fas fa-home"></i>
+        <!-- Botón de regreso -->
+        <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
+            <span class="icon-text">🏠</span>
             <span class="btn-text">Inicio</span>
         </button>
-        <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'">
-            <i class="fas fa-glasses"></i>
-            <span class="btn-text">Recetados</span>
+        
+        <!-- Botón de lentes de contacto -->
+        <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
+            <span class="icon-text">👁️</span>
+            <span class="btn-text">Lentes de Contacto</span>
         </button>
-        <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'">
-            <i class="fas fa-eye"></i>
-            <span class="btn-text">Contacto</span>
+        
+        <!-- Botón de lentes de sol -->
+        <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
+            <span class="icon-text">🕶️</span>
+            <span class="btn-text">Lentes de Sol</span>
         </button>
-        <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'">
-            <i class="fas fa-sun"></i>
-            <span class="btn-text">Sol</span>
+        
+        <!-- Botón de lentes recetados -->
+        <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
+            <span class="icon-text">👓</span>
+            <span class="btn-text">Lentes Recetados</span>
         </button>
-        <button class="btn-nav btn-theme" onclick="toggleTheme()">
-            <i class="fas fa-glasses"></i>
+        
+        <!-- Botón de asesoramiento -->
+        <button class="btn-nav btn-consulting" onclick="window.location.href='asesoramiento.html'" title="Ver Asesoramiento">
+            <span class="icon-text">👨‍⚕️</span>
+            <span class="btn-text">Asesoramiento</span>
+        </button>
+        
+        <!-- Botón de modo nocturno -->
+        <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
+            <span class="icon-text" id="theme-icon">🌙</span>
             <span class="btn-text">Tema</span>
         </button>
     </div>
@@ -249,6 +264,7 @@
                 </div>
 
                 <!-- Emergencias -->
+                <!--
                 <div class="reparacion-card emergency-service">
                     <div class="service-overlay"></div>
                     <div class="quality-badge emergency-badge">
@@ -289,6 +305,7 @@
                         </button>
                     </div>
                 </div>
+                -->
             </div>
 
             <!-- Sección de proceso profesional -->
@@ -353,27 +370,32 @@
     </div>
 
     <script>
-        // Función para alternar tema
-        function toggleTheme() {
-            const body = document.body;
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Actualizar icono del botón
-            const themeIcon = document.querySelector('.btn-theme i');
-            themeIcon.className = newTheme === 'dark' ? 'fas fa-low-vision' : 'fas fa-glasses';
-        }
-
-        // Cargar tema guardado
+        // Funcionalidad del modo nocturno
         document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.body.setAttribute('data-theme', savedTheme);
-            
-            const themeIcon = document.querySelector('.btn-theme i');
-            themeIcon.className = savedTheme === 'dark' ? 'fas fa-low-vision' : 'fas fa-glasses';
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+
+            // Verificar tema guardado
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+            }
+
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = body.getAttribute('data-theme');
+                
+                if (currentTheme === 'dark') {
+                    body.removeAttribute('data-theme');
+                    themeIcon.textContent = '🌙';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    themeIcon.textContent = '🌙';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
         });
 
         // Animación de aparición de tarjetas

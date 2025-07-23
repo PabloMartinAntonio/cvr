@@ -1,0 +1,1003 @@
+/* RESET Y ESPECIFICIDAD MÁXIMA PARA REPARACIONES */
+html.reparaciones-page body,
+html body.reparaciones-page,
+body.reparaciones-page {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    background: var(--background) !important;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(0, 151, 178, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(43, 180, 209, 0.05) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%230097B2' stroke-width='0.5' stroke-opacity='0.2'%3E%3Cpath d='M50 10 L60 30 L40 30 Z'/%3E%3Cpath d='M50 90 L60 70 L40 70 Z'/%3E%3Cpath d='M10 50 L30 60 L30 40 Z'/%3E%3Cpath d='M90 50 L70 60 L70 40 Z'/%3E%3C/g%3E%3C/svg%3E") !important;
+    background-size: 800px 800px, 600px 600px, 100px 100px !important;
+    background-position: 0 0, 100% 100%, center !important;
+    background-attachment: fixed !important;
+    color: #1e293b !important;
+    line-height: 1.6 !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh !important;
+}
+
+[data-theme="dark"] body.reparaciones-page {
+    background: var(--background-alt) !important;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(0, 151, 178, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(43, 180, 209, 0.1) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='0.5' stroke-opacity='0.1'%3E%3Cpath d='M50 10 L60 30 L40 30 Z'/%3E%3Cpath d='M50 90 L60 70 L40 70 Z'/%3E%3Cpath d='M10 50 L30 60 L30 40 Z'/%3E%3Cpath d='M90 50 L70 60 L70 40 Z'/%3E%3C/g%3E%3C/svg%3E") !important;
+    background-size: 800px 800px, 600px 600px, 100px 100px !important;
+    background-position: 0 0, 100% 100%, center !important;
+    background-attachment: fixed !important;
+}
+
+/* Navegación con especificidad máxima */
+body.reparaciones-page .navigation-buttons,
+.reparaciones-page .navigation-buttons {
+    position: fixed !important;
+    top: 50% !important;
+    left: 20px !important;
+    transform: translateY(-50%) !important;
+    z-index: 2000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Variables CSS para temas - Adaptadas a la página de inicio */
+:root {
+    /* Colores principales (idénticos a index) */
+    --primary-color: #0097B2 !important;
+    --primary-dark: #007A93 !important;
+    --primary-light: #2BB4D1 !important;
+    --background: #f8fafc !important;
+    --background-alt: #f1f5f9 !important;
+    --text-primary: #1e293b !important;
+    --text-secondary: #64748b !important;
+    --text-muted: #94a3b8 !important;
+    --border: #e2e8f0 !important;
+    --border-color: #e2e8f0 !important;
+    --shadow: rgba(0, 0, 0, 0.1) !important;
+    --shadow-hover: rgba(0, 151, 178, 0.3) !important;
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    --card-bg: #ffffff !important;
+    --header-bg: #ffffff !important;
+    --footer-bg: #1e293b !important;
+    --background-primary: #ffffff !important;
+    
+    /* Gradientes específicos para reparaciones con colores principales */
+    --gradient-primary: linear-gradient(135deg, #0097B2, #2BB4D1) !important;
+    --gradient-repair: linear-gradient(135deg, #0097B2, #007A93) !important;
+    --gradient-emergency: linear-gradient(135deg, #007A93, #0097B2) !important;
+    --gradient-accent: linear-gradient(135deg, #2BB4D1, #0097B2) !important;
+}
+
+[data-theme="dark"] {
+    --background: #0f172a;
+    --background-alt: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border: #334155;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --card-bg: #1e293b;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Asegurar visibilidad de iconos Font Awesome */
+.fas, .fab, .far, .fal, .fad {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+/* ===========================================
+   NAVEGACIÓN EXPANDIBLE (igual que recetados)
+   =========================================== */
+
+.navigation-buttons {
+    position: fixed !important;
+    top: 50% !important;
+    left: 20px !important;
+    transform: translateY(-50%) !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Desktop - navegación expandible */
+@media (min-width: 1024px) {
+    .navigation-buttons {
+        width: 60px !important;
+        overflow: hidden !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(20px) !important;
+        border-radius: 30px !important;
+        padding: 5px !important;
+        box-shadow: 0 10px 30px var(--shadow) !important;
+        border: 1px solid var(--border) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 4px !important;
+    }
+    
+    [data-theme="dark"] .navigation-buttons {
+        background: rgba(30, 41, 59, 0.95);
+    }
+    
+    .navigation-buttons:hover {
+        width: 200px;
+        padding: 10px 15px;
+        border-radius: 25px;
+        align-items: stretch;
+        gap: 8px;
+    }
+    
+    .btn-nav {
+        width: 17px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        color: var(--text-secondary);
+        font-weight: 500;
+        position: relative;
+        overflow: hidden;
+        padding: 0 8px 0 0;
+        margin: 0;
+        opacity: 1;
+        visibility: visible;
+        flex-shrink: 0;
+    }
+    
+    .navigation-buttons:hover .btn-nav {
+        width: 170px;
+        height: 50px;
+        padding: 0 15px;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+    
+    .btn-nav i, .btn-nav .icon-text {
+        font-size: 16px;
+        width: 16px;
+        text-align: center;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: inherit;
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    
+    .btn-nav .icon-text {
+        font-size: 16px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn-text {
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    
+    .navigation-buttons:hover .btn-text {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .btn-nav:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateX(5px);
+    }
+    
+    /* Colores específicos */
+    .btn-back:hover { background: #10b981; }
+    .btn-contacts:hover { background: #8b5cf6; }
+    .btn-sunglasses:hover { background: #f59e0b; }
+    .btn-glasses:hover { background: #0097B2; }
+    .btn-consulting:hover { background: #3b82f6; }
+    .btn-theme:hover { background: var(--primary-color); }
+}
+
+/* Mobile - botones normales */
+@media (max-width: 1023px) {
+    .navigation-buttons {
+        left: 10px;
+        gap: 5px;
+    }
+    
+    .btn-nav {
+        width: 50px;
+        height: 50px;
+        border: none;
+        background: var(--card-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: var(--text-secondary);
+        box-shadow: 0 4px 12px var(--shadow);
+        border: 1px solid var(--border);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .btn-nav i, .btn-nav .icon-text {
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: inherit;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn-nav .icon-text {
+        font-size: 20px;
+        line-height: 1;
+    }
+    
+    .btn-nav:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.1);
+    }
+    
+    .btn-text {
+        display: none;
+    }
+}
+
+/* ===========================================
+   ESTILOS ESPECÍFICOS PARA REPARACIONES
+   =========================================== */
+
+/* Elementos de fondo profesionales */
+.professional-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-tool {
+    position: absolute;
+    color: rgba(0, 151, 178, 0.1);
+    font-size: 3rem;
+    animation: floatTool 8s ease-in-out infinite;
+}
+
+.tool-1 {
+    top: 15%;
+    right: 15%;
+    animation-delay: 0s;
+}
+
+.tool-2 {
+    bottom: 25%;
+    left: 10%;
+    animation-delay: 3s;
+}
+
+.tool-3 {
+    top: 60%;
+    right: 20%;
+    animation-delay: 6s;
+}
+
+.precision-line {
+    position: absolute;
+    background: linear-gradient(45deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: precisionMove 10s linear infinite;
+}
+
+.line-1 {
+    width: 2px;
+    height: 100vh;
+    left: 25%;
+    animation-delay: 0s;
+}
+
+.line-2 {
+    width: 1px;
+    height: 100vh;
+    right: 30%;
+    animation-delay: 5s;
+}
+
+.line-3 {
+    width: 1px;
+    height: 100vh;
+    left: 70%;
+    animation-delay: 8s;
+}
+
+@keyframes floatTool {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-30px) rotate(120deg); }
+    66% { transform: translateY(15px) rotate(240deg); }
+}
+
+@keyframes precisionMove {
+    0% { top: -100%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Ajustar padding para navegación en desktop */
+@media (min-width: 1024px) {
+    .container {
+        padding-left: 120px; /* Espacio para navegación */
+    }
+}
+
+.section-reparaciones {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background) 0%, var(--background-alt) 100%);
+}
+
+/* Encabezado profesional */
+.professional-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.service-icon {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.service-icon i {
+    font-size: 4rem;
+    color: var(--gradient-repair);
+    background: var(--gradient-repair);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.3));
+}
+
+.icon-shine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.2), transparent);
+    border-radius: 50%;
+    animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.3; }
+}
+
+.professional-header h1 {
+    font-size: 3.5rem;
+    background: var(--gradient-repair);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.professional-header h2 {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.professional-description {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* Badges de confianza */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.badge-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.badge-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.badge-item span {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Grid de reparaciones */
+.grid-reparaciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+/* Tarjetas de servicio */
+.reparacion-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+    min-height: 450px;
+}
+
+.reparacion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        transparent 30%, 
+        transparent 70%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.reparacion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 151, 178, 0.3);
+}
+
+.reparacion-card:hover::before {
+    opacity: 1;
+}
+
+.service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(0, 151, 178, 0.05) 100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.reparacion-card:hover .service-overlay {
+    opacity: 0.7;
+}
+
+.quality-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gradient-repair);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0, 151, 178, 0.3);
+}
+
+.precision-badge {
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 12px rgba(0, 151, 178, 0.25);
+}
+
+.expert-badge {
+    background: var(--gradient-accent);
+    box-shadow: 0 4px 12px rgba(43, 180, 209, 0.25);
+}
+
+.care-badge {
+    background: var(--gradient-repair);
+    box-shadow: 0 4px 12px rgba(0, 122, 147, 0.25);
+}
+
+.protection-badge {
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 12px rgba(0, 151, 178, 0.3);
+}
+
+.emergency-badge {
+    background: var(--gradient-emergency);
+    animation: urgentPulse 2s ease-in-out infinite;
+}
+
+@keyframes urgentPulse {
+    0%, 100% { box-shadow: 0 4px 12px rgba(0, 122, 147, 0.3); }
+    50% { box-shadow: 0 4px 20px rgba(0, 151, 178, 0.5); }
+}
+
+.service-icon-card {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--background-alt), var(--background));
+    transition: all 0.3s ease;
+}
+
+.service-icon-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 0 transparent);
+}
+
+.reparacion-card:hover .service-icon-card {
+    transform: scale(1.05);
+}
+
+.reparacion-card:hover .service-icon-card i {
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 10px rgba(0, 151, 178, 0.4));
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.card-content h3 {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.reparacion-card:hover .card-content h3 {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0, 151, 178, 0.3);
+}
+
+.service-subtitle {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.card-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.service-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--background-alt);
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.feature-item i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.guarantee-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #10b981;
+}
+
+.guarantee-info i {
+    color: #10b981;
+    font-size: 1.2rem;
+}
+
+.guarantee-info span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.btn-service {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--gradient-repair);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(0, 151, 178, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-service::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-service:hover::before {
+    left: 100%;
+}
+
+.btn-service:hover {
+    background: linear-gradient(135deg, #007A93, #0097B2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 151, 178, 0.4);
+    filter: brightness(1.1);
+}
+
+.emergency-btn {
+    background: var(--gradient-emergency);
+    animation: emergencyGlow 2s ease-in-out infinite;
+}
+
+@keyframes emergencyGlow {
+    0%, 100% { box-shadow: 0 6px 20px rgba(0, 122, 147, 0.3); }
+    50% { box-shadow: 0 6px 30px rgba(0, 151, 178, 0.5); }
+}
+
+/* Sección de proceso con especificidad máxima */
+body.reparaciones-page .process-section,
+.reparaciones-page .process-section {
+    background: var(--card-bg) !important;
+    border-radius: 20px !important;
+    padding: 3rem !important;
+    margin-bottom: 4rem !important;
+    box-shadow: 0 15px 40px var(--shadow) !important;
+    border: 1px solid var(--border) !important;
+}
+
+body.reparaciones-page .process-section h3,
+.reparaciones-page .process-section h3 {
+    text-align: center !important;
+    font-size: 2.2rem !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 3rem !important;
+    font-weight: 700 !important;
+}
+
+body.reparaciones-page .process-steps,
+.reparaciones-page .process-steps {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 2rem !important;
+}
+
+body.reparaciones-page .process-step,
+.reparaciones-page .process-step {
+    text-align: center !important;
+    position: relative !important;
+}
+
+body.reparaciones-page .step-number,
+.reparaciones-page .step-number {
+    position: absolute !important;
+    top: -35px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: var(--gradient-repair) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
+    z-index: 2 !important;
+}
+
+body.reparaciones-page .step-icon,
+.reparaciones-page .step-icon {
+    background: var(--background-alt) !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 1.5rem !important;
+    border: 3px solid var(--border) !important;
+}
+
+body.reparaciones-page .step-icon i,
+.reparaciones-page .step-icon i {
+    font-size: 2rem !important;
+    color: var(--primary-color) !important;
+}
+
+body.reparaciones-page .process-step h4,
+.reparaciones-page .process-step h4 {
+    font-size: 1.3rem !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 1rem !important;
+    font-weight: 600 !important;
+}
+
+body.reparaciones-page .process-step p,
+.reparaciones-page .process-step p {
+    color: var(--text-secondary) !important;
+    line-height: 1.6 !important;
+}
+
+/* CTA de confianza con especificidad máxima */
+body.reparaciones-page .trust-cta,
+.reparaciones-page .trust-cta {
+    background: linear-gradient(135deg, var(--card-bg), var(--background-alt)) !important;
+    border-radius: 20px !important;
+    padding: 3rem !important;
+    text-align: center !important;
+    box-shadow: 0 15px 40px var(--shadow) !important;
+    border: 1px solid var(--border) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+body.reparaciones-page .trust-cta::before,
+.reparaciones-page .trust-cta::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(135deg, rgba(0, 151, 178, 0.05), transparent) !important;
+    z-index: 1 !important;
+}
+
+body.reparaciones-page .cta-content,
+.reparaciones-page .cta-content {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+body.reparaciones-page .cta-content h3,
+.reparaciones-page .cta-content h3 {
+    font-size: 2.2rem !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 1rem !important;
+    font-weight: 700 !important;
+}
+
+body.reparaciones-page .cta-content p,
+.reparaciones-page .cta-content p {
+    color: var(--text-secondary) !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 2rem !important;
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 2rem !important;
+}
+
+body.reparaciones-page .cta-features,
+.reparaciones-page .cta-features {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    margin-bottom: 2.5rem !important;
+    flex-wrap: wrap !important;
+}
+
+body.reparaciones-page .cta-feature,
+.reparaciones-page .cta-feature {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+}
+
+body.reparaciones-page .cta-feature i,
+.reparaciones-page .cta-feature i {
+    color: var(--primary-color) !important;
+    font-size: 1.2rem !important;
+}
+
+body.reparaciones-page .btn-cta-trust,
+.reparaciones-page .btn-cta-trust {
+    background: var(--gradient-repair) !important;
+    color: white !important;
+    border: none !important;
+    padding: 18px 36px !important;
+    border-radius: 50px !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 8px 25px rgba(0, 151, 178, 0.3) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+body.reparaciones-page .btn-cta-trust:hover,
+.reparaciones-page .btn-cta-trust:hover {
+    background: linear-gradient(135deg, #007A93, #0097B2) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 35px rgba(0, 151, 178, 0.5) !important;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+    
+    .professional-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .grid-reparaciones {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .trust-badges {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .cta-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .professional-header h1 {
+        font-size: 2rem;
+    }
+    
+    .professional-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .professional-description {
+        font-size: 1rem;
+    }
+    
+    .grid-reparaciones {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .reparacion-card {
+        min-height: 400px;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .trust-cta {
+        padding: 2rem 1.5rem;
+    }
+    
+    .cta-content h3 {
+        font-size: 1.8rem;
+    }
+}

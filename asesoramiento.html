@@ -25,45 +25,43 @@
     <meta name="theme-color" content="#0097B2">
 </head>
 
-<body>
-    <!-- Botones de navegación fijos -->
-    <div class="navigation-buttons">
-        <!-- Botón de regreso -->
-        <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
-            <span class="icon-text">🏠</span>
-            <span class="btn-text">Inicio</span>
-        </button>
-        
-        <!-- Botón de lentes de contacto -->
-        <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
-            <span class="icon-text">👁️</span>
-            <span class="btn-text">Lentes de Contacto</span>
-        </button>
-        
-        <!-- Botón de lentes de sol -->
-        <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
-            <span class="icon-text">🕶️</span>
-            <span class="btn-text">Lentes de Sol</span>
-        </button>
-        
-        <!-- Botón de lentes recetados -->
-        <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
-            <span class="icon-text">👓</span>
-            <span class="btn-text">Lentes Recetados</span>
-        </button>
-        
-        <!-- Botón de reparaciones -->
-        <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
-            <span class="icon-text">🔧</span>
-            <span class="btn-text">Reparaciones</span>
-        </button>
-        
-        <!-- Botón de modo nocturno -->
-        <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-            <span class="icon-text" id="theme-icon">🌙</span>
-            <span class="btn-text">Tema</span>
-        </button>
+<body class="asesoramiento-page">
+
+<!-- Menú de navegación desplegable -->
+<div class="dropdown-nav">
+    <button class="dropdown-btn" title="Menú de navegación">
+        <i class="fas fa-bars"></i>
+        <span>Menú</span>
+        <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="recetados.html" class="nav-item">
+            <i class="fas fa-glasses"></i>
+            <span>Lentes Recetados</span>
+        </a>
+        <a href="lentes-sol.html" class="nav-item">
+            <i class="fas fa-sun"></i>
+            <span>Lentes de Sol</span>
+        </a>
+        <a href="lentes-contacto.html" class="nav-item">
+            <i class="fas fa-eye"></i>
+            <span>Lentes de Contacto</span>
+        </a>
+        <a href="reparaciones.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            <span>Reparaciones</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#" class="nav-item theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span>Cambiar Tema</span>
+        </a>
     </div>
+</div>
 
     <!-- Main Content -->
     <main id="main-content" role="main">
@@ -95,7 +93,7 @@
                         </div>
                         <h3>Experiencia Profesional</h3>
                         <p>Especialistas en el sector de la óptica y cuidado visual profesional.</p>
-                        <button class="btn">Conocer más</button>
+                        <button class="btn" onclick="openModal('modal-experiencia')">Ver Detalles</button>
                     </div>
                     
                     <div class="service-card">
@@ -104,7 +102,7 @@
                         </div>
                         <h3>Atención Personalizada</h3>
                         <p>Cada cliente recibe un plan de atención único, adaptado a sus necesidades específicas.</p>
-                        <button class="btn">Conocer más</button>
+                        <button class="btn" onclick="openModal('modal-personalizada')">Ver Detalles</button>
                     </div>
                     
                     <div class="service-card">
@@ -113,7 +111,7 @@
                         </div>
                         <h3>Garantía de Calidad</h3>
                         <p>Respaldamos cada recomendación con garantía completa y seguimiento post-venta.</p>
-                        <button class="btn">Conocer más</button>
+                        <button class="btn" onclick="openModal('modal-garantia')">Ver Detalles</button>
                     </div>
                     
                     <div class="service-card">
@@ -122,7 +120,7 @@
                         </div>
                         <h3>Tiempo Dedicado</h3>
                         <p>Nos tomamos el tiempo necesario para entender tus necesidades sin prisa.</p>
-                        <button class="btn">Conocer más</button>
+                        <button class="btn" onclick="openModal('modal-tiempo')">Ver Detalles</button>
                     </div>
                 </div>
             </div>
@@ -181,12 +179,286 @@
                     </div>
                     <h3>Solicitar Cita</h3>
                     <p>Nos pondremos en contacto contigo en menos de 24 horas para confirmar tu cita de asesoramiento personalizado.</p>
-                    <button class="btn">Agendar Ahora</button>
+                    <button class="btn" onclick="contactWhatsApp('cita')">Agendar Ahora</button>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <!-- Modales para servicios de asesoramiento -->
+    <!-- Modal Experiencia Profesional -->
+    <div id="modal-experiencia" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-experiencia')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h2>Experiencia Profesional</h2>
+                <p>Especialistas certificados en cuidado visual</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="service-details">
+                    <h3>Nuestro equipo de expertos</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Más de 15 años de experiencia en óptica</li>
+                        <li><i class="fas fa-check"></i> Formación continua en nuevas tecnologías</li>
+                        <li><i class="fas fa-check"></i> Certificaciones internacionales</li>
+                        <li><i class="fas fa-check"></i> Especialización en casos complejos</li>
+                        <li><i class="fas fa-check"></i> Atención a todas las edades</li>
+                    </ul>
+                </div>
+                
+                <div class="service-specs">
+                    <div class="spec-item">
+                        <strong>Experiencia:</strong>
+                        <span>15+ años</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Clientes atendidos:</strong>
+                        <span>5000+</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Casos de éxito:</strong>
+                        <span>98%</span>
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h4>Nuestras certificaciones:</h4>
+                    <div class="certifications-grid">
+                        <div class="cert-item">
+                            <i class="fas fa-award"></i>
+                            <p>Óptica Profesional</p>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-eye"></i>
+                            <p>Contactología</p>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fas fa-microscope"></i>
+                            <p>Optometría</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-whatsapp" onclick="contactWhatsApp('experiencia')">
+                    <i class="fab fa-whatsapp"></i>
+                    Consultar Ahora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Atención Personalizada -->
+    <div id="modal-personalizada" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-personalizada')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h2>Atención Personalizada</h2>
+                <p>Un plan único para cada cliente</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="service-details">
+                    <h3>¿Qué incluye nuestro servicio personalizado?</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Análisis detallado de tu estilo de vida</li>
+                        <li><i class="fas fa-check"></i> Evaluación de necesidades específicas</li>
+                        <li><i class="fas fa-check"></i> Recomendaciones adaptadas a tu presupuesto</li>
+                        <li><i class="fas fa-check"></i> Pruebas de diferentes opciones</li>
+                        <li><i class="fas fa-check"></i> Seguimiento post-entrega</li>
+                    </ul>
+                </div>
+                
+                <div class="service-specs">
+                    <div class="spec-item">
+                        <strong>Duración consulta:</strong>
+                        <span>45-60 minutos</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Seguimiento:</strong>
+                        <span>3 meses incluido</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Ajustes:</strong>
+                        <span>Ilimitados</span>
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h4>Nuestro proceso personalizado:</h4>
+                    <div class="process-mini">
+                        <div class="mini-step">
+                            <span class="step-num">1</span>
+                            <p>Entrevista personal</p>
+                        </div>
+                        <div class="mini-step">
+                            <span class="step-num">2</span>
+                            <p>Análisis de necesidades</p>
+                        </div>
+                        <div class="mini-step">
+                            <span class="step-num">3</span>
+                            <p>Propuesta personalizada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-whatsapp" onclick="contactWhatsApp('personalizada')">
+                    <i class="fab fa-whatsapp"></i>
+                    Solicitar Consulta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Garantía de Calidad -->
+    <div id="modal-garantia" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-garantia')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h2>Garantía de Calidad</h2>
+                <p>Compromiso total con tu satisfacción</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="service-details">
+                    <h3>Nuestra garantía incluye:</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Garantía de 12 meses en monturas</li>
+                        <li><i class="fas fa-check"></i> Garantía de 6 meses en cristales</li>
+                        <li><i class="fas fa-check"></i> Cambio sin costo si no te adaptas</li>
+                        <li><i class="fas fa-check"></i> Ajustes gratuitos de por vida</li>
+                        <li><i class="fas fa-check"></i> Soporte técnico continuo</li>
+                    </ul>
+                </div>
+                
+                <div class="service-specs">
+                    <div class="spec-item">
+                        <strong>Garantía monturas:</strong>
+                        <span>12 meses</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Garantía cristales:</strong>
+                        <span>6 meses</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Satisfacción:</strong>
+                        <span>100% garantizada</span>
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h4>Política de satisfacción:</h4>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <p>Protección total</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-sync"></i>
+                            <p>Cambio gratuito</p>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-tools"></i>
+                            <p>Ajustes incluidos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-whatsapp" onclick="contactWhatsApp('garantia')">
+                    <i class="fab fa-whatsapp"></i>
+                    Conocer Garantía
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tiempo Dedicado -->
+    <div id="modal-tiempo" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-tiempo')">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h2>Tiempo Dedicado</h2>
+                <p>Sin prisas, con dedicación completa</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="service-details">
+                    <h3>Dedicamos el tiempo que necesitas:</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Consultas sin límite de tiempo</li>
+                        <li><i class="fas fa-check"></i> Explicaciones detalladas de cada opción</li>
+                        <li><i class="fas fa-check"></i> Pruebas exhaustivas antes de decidir</li>
+                        <li><i class="fas fa-check"></i> Resolución de todas tus dudas</li>
+                        <li><i class="fas fa-check"></i> Apoyo continuo en el proceso</li>
+                    </ul>
+                </div>
+                
+                <div class="service-specs">
+                    <div class="spec-item">
+                        <strong>Tiempo promedio:</strong>
+                        <span>60 minutos</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Consultas de seguimiento:</strong>
+                        <span>Sin límite</span>
+                    </div>
+                    <div class="spec-item">
+                        <strong>Disponibilidad:</strong>
+                        <span>Lun-Sáb</span>
+                    </div>
+                </div>
+                
+                <div class="service-process">
+                    <h4>Nuestro compromiso de tiempo:</h4>
+                    <div class="time-commitment">
+                        <div class="time-item">
+                            <strong>Primera consulta:</strong>
+                            <p>45-90 minutos sin interrupciones</p>
+                        </div>
+                        <div class="time-item">
+                            <strong>Seguimiento:</strong>
+                            <p>El tiempo que necesites</p>
+                        </div>
+                        <div class="time-item">
+                            <strong>Urgencias:</strong>
+                            <p>Atención prioritaria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-whatsapp" onclick="contactWhatsApp('tiempo')">
+                    <i class="fab fa-whatsapp"></i>
+                    Reservar Tiempo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <div class="whatsapp-float" onclick="contactWhatsApp('consulta')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -236,9 +508,6 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-
     <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
@@ -254,57 +523,7 @@
         }
     </script>
 
-    <script>
-        // Funcionalidad del modo nocturno
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = document.getElementById('theme-icon');
-            const body = document.body;
-
-            // Verificar tema guardado
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.textContent = '🌙';
-            }
-
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = body.getAttribute('data-theme');
-                
-                if (currentTheme === 'dark') {
-                    body.removeAttribute('data-theme');
-                    themeIcon.textContent = '🌙';
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    body.setAttribute('data-theme', 'dark');
-                    themeIcon.textContent = '🌙';
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        });
-
-        // Animaciones de aparición para elementos de asesoramiento
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    entry.target.classList.add('floating-consultation-element');
-                }
-            });
-        }, observerOptions);
-
-        // Observar tarjetas de servicios cuando se cargue la página
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.service-card, .consultation-content').forEach(card => {
-                observer.observe(card);
-            });
-        });
-    </script>
+    <script src="asesoramiento.js"></script>
 
 </body>
 </html>

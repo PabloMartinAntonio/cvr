@@ -714,3 +714,344 @@ body {
         max-width: 400px;
     }
 }
+
+
+/* ========================================
+   MENÚ DESPLEGABLE DE NAVEGACIÓN 
+   ======================================== */
+
+.dropdown-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    font-family: inherit;
+}
+
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 151, 178, 0.3);
+}
+
+.dropdown-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 151, 178, 0.4);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+
+.dropdown-nav:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 220px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+[data-theme="dark"] .dropdown-content {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-nav:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.nav-item:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-item:hover::before {
+    width: 100%;
+}
+
+.nav-item i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.nav-item:hover i {
+    transform: scale(1.1);
+}
+
+.nav-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 8px 12px;
+}
+
+.theme-toggle {
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+}
+
+.theme-toggle:hover i {
+    transform: scale(1.2) rotate(15deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dropdown-nav {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .dropdown-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    
+    .dropdown-content {
+        min-width: 200px;
+    }
+    
+    .nav-item {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   BOTÓN WHATSAPP FLOTANTE
+   ======================================== */
+
+.whatsapp-float {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+    background: linear-gradient(135deg, #25d366, #128c7e) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    padding: 15px 20px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    overflow: hidden !important;
+    backdrop-filter: blur(10px) !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
+}
+
+.whatsapp-float::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.whatsapp-float:hover::before {
+    left: 100%;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6) !important;
+    background: linear-gradient(135deg, #128c7e, #25d366) !important;
+}
+
+.whatsapp-float:active {
+    transform: translateY(-1px) scale(1.02) !important;
+}
+
+.whatsapp-float i {
+    font-size: 20px !important;
+    animation: pulse 2s infinite;
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+.whatsapp-text {
+    font-family: inherit;
+    white-space: nowrap;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+    color: white !important;
+}
+
+/* Animación de pulso para el ícono */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Versión responsiva */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 15px !important;
+        right: 15px !important;
+        padding: 12px !important;
+        font-size: 13px !important;
+        border-radius: 50% !important;
+        width: 50px !important;
+        height: 50px !important;
+        justify-content: center !important;
+    }
+    
+    .whatsapp-float i {
+        font-size: 18px !important;
+    }
+    
+    .whatsapp-text {
+        display: none !important;
+    }
+}
+
+/* Forzar visibilidad del icono de WhatsApp */
+.whatsapp-float .fa-whatsapp::before {
+    content: "\f232" !important;
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+}
+
+/* Debug para el botón de WhatsApp */
+.whatsapp-float {
+    border: 2px solid red !important; /* Solo para debug */
+}
+
+/* Asegurar que el botón esté por encima de todo */
+.whatsapp-float {
+    z-index: 9999 !important;
+}
+
+/* Animación del modal */
+.modal.active {
+    opacity: 1 !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0) scale(1) !important;
+    opacity: 1 !important;
+}
+
+/* Efecto hover mejorado para tarjetas clickeables */
+.lente-card[onclick] {
+    transition: all 0.3s ease !important;
+}
+
+.lente-card[onclick]:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+}
+
+.lente-card[onclick]:active {
+    transform: translateY(-4px) scale(1.01) !important;
+}
+
+/* Mejoras responsivas para el modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 5% auto;
+        max-height: 90vh;
+        border-radius: 10px;
+    }
+    
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .modal-body {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-footer {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .modal-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Animación más suave para dispositivos móviles */
+@media (prefers-reduced-motion: reduce) {
+    .modal-content {
+        animation: none;
+        transition: opacity 0.2s ease;
+    }
+    
+    .modal.active .modal-content {
+        transition: opacity 0.2s ease;
+    }
+}

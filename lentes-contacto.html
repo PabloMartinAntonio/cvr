@@ -1,159 +1,686 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lentes de Contacto | Clara Visión</title>
-<link rel="stylesheet" href="estilos-contacto.css" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Lentes de Contacto - Próximamente | Óptica Clara Visión</title>
+    <meta name="description" content="Página de lentes de contacto en desarrollo. Próximamente en Óptica Clara Visión - Villa María, Córdoba.">
+    
+    <!-- SEO & Performance -->
+    <meta name="keywords" content="lentes de contacto, próximamente, Villa María, Córdoba, óptica">
+    <meta name="author" content="Óptica Clara Visión">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="lentes-contacto.js" as="script">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="estilos-lentes-contacto.css?v=2025072502">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0097B2">
 </head>
-<body>
 
-<!-- Botones de navegación fijos -->
-<div class="navigation-buttons">
-    <!-- Botón de regreso -->
-    <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
-        <i class="fas fa-home"></i>
-        <span class="btn-text">Inicio</span>
+<body class="coming-soon-page">
+
+<!-- Menú de navegación desplegable -->
+<div class="dropdown-nav">
+    <button class="dropdown-btn" title="Menú de navegación">
+        <i class="fas fa-bars"></i>
+        <span>Menú</span>
+        <i class="fas fa-chevron-down dropdown-arrow"></i>
     </button>
-    
-    <!-- Botón de lentes recetados -->
-    <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
-        <i class="fas fa-glasses"></i>
-        <span class="btn-text">Lentes Recetados</span>
-    </button>
-    
-    <!-- Botón de lentes de sol -->
-    <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
-        <i class="fas fa-sun"></i>
-        <span class="btn-text">Lentes de Sol</span>
-    </button>
-    
-    <!-- Botón de reparaciones -->
-    <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
-        <i class="fas fa-tools"></i>
-        <span class="btn-text">Reparaciones</span>
-    </button>
-    
-    <!-- Botón de asesoramiento -->
-    <button class="btn-nav btn-consulting" onclick="window.location.href='asesoramiento.html'" title="Ver Asesoramiento">
-        <i class="fas fa-user-tie"></i>
-        <span class="btn-text">Asesoramiento</span>
-    </button>
-    
-    <!-- Botón de modo nocturno -->
-    <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-        <i class="fas fa-glasses" id="theme-icon"></i>
-        <span class="btn-text">Tema</span>
-    </button>
+    <div class="dropdown-content">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="recetados.html" class="nav-item">
+            <i class="fas fa-glasses"></i>
+            <span>Lentes Recetados</span>
+        </a>
+        <a href="lentes-sol.html" class="nav-item">
+            <i class="fas fa-sun"></i>
+            <span>Lentes de Sol</span>
+        </a>
+        <a href="reparaciones.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            <span>Reparaciones</span>
+        </a>
+        <a href="asesoramiento.html" class="nav-item">
+            <i class="fas fa-user-md"></i>
+            <span>Asesoramiento</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#" class="nav-item theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+            <span>Modo Oscuro</span>
+        </a>
+    </div>
 </div>
 
-<section class="section-coming-soon">
-    <div class="container">
-        <!-- Animación de trabajo en progreso -->
-        <div class="working-animation">
-            <div class="gear gear-1">
-                <i class="fas fa-cog"></i>
-            </div>
-            <div class="gear gear-2">
-                <i class="fas fa-cog"></i>
-            </div>
-            <div class="gear gear-3">
-                <i class="fas fa-cog"></i>
+<!-- Fondo animado con lentes de contacto -->
+<div class="contact-lens-background">
+    <div class="floating-lens lens-1"></div>
+    <div class="floating-lens lens-2"></div>
+    <div class="floating-lens lens-3"></div>
+    <div class="floating-lens lens-4"></div>
+    <div class="floating-lens lens-5"></div>
+    <div class="floating-lens lens-6"></div>
+    <div class="floating-bubbles">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+    </div>
+</div>
+
+<!-- Contenido principal -->
+<main class="coming-soon-container">
+    <div class="coming-soon-content">
+        <!-- Icono principal -->
+        <div class="main-icon">
+            <i class="fas fa-eye"></i>
+            <div class="icon-pulse"></div>
+        </div>
+        
+        <!-- Título principal -->
+        <h1 class="coming-soon-title">Lentes de Contacto</h1>
+        <h2 class="coming-soon-subtitle">Próximamente</h2>
+        
+        <!-- Descripción -->
+        <p class="coming-soon-description">
+            Estamos preparando una experiencia única para que encuentres los lentes de contacto perfectos. 
+            Pronto podrás explorar nuestra amplia gama de productos y recibir asesoramiento personalizado.
+        </p>
+        
+        <!-- Barra de progreso -->
+        <div class="progress-section">
+            <div class="progress-label">Progreso de desarrollo</div>
+            <div class="progress-container">
+                <div class="progress-bar" data-progress="75">
+                    <div class="progress-fill"></div>
+                    <div class="progress-text">75%</div>
+                </div>
             </div>
         </div>
+        
+        <!-- Características que vendrán -->
+        <div class="features-preview">
+            <div class="feature-item">
+                <i class="fas fa-calendar-day"></i>
+                <span>Lentes Diarios</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-calendar-week"></i>
+                <span>Lentes Semanales</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Lentes Mensuales</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-star"></i>
+                <span>Lentes Especiales</span>
+            </div>
+        </div>
+        
+        <!-- Botón de contacto -->
+        <div class="contact-action">
+            <a href="#" class="btn-contact" id="contact-btn">
+                <i class="fas fa-phone"></i>
+                <span>Contactar Ahora</span>
+            </a>
+        </div>
+    </div>
+</main>
 
-        <a href="lentes-contacto.html" class="coming-soon-link">
-            <div class="coming-soon-content">
-                <h1>Lentes de Contacto</h1>
-                <h2>¡Próximamente!</h2>
-                
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                    <span class="progress-text">Preparando algo increíble... 75%</span>
+<!-- Botón flotante de WhatsApp -->
+<a href="#" class="whatsapp-float" id="whatsapp-btn" title="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- JavaScript -->
+<script src="lentes-contacto.js?v=2025072502"></script>
+
+</body>
+</html>
+            <i class="fas fa-tools"></i>
+            <span>Reparaciones</span>
+        </a>
+        <a href="asesoramiento.html" class="nav-item">
+            <i class="fas fa-user-tie"></i>
+            <span>Asesoramiento</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#" class="nav-item theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span>Cambiar Tema</span>
+        </a>
+    </div>
+</div>
+
+<!-- Botón de WhatsApp flotante -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<!-- Main Content -->
+<main id="main-content" role="main">
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-icon">
+                    <i class="fas fa-eye"></i>
+                    <div class="icon-glow"></div>
                 </div>
-                
-                <p class="main-description">
-                    Estamos trabajando arduamente para traerte la mejor selección de lentes de contacto con las marcas más reconocidas del mercado.
+                <h1>Lentes de <span class="text-primary">Contacto</span></h1>
+                <h2>Comodidad y Libertad Visual</h2>
+                <p class="hero-description">
+                    Experimenta la libertad visual total con nuestra amplia gama de lentes de contacto. 
+                    Desde diarios hasta especiales, ofrecemos las mejores marcas con asesoramiento personalizado 
+                    para garantizar tu comodidad y salud visual.
                 </p>
-                
-                <div class="coming-soon-image">
-                    <div class="floating-elements">
-                        <div class="floating-contact floating-1">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="floating-contact floating-2">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="floating-contact floating-3">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="floating-contact floating-4">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                    </div>
-                    <div class="main-contact-lens">
-                        <i class="fas fa-circle"></i>
-                        <div class="lens-shine"></div>
-                    </div>
-                </div>
-                
-            <div class="notify-section">
-                <h3>¡Sé el primero en saberlo!</h3>
-                <p>Déjanos tu contacto y te avisaremos cuando tengamos disponibles nuestros lentes de contacto</p>
-                
-                <div class="notify-form">
-                    <input type="email" placeholder="Tu correo electrónico" class="email-input" onclick="event.stopPropagation()">
-                    <button class="notify-btn" onclick="event.stopPropagation()">
-                        <i class="fas fa-bell"></i>
-                        Notificarme
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('productos-contacto')">
+                        <i class="fas fa-eye"></i>
+                        Ver Productos
+                    </button>
+                    <button class="btn btn-outline" onclick="scrollToSection('contacto-contacto')">
+                        <i class="fas fa-calendar-alt"></i>
+                        Agendar Cita
                     </button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Tipos de Lentes Section -->
+    <section id="productos-contacto" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tipos de Lentes de Contacto</h2>
+                <p>Encuentra el tipo de lente perfecto para tu estilo de vida y necesidades visuales</p>
+            </div>
             
-            <div class="contact-cta">
-                <p>Mientras tanto, consultanos por nuestros otros servicios</p>
-                <button class="btn-contact" onclick="event.stopPropagation(); window.location.href='index.html#contacto'">
-                    <i class="fas fa-phone"></i>
-                    Contactanos Ahora
+            <div class="products-grid">
+                <!-- Lentes Diarios -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="product-badge">Más Popular</div>
+                    <h3>Lentes Diarios</h3>
+                    <p class="product-subtitle">Uso diario - Desechables</p>
+                    <p>Máxima higiene y comodidad. Perfectos para uso ocasional o para quienes buscan la mayor conveniencia.</p>
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Máxima higiene</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Sin mantenimiento</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Ideal para ocasionales</span>
+                        </div>
+                    </div>
+                    <div class="product-price">Desde $25.000</div>
+                    <button class="btn btn-primary" onclick="openModal('modal-diarios')">
+                        <i class="fas fa-info-circle"></i>
+                        Ver Detalles
+                    </button>
+                </div>
+
+                <!-- Lentes Semanales -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                    <h3>Lentes Semanales</h3>
+                    <p class="product-subtitle">1-2 semanas - Reemplazables</p>
+                    <p>Balance perfecto entre economía y comodidad. Ideales para uso regular con cuidado moderado.</p>
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Costo efectivo</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Cuidado simple</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Uso regular</span>
+                        </div>
+                    </div>
+                    <div class="product-price">Desde $18.000</div>
+                    <button class="btn btn-primary" onclick="openModal('modal-semanales')">
+                        <i class="fas fa-info-circle"></i>
+                        Ver Detalles
+                    </button>
+                </div>
+
+                <!-- Lentes Mensuales -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Lentes Mensuales</h3>
+                    <p class="product-subtitle">30 días - Económicos</p>
+                    <p>La opción más económica para uso diario. Perfectos para usuarios experimentados que buscan ahorro.</p>
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Máximo ahorro</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Uso prolongado</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Para experimentados</span>
+                        </div>
+                    </div>
+                    <div class="product-price">Desde $15.000</div>
+                    <button class="btn btn-primary" onclick="openModal('modal-mensuales')">
+                        <i class="fas fa-info-circle"></i>
+                        Ver Detalles
+                    </button>
+                </div>
+
+                <!-- Lentes Especiales -->
+                <div class="product-card premium">
+                    <div class="product-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="product-badge premium">Premium</div>
+                    <h3>Lentes Especiales</h3>
+                    <p class="product-subtitle">Astigmatismo - Presbicia</p>
+                    <p>Soluciones avanzadas para necesidades específicas. Tecnología de última generación para casos complejos.</p>
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Tecnología avanzada</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Casos complejos</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Máxima precisión</span>
+                        </div>
+                    </div>
+                    <div class="product-price">Desde $35.000</div>
+                    <button class="btn btn-primary" onclick="openModal('modal-especiales')">
+                        <i class="fas fa-info-circle"></i>
+                        Ver Detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marcas Section -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Marcas de Confianza</h2>
+                <p>Trabajamos con las marcas más reconocidas mundialmente</p>
+            </div>
+            <div class="brands-grid">
+                <div class="brand-item">
+                    <div class="brand-logo">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>Acuvue</h4>
+                    <p>Líder mundial en lentes de contacto</p>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h4>Biofinity</h4>
+                    <p>Tecnología avanzada en hidratación</p>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Dailies</h4>
+                    <p>Comodidad superior todo el día</p>
+                </div>
+                <div class="brand-item">
+                    <div class="brand-logo">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h4>Air Optix</h4>
+                    <p>Máxima transpirabilidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro Proceso de Adaptación</h2>
+                <p>Te acompañamos paso a paso para garantizar tu comodidad y satisfacción</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-eye-dropper"></i>
+                    </div>
+                    <h3>Evaluación Inicial</h3>
+                    <p>Examen completo de tus ojos y análisis de tus necesidades específicas para determinar el tipo ideal de lentes.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Selección Personalizada</h3>
+                    <p>Elegimos juntos el tipo y marca de lentes que mejor se adapte a tu estilo de vida y presupuesto.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Enseñanza y Práctica</h3>
+                    <p>Te enseñamos la técnica correcta de colocación, remoción y cuidado de tus lentes de contacto.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Seguimiento y Support</h3>
+                    <p>Revisiones periódicas para asegurar tu comodidad y salud ocular a largo plazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto-contacto" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comienza tu Experiencia con Lentes de Contacto</h2>
+                <p>Agenda tu cita para una evaluación personalizada y prueba gratuita</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Evaluación y Prueba Gratuita</h3>
+                <p>Incluye examen ocular completo, prueba de diferentes tipos de lentes y asesoramiento personalizado sobre cuidados y mantenimiento.</p>
+                <div class="contact-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Examen ocular completo</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Prueba de diferentes marcas</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Asesoramiento personalizado</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Seguimiento incluido</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="contactWhatsApp('evaluacion')">
+                    <i class="fab fa-whatsapp"></i>
+                    Agendar Evaluación Gratuita
                 </button>
             </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Modales para cada tipo de lente -->
+<!-- Modal Lentes Diarios -->
+<div id="modal-diarios" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-diarios')">&times;</span>
+        <div class="modal-header">
+            <div class="modal-icon">
+                <i class="fas fa-calendar-day"></i>
             </div>
-        </a>
-    </div>
-</section>
-
-<script>
-// Funcionalidad del modo nocturno
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const body = document.body;
-
-    // Verificar tema guardado
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.setAttribute('data-theme', 'dark');
-        themeIcon.className = 'fas fa-low-vision';
-    }
-
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = body.getAttribute('data-theme');
+            <h2>Lentes de Contacto Diarios</h2>
+            <p>La máxima comodidad e higiene para tu día a día</p>
+        </div>
         
-        if (currentTheme === 'dark') {
-            body.removeAttribute('data-theme');
-            themeIcon.className = 'fas fa-glasses';
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            themeIcon.className = 'fas fa-low-vision';
-            localStorage.setItem('theme', 'dark');
-        }
-    });
-});
-</script>
+        <div class="modal-body">
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes de Contacto Diarios" loading="lazy">
+            </div>
+            
+            <div class="product-details">
+                <h3>Características principales</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Nuevos lentes cada día - máxima higiene</li>
+                    <li><i class="fas fa-check"></i> No requieren soluciones de limpieza</li>
+                    <li><i class="fas fa-check"></i> Ideales para uso ocasional o deportes</li>
+                    <li><i class="fas fa-check"></i> Reducen el riesgo de infecciones</li>
+                    <li><i class="fas fa-check"></i> Perfectos para viajes</li>
+                </ul>
+                
+                <h3>Marcas disponibles</h3>
+                <div class="brands-list">
+                    <span class="brand-tag">Acuvue Oasys 1-Day</span>
+                    <span class="brand-tag">Dailies Total 1</span>
+                    <span class="brand-tag">Biotrue ONEday</span>
+                    <span class="brand-tag">MyDay</span>
+                </div>
+                
+                <div class="price-info">
+                    <h4>Precios desde $25.000</h4>
+                    <p>Caja de 30 unidades - Incluye seguimiento inicial</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-modal secondary" onclick="contactWhatsApp('diarios')">
+                <i class="fab fa-whatsapp"></i>
+                Consultar Precio
+            </button>
+            <button class="btn-modal primary" onclick="contactWhatsApp('cita-diarios')">
+                <i class="fas fa-calendar-check"></i>
+                Agendar Prueba
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Lentes Semanales -->
+<div id="modal-semanales" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-semanales')">&times;</span>
+        <div class="modal-header">
+            <div class="modal-icon">
+                <i class="fas fa-calendar-week"></i>
+            </div>
+            <h2>Lentes de Contacto Semanales</h2>
+            <p>Balance perfecto entre economía y comodidad</p>
+        </div>
+        
+        <div class="modal-body">
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1556306645-d6ee0323e57f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes de Contacto Semanales" loading="lazy">
+            </div>
+            
+            <div class="product-details">
+                <h3>Características principales</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Duración de 1-2 semanas</li>
+                    <li><i class="fas fa-check"></i> Cuidado simple con solución multiuso</li>
+                    <li><i class="fas fa-check"></i> Excelente relación calidad-precio</li>
+                    <li><i class="fas fa-check"></i> Ideales para uso regular</li>
+                    <li><i class="fas fa-check"></i> Tecnología de hidratación avanzada</li>
+                </ul>
+                
+                <h3>Marcas disponibles</h3>
+                <div class="brands-list">
+                    <span class="brand-tag">Acuvue Oasys</span>
+                    <span class="brand-tag">Biofinity</span>
+                    <span class="brand-tag">Air Optix Aqua</span>
+                    <span class="brand-tag">Avaira Vitality</span>
+                </div>
+                
+                <div class="price-info">
+                    <h4>Precios desde $18.000</h4>
+                    <p>Caja de 6 unidades - Incluye kit de cuidado inicial</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-modal secondary" onclick="contactWhatsApp('semanales')">
+                <i class="fab fa-whatsapp"></i>
+                Consultar Precio
+            </button>
+            <button class="btn-modal primary" onclick="contactWhatsApp('cita-semanales')">
+                <i class="fas fa-calendar-check"></i>
+                Agendar Prueba
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Lentes Mensuales -->
+<div id="modal-mensuales" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-mensuales')">&times;</span>
+        <div class="modal-header">
+            <div class="modal-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h2>Lentes de Contacto Mensuales</h2>
+            <p>La opción más económica para uso diario</p>
+        </div>
+        
+        <div class="modal-body">
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes de Contacto Mensuales" loading="lazy">
+            </div>
+            
+            <div class="product-details">
+                <h3>Características principales</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Duración de 30 días</li>
+                    <li><i class="fas fa-check"></i> Máximo ahorro económico</li>
+                    <li><i class="fas fa-check"></i> Ideales para usuarios experimentados</li>
+                    <li><i class="fas fa-check"></i> Requieren cuidado diario</li>
+                    <li><i class="fas fa-check"></i> Amplia variedad de parámetros</li>
+                </ul>
+                
+                <h3>Marcas disponibles</h3>
+                <div class="brands-list">
+                    <span class="brand-tag">Biofinity</span>
+                    <span class="brand-tag">Air Optix plus HydraGlyde</span>
+                    <span class="brand-tag">Pure Vision 2</span>
+                    <span class="brand-tag">Ultra</span>
+                </div>
+                
+                <div class="price-info">
+                    <h4>Precios desde $15.000</h4>
+                    <p>Caja de 6 unidades - Incluye soluciones de cuidado</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-modal secondary" onclick="contactWhatsApp('mensuales')">
+                <i class="fab fa-whatsapp"></i>
+                Consultar Precio
+            </button>
+            <button class="btn-modal primary" onclick="contactWhatsApp('cita-mensuales')">
+                <i class="fas fa-calendar-check"></i>
+                Agendar Prueba
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Lentes Especiales -->
+<div id="modal-especiales" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-especiales')">&times;</span>
+        <div class="modal-header">
+            <div class="modal-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <h2>Lentes de Contacto Especiales</h2>
+            <p>Soluciones avanzadas para necesidades específicas</p>
+        </div>
+        
+        <div class="modal-body">
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes de Contacto Especiales" loading="lazy">
+            </div>
+            
+            <div class="product-details">
+                <h3>Tipos especiales disponibles</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Lentes tóricos para astigmatismo</li>
+                    <li><i class="fas fa-check"></i> Lentes multifocales para presbicia</li>
+                    <li><i class="fas fa-check"></i> Lentes de color con o sin graduación</li>
+                    <li><i class="fas fa-check"></i> Lentes esclerales para casos complejos</li>
+                    <li><i class="fas fa-check"></i> Lentes ortok para control de miopía</li>
+                </ul>
+                
+                <h3>Marcas especializadas</h3>
+                <div class="brands-list">
+                    <span class="brand-tag">Acuvue Oasys for Astigmatism</span>
+                    <span class="brand-tag">Air Optix Multifocal</span>
+                    <span class="brand-tag">FreshLook Colors</span>
+                    <span class="brand-tag">Biofinity Toric</span>
+                </div>
+                
+                <div class="price-info">
+                    <h4>Precios desde $35.000</h4>
+                    <p>Precio varía según especialidad - Consulta incluida</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn-modal secondary" onclick="contactWhatsApp('especiales')">
+                <i class="fab fa-whatsapp"></i>
+                Consultar Opciones
+            </button>
+            <button class="btn-modal primary" onclick="contactWhatsApp('cita-especiales')">
+                <i class="fas fa-calendar-check"></i>
+                Agendar Evaluación
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="lentes-contacto.js"></script>
 
 </body>
 </html>

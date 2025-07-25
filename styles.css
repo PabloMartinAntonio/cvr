@@ -82,6 +82,72 @@ a:hover {
     --footer-bg: #0f172a;
 }
 
+/* Estilos específicos para modo oscuro en el header */
+[data-theme="dark"] .header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .header.scrolled {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .logo-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 15px rgba(0, 151, 178, 0.2);
+}
+
+[data-theme="dark"] .brand-text h1 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .brand-text p {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: var(--primary-light);
+}
+
+[data-theme="dark"] .theme-toggle {
+    border-color: var(--border);
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    color: var(--primary-light);
+    border-color: var(--primary-light);
+    background: rgba(43, 180, 209, 0.1);
+    box-shadow: 0 0 15px rgba(43, 180, 209, 0.3);
+}
+
+[data-theme="dark"] .nav-toggle i {
+    color: var(--text-primary);
+}
+
+/* Menú móvil en modo oscuro */
+[data-theme="dark"] .nav-menu {
+    background: var(--header-bg);
+    border: none;
+    border-top: none;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .nav-menu.active {
+    background: var(--header-bg);
+    backdrop-filter: none;
+    border: none;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;

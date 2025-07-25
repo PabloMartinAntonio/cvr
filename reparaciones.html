@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="reparaciones-page">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,45 +7,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="estilos-reparaciones.css">
 </head>
-<body class="reparaciones-page">>
-    <!-- Botones de navegación fijos -->
-    <div class="navigation-buttons">
-        <!-- Botón de regreso -->
-        <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
-            <span class="icon-text">🏠</span>
-            <span class="btn-text">Inicio</span>
-        </button>
-        
-        <!-- Botón de lentes de contacto -->
-        <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
-            <span class="icon-text">👁️</span>
-            <span class="btn-text">Lentes de Contacto</span>
-        </button>
-        
-        <!-- Botón de lentes de sol -->
-        <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
-            <span class="icon-text">🕶️</span>
-            <span class="btn-text">Lentes de Sol</span>
-        </button>
-        
-        <!-- Botón de lentes recetados -->
-        <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
-            <span class="icon-text">👓</span>
-            <span class="btn-text">Lentes Recetados</span>
-        </button>
-        
-        <!-- Botón de asesoramiento -->
-        <button class="btn-nav btn-consulting" onclick="window.location.href='asesoramiento.html'" title="Ver Asesoramiento">
-            <span class="icon-text">👨‍⚕️</span>
-            <span class="btn-text">Asesoramiento</span>
-        </button>
-        
-        <!-- Botón de modo nocturno -->
-        <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-            <span class="icon-text" id="theme-icon">🌙</span>
-            <span class="btn-text">Tema</span>
-        </button>
+<body class="reparaciones-page">
+
+<!-- Menú de navegación desplegable -->
+<div class="dropdown-nav">
+    <button class="dropdown-btn" title="Menú de navegación">
+        <i class="fas fa-bars"></i>
+        <span>Menú</span>
+        <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="recetados.html" class="nav-item">
+            <i class="fas fa-glasses"></i>
+            <span>Lentes Recetados</span>
+        </a>
+        <a href="lentes-sol.html" class="nav-item">
+            <i class="fas fa-sun"></i>
+            <span>Lentes de Sol</span>
+        </a>
+        <a href="lentes-contacto.html" class="nav-item">
+            <i class="fas fa-eye"></i>
+            <span>Lentes de Contacto</span>
+        </a>
+        <a href="asesoramiento.html" class="nav-item">
+            <i class="fas fa-user-md"></i>
+            <span>Asesoramiento</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#" class="nav-item theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span>Cambiar Tema</span>
+        </a>
     </div>
+</div>
+
+<!-- Botón de WhatsApp flotante -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+</div>
 
     <!-- Elementos de fondo profesionales -->
     <div class="professional-background">
@@ -130,8 +133,8 @@
                             <span>Garantía de satisfacción o reajuste gratuito</span>
                         </div>
 
-                        <button class="btn-service">
-                            <span>Solicitar Ajuste</span>
+                        <button class="btn-service" onclick="openModal('modal-ajuste')">
+                            <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -172,8 +175,8 @@
                             <span>Garantía total en cristales y montaje</span>
                         </div>
 
-                        <button class="btn-service">
-                            <span>Cambiar Cristales</span>
+                        <button class="btn-service" onclick="openModal('modal-cristales')">
+                            <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -214,8 +217,8 @@
                             <span>Limpieza completa y segura garantizada</span>
                         </div>
 
-                        <button class="btn-service">
-                            <span>Limpiar Lentes</span>
+                        <button class="btn-service" onclick="openModal('modal-limpieza')">
+                            <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -256,8 +259,8 @@
                             <span>Evaluación profesional detallada</span>
                         </div>
 
-                        <button class="btn-service">
-                            <span>Programar Revisión</span>
+                        <button class="btn-service" onclick="openModal('modal-mantenimiento')">
+                            <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
@@ -306,6 +309,275 @@
                     </div>
                 </div>
                 -->
+            </div>
+
+            <!-- Modales para servicios -->
+            <!-- Modal Ajuste de Monturas -->
+            <div id="modal-ajuste" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-ajuste')">&times;</span>
+                    <div class="modal-header">
+                        <div class="modal-icon">
+                            <i class="fas fa-adjust"></i>
+                        </div>
+                        <h2>Ajuste de Monturas</h2>
+                        <p>Calibración Profesional de Precisión</p>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="service-details">
+                            <h3>¿Qué incluye este servicio?</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Medición milimétrica de ajuste</li>
+                                <li><i class="fas fa-check"></i> Calibración de plaquetas nasales</li>
+                                <li><i class="fas fa-check"></i> Ajuste de varillas temporales</li>
+                                <li><i class="fas fa-check"></i> Verificación de comodidad</li>
+                                <li><i class="fas fa-check"></i> Reajuste gratuito si es necesario</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-specs">
+                            <div class="spec-item">
+                                <strong>Tiempo estimado:</strong>
+                                <span>15-30 minutos</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Precio:</strong>
+                                <span>Desde $15.000</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Garantía:</strong>
+                                <span>Satisfacción total</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-process">
+                            <h4>Nuestro proceso:</h4>
+                            <div class="process-mini">
+                                <div class="mini-step">
+                                    <span class="step-num">1</span>
+                                    <p>Evaluación inicial</p>
+                                </div>
+                                <div class="mini-step">
+                                    <span class="step-num">2</span>
+                                    <p>Ajuste preciso</p>
+                                </div>
+                                <div class="mini-step">
+                                    <span class="step-num">3</span>
+                                    <p>Prueba de comodidad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button class="btn-whatsapp" onclick="contactWhatsApp('ajuste')">
+                            <i class="fab fa-whatsapp"></i>
+                            Solicitar Ajuste
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Cambio de Cristales -->
+            <div id="modal-cristales" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-cristales')">&times;</span>
+                    <div class="modal-header">
+                        <div class="modal-icon">
+                            <i class="fas fa-eye-dropper"></i>
+                        </div>
+                        <h2>Cambio de Cristales</h2>
+                        <p>Instalación Especializada Premium</p>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="service-details">
+                            <h3>¿Qué incluye este servicio?</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Retiro cuidadoso de cristales antiguos</li>
+                                <li><i class="fas fa-check"></i> Instalación de cristales nuevos</li>
+                                <li><i class="fas fa-check"></i> Verificación de centrado óptico</li>
+                                <li><i class="fas fa-check"></i> Limpieza completa de la montura</li>
+                                <li><i class="fas fa-check"></i> Garantía en montaje y cristales</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-specs">
+                            <div class="spec-item">
+                                <strong>Tiempo estimado:</strong>
+                                <span>24-48 horas</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Precio:</strong>
+                                <span>Desde $45.000</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Garantía:</strong>
+                                <span>6 meses completos</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-process">
+                            <h4>Tipos de cristales disponibles:</h4>
+                            <div class="cristales-options">
+                                <div class="cristal-option">
+                                    <strong>Estándar</strong>
+                                    <p>Calidad óptima básica</p>
+                                </div>
+                                <div class="cristal-option">
+                                    <strong>Premium</strong>
+                                    <p>Anti-reflejo y UV</p>
+                                </div>
+                                <div class="cristal-option">
+                                    <strong>Ultra</strong>
+                                    <p>Blue light + premium</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button class="btn-whatsapp" onclick="contactWhatsApp('cristales')">
+                            <i class="fab fa-whatsapp"></i>
+                            Cambiar Cristales
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Limpieza Profunda -->
+            <div id="modal-limpieza" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-limpieza')">&times;</span>
+                    <div class="modal-header">
+                        <div class="modal-icon">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h2>Limpieza Profunda</h2>
+                        <p>Restauración Completa Ultrasónica</p>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="service-details">
+                            <h3>¿Qué incluye este servicio?</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Limpieza ultrasónica profesional</li>
+                                <li><i class="fas fa-check"></i> Desinfección completa</li>
+                                <li><i class="fas fa-check"></i> Eliminación de residuos incrustados</li>
+                                <li><i class="fas fa-check"></i> Pulido de cristales</li>
+                                <li><i class="fas fa-check"></i> Ajuste básico incluido</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-specs">
+                            <div class="spec-item">
+                                <strong>Tiempo estimado:</strong>
+                                <span>Inmediato (30 min)</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Precio:</strong>
+                                <span>$8.000</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Garantía:</strong>
+                                <span>Limpieza perfecta</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-process">
+                            <h4>Beneficios especiales:</h4>
+                            <div class="benefits-grid">
+                                <div class="benefit-item">
+                                    <i class="fas fa-sparkles"></i>
+                                    <p>Como nuevos</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-shield-virus"></i>
+                                    <p>Desinfección total</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-eye"></i>
+                                    <p>Visión cristalina</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button class="btn-whatsapp" onclick="contactWhatsApp('limpieza')">
+                            <i class="fab fa-whatsapp"></i>
+                            Solicitar Limpieza
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Mantenimiento Preventivo -->
+            <div id="modal-mantenimiento" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('modal-mantenimiento')">&times;</span>
+                    <div class="modal-header">
+                        <div class="modal-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h2>Mantenimiento Preventivo</h2>
+                        <p>Cuidado Integral Profesional</p>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="service-details">
+                            <h3>¿Qué incluye este servicio?</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Inspección completa de la montura</li>
+                                <li><i class="fas fa-check"></i> Revisión de tornillos y bisagras</li>
+                                <li><i class="fas fa-check"></i> Ajuste preventivo</li>
+                                <li><i class="fas fa-check"></i> Limpieza profunda</li>
+                                <li><i class="fas fa-check"></i> Reporte de estado</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-specs">
+                            <div class="spec-item">
+                                <strong>Tiempo estimado:</strong>
+                                <span>45 minutos</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Precio:</strong>
+                                <span>$12.000</span>
+                            </div>
+                            <div class="spec-item">
+                                <strong>Frecuencia:</strong>
+                                <span>Cada 6 meses</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-process">
+                            <h4>Plan de mantenimiento:</h4>
+                            <div class="maintenance-plan">
+                                <div class="plan-item">
+                                    <strong>Cada 3 meses:</strong>
+                                    <p>Limpieza y ajuste básico</p>
+                                </div>
+                                <div class="plan-item">
+                                    <strong>Cada 6 meses:</strong>
+                                    <p>Revisión completa</p>
+                                </div>
+                                <div class="plan-item">
+                                    <strong>Anual:</strong>
+                                    <p>Mantenimiento preventivo total</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button class="btn-whatsapp" onclick="contactWhatsApp('mantenimiento')">
+                            <i class="fab fa-whatsapp"></i>
+                            Programar Revisión
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- Sección de proceso profesional -->
@@ -369,52 +641,11 @@
         </section>
     </div>
 
-    <script>
-        // Funcionalidad del modo nocturno
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = document.getElementById('theme-icon');
-            const body = document.body;
+    <!-- Botón flotante de WhatsApp -->
+    <div class="whatsapp-float" onclick="contactWhatsApp('consulta')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
 
-            // Verificar tema guardado
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.textContent = '🌙';
-            }
-
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = body.getAttribute('data-theme');
-                
-                if (currentTheme === 'dark') {
-                    body.removeAttribute('data-theme');
-                    themeIcon.textContent = '🌙';
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    body.setAttribute('data-theme', 'dark');
-                    themeIcon.textContent = '🌙';
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        });
-
-        // Animación de aparición de tarjetas
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reparacion-card').forEach(card => {
-            observer.observe(card);
-        });
-    </script>
+    <script src="reparaciones.js"></script>
 </body>
 </html>

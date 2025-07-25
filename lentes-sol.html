@@ -9,52 +9,63 @@
 </head>
 <body>
 
-<!-- Botones de navegación fijos -->
-<div class="navigation-buttons">
-    <!-- Botón de regreso -->
-    <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
-        <span class="icon-text">🏠</span>
-        <span class="btn-text">Inicio</span>
-    </button>
-    
-    <!-- Botón de lentes de contacto -->
-    <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
-        <span class="icon-text">👁️</span>
-        <span class="btn-text">Lentes de Contacto</span>
-    </button>
-    
-    <!-- Botón de lentes recetados -->
-    <button class="btn-nav btn-glasses" onclick="window.location.href='recetados.html'" title="Ver Lentes Recetados">
-        <span class="icon-text">🕶️</span>
-        <span class="btn-text">Lentes Recetados</span>
-    </button>
-    
-    <!-- Botón de reparaciones -->
-    <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
-        <span class="icon-text">🔧</span>
-        <span class="btn-text">Reparaciones</span>
-    </button>
-    
-    <!-- Botón de asesoramiento -->
-    <button class="btn-nav btn-consulting" onclick="window.location.href='asesoramiento.html'" title="Ver Asesoramiento">
-        <span class="icon-text">👨‍⚕️</span>
-        <span class="btn-text">Asesoramiento</span>
-    </button>
-    
-    <!-- Botón de modo nocturno -->
-    <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-        <span class="icon-text" id="theme-icon">🌙</span>
-        <span class="btn-text">Tema</span>
-    </button>
+<!-- Partículas flotantes del fondo -->
+<div class="floating-particles">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
 </div>
 
-<!-- Elementos de fondo elegantes -->
-<div class="elegant-background">
-    <div class="floating-shape shape-1"></div>
-    <div class="floating-shape shape-2"></div>
-    <div class="floating-shape shape-3"></div>
-    <div class="light-ray ray-1"></div>
-    <div class="light-ray ray-2"></div>
+<!-- Menú de navegación desplegable -->
+<div class="dropdown-nav">
+    <button class="dropdown-btn" title="Menú de navegación">
+        <i class="fas fa-bars"></i>
+        <span>Menú</span>
+        <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="recetados.html" class="nav-item">
+            <i class="fas fa-glasses"></i>
+            <span>Lentes Recetados</span>
+        </a>
+        <a href="lentes-contacto.html" class="nav-item">
+            <i class="fas fa-eye"></i>
+            <span>Lentes de Contacto</span>
+        </a>
+        <a href="reparaciones.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            <span>Reparaciones</span>
+        </a>
+        <a href="asesoramiento.html" class="nav-item">
+            <i class="fas fa-user-md"></i>
+            <span>Asesoramiento</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#" class="nav-item theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span>Modo Nocturno</span>
+        </a>
+    </div>
+</div>
+
+<!-- Barra de carga superior -->
+<div class="loading-bar-container">
+    <div class="loading-bar">
+        <div class="loading-progress"></div>
+        <div class="loading-shine"></div>
+    </div>
+</div>
+
+<!-- Botón de WhatsApp flotante -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
 </div>
 
 <section class="section-lentes-recetados">
@@ -62,7 +73,7 @@
         <!-- Encabezado elegante -->
         <div class="premium-header">
             <div class="luxury-icon">
-                <i class="fas fa-eye"></i>
+                <i class="fas fa-sun"></i>
                 <div class="icon-glow"></div>
             </div>
             <h1>Lentes de Sol Premium</h1>
@@ -72,179 +83,27 @@
             </p>
         </div>
 
-        <!-- Grid de productos premium -->
-        <div class="grid-lentes-sol">
-            <!-- Producto 1 - Aviador Premium -->
-            <div class="lente-sol-card premium-card">
-                <div class="card-overlay"></div>
-                <div class="quality-badge">
-                    <i class="fas fa-crown"></i>
-                    <span>Premium</span>
+        <!-- Área principal sin tarjetas -->
+        <div class="main-content-area">
+            <div class="coming-soon-message">
+                <div class="animated-icon">
+                    <i class="fas fa-sun"></i>
                 </div>
-                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Aviador Premium">
-                <div class="card-content">
-                    <h3>Aviador Premium</h3>
-                    <p class="product-subtitle">Colección Clásica</p>
-                    <p>Diseño atemporal con marcos de titanio y lentes polarizadas de alta definición. La elegancia que trasciende el tiempo.</p>
-                    <div class="premium-features">
-                        <div class="feature-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>UV400 Protection</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-gem"></i>
-                            <span>Titanio Premium</span>
-                        </div>
+                <h3>Colección en Desarrollo</h3>
+                <p>Estamos trabajando en traerte la mejor selección de lentes de sol premium. Muy pronto podrás explorar nuestra exclusiva colección.</p>
+                <div class="feature-preview">
+                    <div class="preview-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Protección UV400</span>
                     </div>
-                    <button class="btn-premium" onclick="openProductModal('aviador')">
-                        <span>Ver Detalles</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Producto 2 - Ejecutivo Elite -->
-            <div class="lente-sol-card executive-card">
-                <div class="card-overlay"></div>
-                <div class="quality-badge">
-                    <i class="fas fa-star"></i>
-                    <span>Elite</span>
-                </div>
-                <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Ejecutivo Elite">
-                <div class="card-content">
-                    <h3>Ejecutivo Elite</h3>
-                    <p class="product-subtitle">Colección Profesional</p>
-                    <p>Sofisticación para el ejecutivo moderno. Marcos de acetato italiano con lentes antirreflejantes de última generación.</p>
-                    <div class="premium-features">
-                        <div class="feature-item">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Profesional</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-award"></i>
-                            <span>Acetato Italiano</span>
-                        </div>
+                    <div class="preview-item">
+                        <i class="fas fa-gem"></i>
+                        <span>Materiales Premium</span>
                     </div>
-                    <button class="btn-premium" onclick="openProductModal('ejecutivo-sol')">
-                        <span>Ver Detalles</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Producto 3 - Deportivo Pro -->
-            <div class="lente-sol-card sport-card">
-                <div class="card-overlay"></div>
-                <div class="quality-badge">
-                    <i class="fas fa-bolt"></i>
-                    <span>Sport Pro</span>
-                </div>
-                <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Deportivo Pro">
-                <div class="card-content">
-                    <h3>Deportivo Pro</h3>
-                    <p class="product-subtitle">Colección Deportiva</p>
-                    <p>Rendimiento superior para atletas exigentes. Tecnología anti-impacto con materiales ultralivianos y grip antideslizante.</p>
-                    <div class="premium-features">
-                        <div class="feature-item">
-                            <i class="fas fa-running"></i>
-                            <span>Anti-impacto</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-feather"></i>
-                            <span>Ultraliviano</span>
-                        </div>
+                    <div class="preview-item">
+                        <i class="fas fa-award"></i>
+                        <span>Diseños Exclusivos</span>
                     </div>
-                    <button class="btn-premium" onclick="openProductModal('deportivo-sol')">
-                        <span>Ver Detalles</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Producto 4 - Vintage Luxury -->
-            <div class="lente-sol-card vintage-card">
-                <div class="card-overlay"></div>
-                <div class="quality-badge">
-                    <i class="fas fa-history"></i>
-                    <span>Vintage</span>
-                </div>
-                <img src="https://images.unsplash.com/photo-1556306645-d6ee0323e57f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Vintage Luxury">
-                <div class="card-content">
-                    <h3>Vintage Luxury</h3>
-                    <p class="product-subtitle">Colección Heritage</p>
-                    <p>Inspiración retro con tecnología moderna. Marcos artesanales con acabados únicos y lentes de cristal mineral.</p>
-                    <div class="premium-features">
-                        <div class="feature-item">
-                            <i class="fas fa-palette"></i>
-                            <span>Artesanal</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-diamond"></i>
-                            <span>Cristal Mineral</span>
-                        </div>
-                    </div>
-                    <button class="btn-premium" onclick="openProductModal('vintage-sol')">
-                        <span>Ver Detalles</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Producto 5 - Femenino Elegance -->
-            <div class="lente-sol-card feminine-card">
-                <div class="card-overlay"></div>
-                <div class="quality-badge">
-                    <i class="fas fa-heart"></i>
-                    <span>Elegance</span>
-                </div>
-                <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Femenino Elegance">
-                <div class="card-content">
-                    <h3>Femenino Elegance</h3>
-                    <p class="product-subtitle">Colección Dama</p>
-                    <p>Diseños exclusivos que realzan la feminidad. Detalles en cristales Swarovski y marcos con formas orgánicas.</p>
-                    <div class="premium-features">
-                        <div class="feature-item">
-                            <i class="fas fa-gem"></i>
-                            <span>Swarovski</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-magic"></i>
-                            <span>Exclusivo</span>
-                        </div>
-                    </div>
-                    <button class="btn-premium" onclick="openProductModal('femenino-sol')">
-                        <span>Ver Detalles</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Producto 6 - Edición Limitada -->
-            <div class="lente-sol-card limited-card">
-                <div class="card-overlay"></div>
-                <div class="quality-badge limited-badge">
-                    <i class="fas fa-certificate"></i>
-                    <span>Limited</span>
-                </div>
-                <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Lentes Edición Limitada">
-                <div class="card-content">
-                    <h3>Edición Limitada</h3>
-                    <p class="product-subtitle">Colección Exclusiva</p>
-                    <p>Piezas únicas numeradas con certificado de autenticidad. Materiales exóticos y diseño de vanguardia.</p>
-                    <div class="premium-features">
-                        <div class="feature-item">
-                            <i class="fas fa-certificate"></i>
-                            <span>Numerado</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-crown"></i>
-                            <span>Exclusivo</span>
-                        </div>
-                    </div>
-                    <button class="btn-premium" onclick="openProductModal('limitada-sol')">
-                        <span>Ver Detalles</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -256,130 +115,30 @@
                 <p>Descubre la diferencia de la calidad premium. Asesoramiento personalizado y garantía de satisfacción total.</p>
                 <div class="cta-features">
                     <div class="cta-feature">
-                        <i class="fas fa-user-tie"></i>
-                        <span>Asesoramiento Experto</span>
+                        <i class="fas fa-user-md"></i>
+                        <span>Asesoramiento Profesional</span>
                     </div>
                     <div class="cta-feature">
-                        <i class="fas fa-shield-check"></i>
-                        <span>Garantía Premium</span>
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Garantía Total</span>
                     </div>
                     <div class="cta-feature">
-                        <i class="fas fa-truck"></i>
-                        <span>Entrega Especializada</span>
+                        <i class="fas fa-clock"></i>
+                        <span>Entrega Rápida</span>
                     </div>
                 </div>
-                <button class="btn-cta-premium" onclick="window.location.href='index.html#contacto'">
-                    <i class="fas fa-phone"></i>
-                    <span>Consultar Colección</span>
+                <button class="btn-cta-premium" onclick="openWhatsApp()">
+                    <span>Contáctanos</span>
+                    <i class="fab fa-whatsapp"></i>
                 </button>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Modal para detalles del producto -->
-<div id="productModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 id="modalTitle">Título del Producto</h2>
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-        </div>
-        <div class="modal-body">
-            <img id="modalImage" src="" alt="" class="modal-image">
-            
-            <div class="modal-specs">
-                <div class="spec-item">
-                    <div class="spec-label">Material</div>
-                    <div class="spec-value" id="specMaterial">-</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Peso</div>
-                    <div class="spec-value" id="specWeight">-</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Tipo</div>
-                    <div class="spec-value" id="specType">-</div>
-                </div>
-                <div class="spec-item">
-                    <div class="spec-label">Garantía</div>
-                    <div class="spec-value" id="specWarranty">-</div>
-                </div>
-            </div>
-            
-            <div class="modal-features">
-                <h4><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 8px;"></i>Características destacadas</h4>
-                <ul class="features-list" id="featuresList">
-                    <!-- Se llenan dinámicamente -->
-                </ul>
-            </div>
-            
-            <div class="modal-description">
-                <h4><i class="fas fa-info-circle" style="color: var(--primary-color); margin-right: 8px;"></i>Descripción</h4>
-                <p id="modalDescription">-</p>
-            </div>
-            
-            <div class="modal-price">
-                <div class="price-label">Precio estimado</div>
-                <div class="price-value" id="modalPrice">-</div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button class="modal-btn secondary" onclick="goToContactForm('productos')">
-                <i class="fas fa-envelope"></i> Consultar
-            </button>
-            <button class="modal-btn primary" onclick="goToContactForm('examen')">
-                <i class="fas fa-calendar-check"></i> Agendar Examen
-            </button>
-        </div>
-    </div>
-</div>
+<!-- Modal para productos (removido por simplicidad) -->
 
-<script src="script.js"></script>
-<script>
-// Funcionalidad del modo nocturno
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const body = document.body;
-
-    // Verificar tema guardado
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '🌙';
-    }
-
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = body.getAttribute('data-theme');
-        
-        if (currentTheme === 'dark') {
-            body.removeAttribute('data-theme');
-            themeIcon.textContent = '🌙';
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            themeIcon.textContent = '🌙';
-            localStorage.setItem('theme', 'dark');
-        }
-    });
-});
-</script>
-
-<!-- Botón flotante de WhatsApp -->
-<div class="whatsapp-float" onclick="openWhatsApp()">
-    <i class="fab fa-whatsapp"></i>
-    <div class="whatsapp-tooltip">¡Contáctanos por WhatsApp!</div>
-</div>
-
-<script>
-// Función para abrir WhatsApp
-function openWhatsApp() {
-    const phoneNumber = "5493534123456"; // Reemplaza con el número real de la óptica
-    const message = encodeURIComponent("¡Hola! Me interesan los lentes de sol premium. ¿Podrían brindarme más información?");
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappURL, '_blank');
-}
-</script>
+<script src="lentes-sol.js"></script>
 
 </body>
 </html>

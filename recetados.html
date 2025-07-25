@@ -8,45 +8,47 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-
-<!-- Botones de navegación fijos -->
-<div class="navigation-buttons">
-    <!-- Botón de regreso -->
-    <button class="btn-nav btn-back" onclick="window.location.href='index.html'" title="Volver al inicio">
-        <span class="icon-text">🏠</span>
-        <span class="btn-text">Inicio</span>
+<!-- Menú de navegación desplegable -->
+<div class="dropdown-nav">
+    <button class="dropdown-btn" title="Menú de navegación">
+        <i class="fas fa-bars"></i>
+        <span>Menú</span>
+        <i class="fas fa-chevron-down dropdown-arrow"></i>
     </button>
-    
-    <!-- Botón de lentes de contacto -->
-    <button class="btn-nav btn-contacts" onclick="window.location.href='lentes-contacto.html'" title="Ver Lentes de Contacto">
-        <span class="icon-text">👁️</span>
-        <span class="btn-text">Lentes de Contacto</span>
-    </button>
-    
-    <!-- Botón de lentes de sol -->
-    <button class="btn-nav btn-sunglasses" onclick="window.location.href='lentes-sol.html'" title="Ver Lentes de Sol">
-        <span class="icon-text">🕶️</span>
-        <span class="btn-text">Lentes de Sol</span>
-    </button>
-    
-    <!-- Botón de reparaciones -->
-    <button class="btn-nav btn-repairs" onclick="window.location.href='reparaciones.html'" title="Ver Reparaciones">
-        <span class="icon-text">🔧</span>
-        <span class="btn-text">Reparaciones</span>
-    </button>
-    
-    <!-- Botón de asesoramiento -->
-    <button class="btn-nav btn-consulting" onclick="window.location.href='asesoramiento.html'" title="Ver Asesoramiento">
-        <span class="icon-text">👨‍⚕️</span>
-        <span class="btn-text">Asesoramiento</span>
-    </button>
-    
-    <!-- Botón de modo nocturno -->
-    <button class="btn-nav btn-theme" id="theme-toggle" title="Cambiar tema">
-        <span class="icon-text" id="theme-icon">🌙</span>
-        <span class="btn-text">Tema</span>
-    </button>
+    <div class="dropdown-content">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="lentes-contacto.html" class="nav-item">
+            <i class="fas fa-eye"></i>
+            <span>Lentes de Contacto</span>
+        </a>
+        <a href="lentes-sol.html" class="nav-item">
+            <i class="fas fa-glasses"></i>
+            <span>Lentes de Sol</span>
+        </a>
+        <a href="reparaciones.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            <span>Reparaciones</span>
+        </a>
+        <a href="asesoramiento.html" class="nav-item">
+            <i class="fas fa-user-md"></i>
+            <span>Asesoramiento</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#" class="nav-item theme-toggle" id="theme-toggle-new">
+            <i class="fas fa-moon" id="theme-icon-new"></i>
+            <span>Cambiar Tema</span>
+        </a>
+    </div>
 </div>
+
+<!-- Botón de WhatsApp flotante -->
+<a href="#" class="whatsapp-float" id="whatsapp-btn" title="Contactanos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-text">WhatsApp</span>
+</a>
 
 <section class="section-lentes-recetados">
     <div class="container">
@@ -162,41 +164,12 @@
     </div>
 </div>
 
+<!-- Botón de WhatsApp flotante -->
+
 <script src="script.js"></script>
-<script>
-// Funcionalidad del modo nocturno
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const body = document.body;
 
-    // Verificar tema guardado
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.setAttribute('data-theme', 'dark');
-        themeIcon.className = 'fas fa-low-vision';
-    }
-
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = body.getAttribute('data-theme');
-        
-        if (currentTheme === 'dark') {
-            body.removeAttribute('data-theme');
-            themeIcon.className = 'fas fa-glasses';
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            themeIcon.className = 'fas fa-low-vision';
-            localStorage.setItem('theme', 'dark');
-        }
-    });
-});
-
-// Función para ir al formulario de contacto con motivo específico
-function goToContactForm(motivo) {
-    window.location.href = `index.html#contacto?motivo=${motivo}`;
-}
-</script>
+<!-- Scripts -->
+<script src="recetados.js"></script>
 
 </body>
 </html>

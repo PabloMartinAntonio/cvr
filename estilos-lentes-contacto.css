@@ -1,3 +1,337 @@
+
+/* Menú desplegable de navegación (idéntico a recetados) */
+.dropdown-nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    font-family: inherit;
+}
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 151, 178, 0.3);
+}
+.dropdown-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 151, 178, 0.4);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+}
+.dropdown-nav.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+.dropdown-content {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 220px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    z-index: 1001;
+}
+.dropdown-nav.open .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+.nav-item:hover {
+    color: white;
+    transform: translateX(5px);
+}
+.nav-item:hover::before {
+    width: 100%;
+}
+.nav-item i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+.nav-item:hover i {
+    transform: scale(1.1);
+}
+.nav-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 8px 12px;
+}
+.theme-toggle {
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+}
+.theme-toggle:hover i {
+    transform: scale(1.2) rotate(15deg);
+}
+@media (max-width: 768px) {
+    .dropdown-nav {
+        top: 15px;
+        left: 15px;
+    }
+    .dropdown-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    .dropdown-content {
+        min-width: 200px;
+    }
+    .nav-item {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+}
+body {
+    background: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', Arial, sans-serif;
+}
+.contacto-container {
+    width: 410px;
+    max-width: 98vw;
+    background: #fff;
+    border-radius: 28px;
+    box-shadow: 0 8px 32px rgba(0,151,178,0.10), 0 2px 8px rgba(0,0,0,0.07);
+    padding: 3.2rem 2.2rem 2.5rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+.contacto-container.big {
+    width: 480px;
+    max-width: 99vw;
+    padding: 3.5rem 2.5rem 2.8rem 2.5rem;
+    gap: 2rem;
+}
+/* Fondo animado liviano */
+.background-anim {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    background: #0097B2;
+    animation: float-bubble 8s infinite ease-in-out;
+}
+.bubble1 { width: 80px; height: 80px; left: 10vw; top: 70vh; animation-delay: 0s; }
+.bubble2 { width: 50px; height: 50px; left: 80vw; top: 60vh; animation-delay: 2s; }
+.bubble3 { width: 30px; height: 30px; left: 60vw; top: 85vh; animation-delay: 4s; }
+.bubble4 { width: 60px; height: 60px; left: 30vw; top: 90vh; animation-delay: 1s; }
+@keyframes float-bubble {
+    0% { transform: translateY(0) scale(1); opacity: 0.18; }
+    50% { transform: translateY(-60px) scale(1.1); opacity: 0.28; }
+    100% { transform: translateY(0) scale(1); opacity: 0.18; }
+}
+.lens {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 60% 40%, #2BB4D1 60%, #0097B2 100%);
+    opacity: 0.13;
+    filter: blur(1.5px);
+    animation: lens-move 10s infinite alternate ease-in-out;
+}
+.lens1 { width: 120px; height: 60px; left: 20vw; top: 20vh; animation-delay: 0s; }
+.lens2 { width: 90px; height: 45px; left: 70vw; top: 30vh; animation-delay: 3s; }
+@keyframes lens-move {
+    0% { transform: scale(1) rotate(-8deg); }
+    100% { transform: scale(1.08) rotate(8deg); }
+}
+.contacto-title {
+    font-size: 2.1rem;
+    color: #0097B2;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+    letter-spacing: 0.5px;
+}
+.contacto-frase {
+    color: #64748b;
+    font-size: 1.08rem;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+.contacto-detalle {
+    background: #e0f7fa;
+    color: #0097B2;
+    border-radius: 16px;
+    padding: 1.1em 1em 1em 1em;
+    margin-bottom: 0.5em;
+    font-size: 1.01rem;
+    box-shadow: 0 2px 8px rgba(0,151,178,0.07);
+    text-align: center;
+}
+.detalle-destacado {
+    color: #2BB4D1;
+    font-weight: 600;
+    font-size: 1.08em;
+    display: block;
+    margin-top: 0.7em;
+}
+
+/* Animación de partículas decorativas */
+.particulas-anim {
+    position: absolute;
+    left: 0; right: 0; bottom: 0; top: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.particula {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, #2BB4D1 60%, #00eaff 100%);
+    opacity: 0.22;
+    animation: particula-flotar linear infinite;
+}
+@keyframes particula-flotar {
+    0% { transform: translateY(0) scale(1); }
+    80% { opacity: 0.22; }
+    100% { transform: translateY(-60px) scale(1.2); opacity: 0; }
+}
+
+/* Botón flotante WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1002;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    overflow: hidden;
+}
+.whatsapp-float:hover {
+    box-shadow: 0 8px 32px rgba(37,211,102,0.28);
+    transform: scale(1.08);
+}
+.whatsapp-icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+.progress-label {
+    font-size: 1.08rem;
+    color: #0097B2;
+    font-weight: 500;
+    margin-bottom: 0.2em;
+}
+.progress-bar-outer {
+    width: 100%;
+    background: #e2e8f0;
+    border-radius: 20px;
+    height: 38px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.progress-bar-inner {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #0097B2 0%, #2BB4D1 60%, #00eaff 100%);
+    border-radius: 20px;
+    transition: width 1.5s cubic-bezier(.4,0,.2,1), box-shadow 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+}
+.progress-bar-inner::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; height: 100%; width: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.0) 60%, rgba(255,255,255,0.25) 80%, rgba(255,255,255,0.0) 100%);
+    pointer-events: none;
+    animation: shine 2.2s infinite linear;
+}
+@keyframes shine {
+    0% { transform: translateX(-80%); }
+    100% { transform: translateX(120%); }
+}
+.progress-bar-inner.bounce {
+    animation: bounce-bar 0.5s cubic-bezier(.4,1.6,.4,1) 1;
+    box-shadow: 0 0 16px 2px #2BB4D1;
+}
+@keyframes bounce-bar {
+    0% { transform: scaleX(1); }
+    60% { transform: scaleX(1.08); }
+    80% { transform: scaleX(0.96); }
+    100% { transform: scaleX(1); }
+}
+.progress-bar-text {
+    position: absolute;
+    right: 16px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px #0097B2, 0 0px 2px #fff;
+    filter: drop-shadow(0 0 2px #2BB4D1);
+    transition: color 0.3s;
+}
 /* ================================ */
 /* LENTES DE CONTACTO - PRÓXIMAMENTE */
 /* ================================ */

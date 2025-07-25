@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lentes de Sol | Clara Visión</title>
+    <link rel="stylesheet" href="estilos-lentes-sol.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Partículas flotantes del fondo -->
+<div class="floating-particles">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
+</div>
+
+<!-- Menú de navegación desplegable -->
+<div class="dropdown-nav">
+    <button class="dropdown-btn" title="Menú de navegación">
+        <i class="fas fa-bars"></i>
+        <span>Menú</span>
+        <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="recetados.html" class="nav-item">
+            <i class="fas fa-glasses"></i>
+            <span>Lentes Recetados</span>
+        </a>
+        <a href="lentes-contacto.html" class="nav-item">
+            <i class="fas fa-eye"></i>
+            <span>Lentes de Contacto</span>
+        </a>
+        <a href="reparaciones.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            <span>Reparaciones</span>
+        </a>
+        <a href="asesoramiento.html" class="nav-item">
+            <i class="fas fa-user-md"></i>
+            <span>Asesoramiento</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#" class="nav-item theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i>
+            <span>Modo Nocturno</span>
+        </a>
+    </div>
+</div>
+
+<!-- Barra de carga superior -->
+<div class="loading-bar-container">
+    <div class="loading-bar">
+        <div class="loading-progress"></div>
+        <div class="loading-shine"></div>
+    </div>
+</div>
+
+<!-- Botón de WhatsApp flotante -->
+<div class="whatsapp-float" onclick="openWhatsApp()">
+    <i class="fab fa-whatsapp"></i>
+</div>
+
+<section class="section-lentes-recetados">
+    <div class="container">
+        <!-- Encabezado elegante -->
+        <div class="premium-header">
+            <div class="luxury-icon">
+                <i class="fas fa-sun"></i>
+                <div class="icon-glow"></div>
+            </div>
+            <h1>Lentes de Sol Premium</h1>
+            <h2>Elegancia y Protección Superior</h2>
+            <p class="premium-description">
+                Descubre nuestra colección exclusiva de lentes de sol. Diseños sofisticados con tecnología avanzada de protección UV y materiales de la más alta calidad.
+            </p>
+        </div>
+
+        <!-- Área principal sin tarjetas -->
+        <div class="main-content-area">
+            <div class="coming-soon-message">
+                <div class="animated-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3>Colección en Desarrollo</h3>
+                <p>Estamos trabajando en traerte la mejor selección de lentes de sol premium. Muy pronto podrás explorar nuestra exclusiva colección.</p>
+                <div class="feature-preview">
+                    <div class="preview-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Protección UV400</span>
+                    </div>
+                    <div class="preview-item">
+                        <i class="fas fa-gem"></i>
+                        <span>Materiales Premium</span>
+                    </div>
+                    <div class="preview-item">
+                        <i class="fas fa-award"></i>
+                        <span>Diseños Exclusivos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Premium -->
+        <div class="premium-cta">
+            <div class="cta-content">
+                <h3>Experiencia Clara Visión</h3>
+                <p>Descubre la diferencia de la calidad premium. Asesoramiento personalizado y garantía de satisfacción total.</p>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-user-md"></i>
+                        <span>Asesoramiento Profesional</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Garantía Total</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Entrega Rápida</span>
+                    </div>
+                </div>
+                <button class="btn-cta-premium" onclick="openWhatsApp()">
+                    <span>Contáctanos</span>
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal para productos (removido por simplicidad) -->
+
+<script src="lentes-sol.js"></script>
+
+</body>
+</html>

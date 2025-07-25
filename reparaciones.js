@@ -1,3 +1,73 @@
+// Número de WhatsApp centralizado (ejemplo: 5491122334455)
+const WHATSAPP_NUMBER = '5491122334455'; // <-- Cambia este número por el real
+
+// Forzar que los botones de WhatsApp en los modales abran WhatsApp en nueva pestaña y no recarguen la página
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-whatsapp').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Evita que el click cierre el modal
+            var consulta = btn.getAttribute('data-consulta') || 'consulta';
+            var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hola! Quiero consultar sobre ' + consulta);
+            window.open(url, '_blank');
+            return false;
+        });
+    });
+});
+
+// Desactivar botón flotante de WhatsApp cuando un modal está abierto
+function setWhatsappFloatDisabled(disabled) {
+    var top = document.getElementById('whatsapp-float-top');
+    var bottom = document.getElementById('whatsapp-float-bottom');
+    [top, bottom].forEach(function(btn) {
+        if (!btn) return;
+        if (disabled) {
+            btn.classList.add('whatsapp-float-disabled');
+            btn.onclick = function(e) { e.preventDefault(); return false; };
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.4';
+        } else {
+            btn.classList.remove('whatsapp-float-disabled');
+            btn.onclick = function() { contactWhatsApp('consulta'); };
+            btn.style.pointerEvents = '';
+            btn.style.opacity = '';
+        }
+    });
+}
+
+// Modal: dejar animación siempre activa y evitar cierre accidental
+let escapeListener = null;
+function openModal(id) {
+    var modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        // No cerrar modal por clic en fondo
+        modal.onclick = null;
+        // Permitir cerrar con Escape
+        escapeListener = function(e) {
+            if (e.key === 'Escape') closeModal(id);
+        };
+        document.addEventListener('keydown', escapeListener);
+        setWhatsappFloatDisabled(true);
+        document.body.classList.add('modal-open');
+    }
+}
+function closeModal(id) {
+    var modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'none';
+        // Limpiar eventos
+        modal.onclick = null;
+        if (escapeListener) {
+            document.removeEventListener('keydown', escapeListener);
+            escapeListener = null;
+        }
+        setWhatsappFloatDisabled(false);
+        document.body.classList.remove('modal-open');
+    }
+}
 // reparaciones.js - Funcionalidad para la página de reparaciones
 // Manejo de temas, dropdown, modales y WhatsApp
 

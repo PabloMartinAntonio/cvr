@@ -82,27 +82,65 @@
                 Descubre nuestra colección exclusiva de lentes de sol. Diseños sofisticados con tecnología avanzada de protección UV y materiales de la más alta calidad.
             </p>
         </div>
-
-        <!-- Área principal sin tarjetas -->
-        <div class="main-content-area">
-            <div class="coming-soon-message">
-                <div class="animated-icon">
-                    <i class="fas fa-sun"></i>
+        <div class="grid-lentes-sol">
+            <!-- Producto 1 -->
+                <div class="lente-sol-card">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Aviador Premium">
+                    <div class="card-content">
+                        <h3>Aviador Premium</h3>
+                        <div class="product-subtitle">Titanio Premium</div>
+                        <p>Diseño aviador clásico con tecnología UV400 y marcos ultralivianos de titanio.</p>
+                        <button class="modal-btn primary" onclick="openProductModal('aviador')">Ver detalles</button>
+                    </div>
                 </div>
-                <h3>Colección en Desarrollo</h3>
-                <p>Estamos trabajando en traerte la mejor selección de lentes de sol premium. Muy pronto podrás explorar nuestra exclusiva colección.</p>
-                <div class="feature-preview">
-                    <div class="preview-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Protección UV400</span>
+                <!-- Producto 2 -->
+                <div class="lente-sol-card">
+                    <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Ejecutivo Elite">
+                    <div class="card-content">
+                        <h3>Ejecutivo Elite</h3>
+                        <div class="product-subtitle">Acetato Italiano</div>
+                        <p>Estilo ejecutivo moderno, materiales premium y lentes antirreflejantes.</p>
+                        <button class="modal-btn primary" onclick="openProductModal('ejecutivo-sol')">Ver detalles</button>
                     </div>
-                    <div class="preview-item">
-                        <i class="fas fa-gem"></i>
-                        <span>Materiales Premium</span>
+                </div>
+                <!-- Producto 3 -->
+                <div class="lente-sol-card">
+                    <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Deportivo Pro">
+                    <div class="card-content">
+                        <h3>Deportivo Pro</h3>
+                        <div class="product-subtitle">TR90 Sport</div>
+                        <p>Para atletas exigentes: grip antideslizante, anti-impacto y ventilación optimizada.</p>
+                        <button class="modal-btn primary" onclick="openProductModal('deportivo-sol')">Ver detalles</button>
                     </div>
-                    <div class="preview-item">
-                        <i class="fas fa-award"></i>
-                        <span>Diseños Exclusivos</span>
+                </div>
+                <!-- Producto 4 -->
+                <div class="lente-sol-card">
+                    <img src="https://images.unsplash.com/photo-1556306645-d6ee0323e57f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Vintage Luxury">
+                    <div class="card-content">
+                        <h3>Vintage Luxury</h3>
+                        <div class="product-subtitle">Acetato Artesanal</div>
+                        <p>Inspiración retro, marcos artesanales y lentes de cristal mineral.</p>
+                        <button class="modal-btn primary" onclick="openProductModal('vintage-sol')">Ver detalles</button>
+                    </div>
+                </div>
+                <!-- Producto 5 -->
+                <div class="lente-sol-card">
+                    <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Femenino Elegance">
+                    <div class="card-content">
+                        <h3>Femenino Elegance</h3>
+                        <div class="product-subtitle">Acetato + Swarovski</div>
+                        <p>Diseños exclusivos con detalles en cristales Swarovski y formas orgánicas.</p>
+                        <button class="modal-btn primary" onclick="openProductModal('femenino-sol')">Ver detalles</button>
+                    </div>
+                </div>
+                <!-- Producto 6 -->
+                <div class="lente-sol-card">
+                    <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Edición Limitada">
+                    <div class="card-content">
+                        <h3>Edición Limitada</h3>
+                        <div class="product-subtitle">Materiales Exóticos</div>
+                        <p>Piezas numeradas, materiales exóticos y certificado de autenticidad.</p>
+                        <button class="modal-btn primary" onclick="openProductModal('limitada-sol')">Ver detalles</button>
                     </div>
                 </div>
             </div>
@@ -136,7 +174,59 @@
     </div>
 </section>
 
-<!-- Modal para productos (removido por simplicidad) -->
+
+<!-- Modal para detalles del producto -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Título del Producto</h2>
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modalImage" src="" alt="" class="modal-image">
+            <div class="modal-specs">
+                <div class="spec-item">
+                    <div class="spec-label">Material</div>
+                    <div class="spec-value" id="specMaterial">-</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Peso</div>
+                    <div class="spec-value" id="specWeight">-</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Tipo</div>
+                    <div class="spec-value" id="specType">-</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Garantía</div>
+                    <div class="spec-value" id="specWarranty">-</div>
+                </div>
+            </div>
+            <div class="modal-features">
+                <h4><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 8px;"></i>Características destacadas</h4>
+                <ul class="features-list" id="featuresList">
+                    <!-- Se llenan dinámicamente -->
+                </ul>
+            </div>
+            <div class="modal-description">
+                <h4><i class="fas fa-info-circle" style="color: var(--primary-color); margin-right: 8px;"></i>Descripción</h4>
+                <p id="modalDescription">-</p>
+            </div>
+            <div class="modal-price">
+                <div class="price-label">Precio estimado</div>
+                <div class="price-value" id="modalPrice">-</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn secondary" onclick="goToContactForm('productos')">
+                <i class="fas fa-envelope"></i> Consultar
+            </button>
+            <button class="modal-btn primary" onclick="goToContactForm('examen')">
+                <i class="fas fa-calendar-check"></i> Agendar Examen
+            </button>
+        </div>
+    </div>
+</div>
 
 <script src="lentes-sol.js"></script>
 

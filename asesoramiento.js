@@ -1,3 +1,36 @@
+// ========== DELEGACIÓN DE EVENTOS PARA MODALES, WHATSAPP Y SCROLL ==========
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.addEventListener('click', function(e) {
+        // Abrir modal
+        const modalBtn = e.target.closest('[data-modal]');
+        if (modalBtn) {
+            const modalId = modalBtn.getAttribute('data-modal');
+            if (modalId) openModal(modalId);
+            return;
+        }
+        // Cerrar modal
+        const closeBtn = e.target.closest('[data-close]');
+        if (closeBtn) {
+            const modalId = closeBtn.getAttribute('data-close');
+            if (modalId) closeModal(modalId);
+            return;
+        }
+        // WhatsApp
+        const waBtn = e.target.closest('[data-whatsapp]');
+        if (waBtn) {
+            const consulta = waBtn.getAttribute('data-whatsapp');
+            if (consulta) contactWhatsApp(consulta);
+            return;
+        }
+        // Smooth scroll
+        const scrollBtn = e.target.closest('[data-scroll]');
+        if (scrollBtn) {
+            const sectionId = scrollBtn.getAttribute('data-scroll');
+            if (sectionId) scrollToSection(sectionId);
+            return;
+        }
+    });
+});
 // asesoramiento.js - Funcionalidad para la página de asesoramiento
 // Manejo de temas, dropdown, modales y WhatsApp
 

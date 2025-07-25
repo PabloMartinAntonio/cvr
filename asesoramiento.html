@@ -72,7 +72,7 @@
                 <h1>Asesoramiento <span class="text-primary">Personalizado</span></h1>
                 <p>Tu visión es única, y tu solución también debe serlo. Nuestros especialistas en cuidado visual te acompañan en cada paso para encontrar la solución perfecta que se adapte a tu estilo de vida.</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="scrollToSection('contacto-asesoramiento')">
+                    <button class="btn btn-primary" data-scroll="contacto-asesoramiento">
                         <i class="fas fa-calendar-alt"></i>
                         Agendar Consulta
                     </button>
@@ -93,7 +93,7 @@
                         </div>
                         <h3>Experiencia Profesional</h3>
                         <p>Especialistas en el sector de la óptica y cuidado visual profesional.</p>
-                        <button class="btn" onclick="openModal('modal-experiencia')">Ver Detalles</button>
+                        <button class="btn" data-modal="modal-experiencia">Ver Detalles</button>
                     </div>
                     
                     <div class="service-card">
@@ -102,7 +102,7 @@
                         </div>
                         <h3>Atención Personalizada</h3>
                         <p>Cada cliente recibe un plan de atención único, adaptado a sus necesidades específicas.</p>
-                        <button class="btn" onclick="openModal('modal-personalizada')">Ver Detalles</button>
+                        <button class="btn" data-modal="modal-personalizada">Ver Detalles</button>
                     </div>
                     
                     <div class="service-card">
@@ -111,7 +111,7 @@
                         </div>
                         <h3>Garantía de Calidad</h3>
                         <p>Respaldamos cada recomendación con garantía completa y seguimiento post-venta.</p>
-                        <button class="btn" onclick="openModal('modal-garantia')">Ver Detalles</button>
+                        <button class="btn" data-modal="modal-garantia">Ver Detalles</button>
                     </div>
                     
                     <div class="service-card">
@@ -120,7 +120,7 @@
                         </div>
                         <h3>Tiempo Dedicado</h3>
                         <p>Nos tomamos el tiempo necesario para entender tus necesidades sin prisa.</p>
-                        <button class="btn" onclick="openModal('modal-tiempo')">Ver Detalles</button>
+                        <button class="btn" data-modal="modal-tiempo">Ver Detalles</button>
                     </div>
                 </div>
             </div>
@@ -132,37 +132,146 @@
                 <h2>Nuestro Proceso de Asesoramiento</h2>
                 
                 <div class="features-grid">
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h3>Consulta Inicial</h3>
-                        <p>Conversamos sobre tu estilo de vida y necesidades visuales específicas durante 30-45 minutos.</p>
-                    </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Consulta Inicial</h3>
+                <p>Conversamos sobre tu estilo de vida y necesidades visuales específicas durante 30-45 minutos.</p>
+                <button class="btn btn-feature" data-modal="modal-consulta-inicial">Ver Detalles</button>
+            </div>
 
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <h3>Selección de Monturas</h3>
-                        <p>Te ayudamos a elegir la montura perfecta considerando tu rostro, estilo y comodidad.</p>
-                    </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Selección de Monturas</h3>
+                <p>Te ayudamos a elegir la montura perfecta considerando tu rostro, estilo y comodidad.</p>
+                <button class="btn btn-feature" data-modal="modal-seleccion-monturas">Ver Detalles</button>
+            </div>
 
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h3>Evaluación Visual</h3>
-                        <p>Realizamos una evaluación completa para determinar la graduación y tipo de lente ideal.</p>
-                    </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Evaluación Visual</h3>
+                <p>Realizamos una evaluación completa para determinar la graduación y tipo de lente ideal.</p>
+                <button class="btn btn-feature" data-modal="modal-evaluacion-visual">Ver Detalles</button>
+            </div>
 
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Seguimiento</h3>
-                        <p>Te acompañamos después de la entrega para asegurar tu completa satisfacción.</p>
-                    </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Seguimiento</h3>
+                <p>Te acompañamos después de la entrega para asegurar tu completa satisfacción.</p>
+                <button class="btn btn-feature" data-modal="modal-seguimiento">Ver Detalles</button>
+            </div>
+    <!-- Modales para cada paso del proceso de asesoramiento -->
+    <div id="modal-consulta-inicial" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal-consulta-inicial">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h2>Consulta Inicial</h2>
+                <p>Primer paso para entender tus necesidades visuales</p>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Entrevista personalizada sobre tu rutina y actividades.</li>
+                    <li>Identificación de problemas visuales y expectativas.</li>
+                    <li>Revisión de antecedentes y salud ocular.</li>
+                    <li>Duración aproximada: 30-45 minutos.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-whatsapp" data-whatsapp="consulta-inicial">
+                    <i class="fab fa-whatsapp"></i>
+                    Consultar por este paso
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-seleccion-monturas" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal-seleccion-monturas">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h2>Selección de Monturas</h2>
+                <p>Elegí la montura perfecta para vos</p>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Asesoramiento en estilos, materiales y formas.</li>
+                    <li>Prueba de diferentes modelos según tu rostro y preferencias.</li>
+                    <li>Recomendaciones para comodidad y durabilidad.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-whatsapp" data-whatsapp="seleccion-monturas">
+                    <i class="fab fa-whatsapp"></i>
+                    Consultar por este paso
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-evaluacion-visual" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal-evaluacion-visual">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h2>Evaluación Visual</h2>
+                <p>Determinamos la graduación y tipo de lente ideal</p>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Examen visual completo con instrumental profesional.</li>
+                    <li>Determinación de graduación y necesidades ópticas.</li>
+                    <li>Explicación clara de los resultados y opciones.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-whatsapp" data-whatsapp="evaluacion-visual">
+                    <i class="fab fa-whatsapp"></i>
+                    Consultar por este paso
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-seguimiento" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal-seguimiento">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h2>Seguimiento</h2>
+                <p>Acompañamiento post-venta para tu tranquilidad</p>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Contacto posterior a la entrega para asegurar satisfacción.</li>
+                    <li>Resolución de dudas y ajustes necesarios.</li>
+                    <li>Soporte continuo y recordatorio de controles futuros.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-whatsapp" data-whatsapp="seguimiento">
+                    <i class="fab fa-whatsapp"></i>
+                    Consultar por este paso
+                </button>
+            </div>
+        </div>
+    </div>
                 </div>
             </div>
         </section>
@@ -179,7 +288,7 @@
                     </div>
                     <h3>Solicitar Cita</h3>
                     <p>Nos pondremos en contacto contigo en menos de 24 horas para confirmar tu cita de asesoramiento personalizado.</p>
-                    <button class="btn" onclick="contactWhatsApp('cita')">Agendar Ahora</button>
+                    <button class="btn" data-whatsapp="cita">Agendar Ahora</button>
                 </div>
             </div>
         </section>
@@ -190,7 +299,7 @@
     <!-- Modal Experiencia Profesional -->
     <div id="modal-experiencia" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('modal-experiencia')">&times;</span>
+            <span class="close" data-close="modal-experiencia">&times;</span>
             <div class="modal-header">
                 <div class="modal-icon">
                     <i class="fas fa-graduation-cap"></i>
@@ -246,7 +355,7 @@
             </div>
             
             <div class="modal-footer">
-                <button class="btn-whatsapp" onclick="contactWhatsApp('experiencia')">
+                <button class="btn-whatsapp" data-whatsapp="experiencia">
                     <i class="fab fa-whatsapp"></i>
                     Consultar Ahora
                 </button>
@@ -257,7 +366,7 @@
     <!-- Modal Atención Personalizada -->
     <div id="modal-personalizada" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('modal-personalizada')">&times;</span>
+            <span class="close" data-close="modal-personalizada">&times;</span>
             <div class="modal-header">
                 <div class="modal-icon">
                     <i class="fas fa-user-check"></i>
@@ -313,7 +422,7 @@
             </div>
             
             <div class="modal-footer">
-                <button class="btn-whatsapp" onclick="contactWhatsApp('personalizada')">
+                <button class="btn-whatsapp" data-whatsapp="personalizada">
                     <i class="fab fa-whatsapp"></i>
                     Solicitar Consulta
                 </button>
@@ -324,7 +433,7 @@
     <!-- Modal Garantía de Calidad -->
     <div id="modal-garantia" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('modal-garantia')">&times;</span>
+            <span class="close" data-close="modal-garantia">&times;</span>
             <div class="modal-header">
                 <div class="modal-icon">
                     <i class="fas fa-award"></i>
@@ -380,7 +489,7 @@
             </div>
             
             <div class="modal-footer">
-                <button class="btn-whatsapp" onclick="contactWhatsApp('garantia')">
+                <button class="btn-whatsapp" data-whatsapp="garantia">
                     <i class="fab fa-whatsapp"></i>
                     Conocer Garantía
                 </button>
@@ -391,7 +500,7 @@
     <!-- Modal Tiempo Dedicado -->
     <div id="modal-tiempo" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('modal-tiempo')">&times;</span>
+            <span class="close" data-close="modal-tiempo">&times;</span>
             <div class="modal-header">
                 <div class="modal-icon">
                     <i class="fas fa-clock"></i>
@@ -447,7 +556,7 @@
             </div>
             
             <div class="modal-footer">
-                <button class="btn-whatsapp" onclick="contactWhatsApp('tiempo')">
+                <button class="btn-whatsapp" data-whatsapp="tiempo">
                     <i class="fab fa-whatsapp"></i>
                     Reservar Tiempo
                 </button>
@@ -456,7 +565,7 @@
     </div>
 
     <!-- Botón flotante de WhatsApp -->
-    <div class="whatsapp-float" onclick="contactWhatsApp('consulta')">
+    <div class="whatsapp-float" data-whatsapp="consulta">
         <i class="fab fa-whatsapp"></i>
     </div>
 

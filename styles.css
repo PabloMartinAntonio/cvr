@@ -65,7 +65,7 @@ a:hover {
     --transition-fast: all 0.15s ease;
 }
 
-[data-theme="dark"] {
+html[data-theme="dark"], body[data-theme="dark"] {
     --background: #0f172a;
     --background-alt: #1e293b;
     --background-primary: #1e293b;
@@ -83,7 +83,7 @@ a:hover {
 }
 
 /* Estilos específicos para modo oscuro en el header */
-[data-theme="dark"] .header {
+html[data-theme="dark"] .header, body[data-theme="dark"] .header {
     background: var(--header-bg);
     border-bottom: 1px solid var(--border);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
@@ -1397,6 +1397,68 @@ margin-top: 2rem;
     margin-top: 1rem;
     text-align: center;
     display: none;
+}
+
+/* ========================================
+   CONTADORES ANIMADOS
+   ======================================== */
+
+.stat-number {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.stat-number.counting {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* ========================================
+   MAPA INTERACTIVO
+   ======================================== */
+
+.map-item {
+    cursor: pointer !important;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 151, 178, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.map-item:hover::before {
+    left: 100%;
+}
+
+.map-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 151, 178, 0.2);
+    border-color: var(--primary-color);
+}
+
+.map-item:hover .contact-icon {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.map-item:hover .map-link-icon {
+    transform: translateX(3px);
+    color: var(--primary-color);
+}
+
+.map-item .map-hint {
+    color: var(--primary-color);
+    font-weight: 500;
+    opacity: 0.8;
 }
 
 /* ========================================

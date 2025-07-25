@@ -4,65 +4,17 @@
 
 // Inicialización del sitio cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Iniciando Clara Vision Website...');
-    console.log('   Timestamp:', new Date().toLocaleTimeString());
-    
-    // Inicializar componentes del sitio
-    initSiteComponents();
-    
-    // Inicializar chatbot con debugging extra
-    console.log('🤖 Creando instancia de ChatBot...');
+    // Inicializar tema, navegación, scroll y contadores
+    initThemeToggle();
+    initMobileNavigation();
+    initSmoothScrolling();
+    initCounters();
+    initEyeCareModal();
+    // Inicializar chatbot
     try {
         window.chatBot = new ChatBot();
-        console.log('✅ Instancia de ChatBot creada exitosamente');
-        
-        // Diagnóstico inmediato
-        setTimeout(() => {
-            console.log('🔍 DIAGNÓSTICO POST-INICIALIZACIÓN:');
-            if (window.chatBot) {
-                console.log('   ChatBot exists:', true);
-                console.log('   Toggle element:', !!window.chatBot.toggle);
-                console.log('   Window element:', !!window.chatBot.window);
-                console.log('   isOpen state:', window.chatBot.isOpen);
-                
-                // Probar acceso directo a elementos
-                const toggle = document.getElementById('chatbot-toggle');
-                const windowEl = document.getElementById('chatbot-window');
-                console.log('   Toggle by ID:', !!toggle);
-                console.log('   Window by ID:', !!windowEl);
-                
-                if (toggle) {
-                    console.log('   Toggle tag:', toggle.tagName);
-                    console.log('   Toggle classes:', [...toggle.classList]);
-                    console.log('   Toggle children:', toggle.children.length);
-                }
-                
-                if (windowEl) {
-                    console.log('   Window tag:', windowEl.tagName);
-                    console.log('   Window classes:', [...windowEl.classList]);
-                    console.log('   Window display:', window.getComputedStyle(windowEl).display);
-                }
-                
-                // Test click manual
-                window.testChatbot = function() {
-                    console.log('🧪 EJECUTANDO TEST MANUAL DEL CHATBOT...');
-                    if (window.chatBot) {
-                        window.chatBot.toggleChat();
-                    } else {
-                        console.error('❌ ChatBot no disponible para test');
-                    }
-                };
-                
-                console.log('💡 Ejecuta testChatbot() en la consola para probar manualmente');
-                
-            } else {
-                console.error('❌ window.chatBot no existe');
-            }
-        }, 1000);
-        
     } catch (error) {
         console.error('❌ ERROR AL CREAR CHATBOT:', error);
-        console.error('   Stack:', error.stack);
     }
 });
 
@@ -81,6 +33,7 @@ function initThemeToggle() {
     // Cargar tema guardado
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
 
     themeToggle.addEventListener('click', () => {
@@ -88,6 +41,7 @@ function initThemeToggle() {
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         
         document.documentElement.setAttribute('data-theme', newTheme);
+        document.body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
         
@@ -129,7 +83,7 @@ function initMobileNavigation() {
     });
 }
 
-// Scroll suave
+// Scroll suave y soporte para botones personalizados
 function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -143,6 +97,13 @@ function initSmoothScrolling() {
             }
         });
     });
+    // Botones personalizados
+    window.scrollToSection = function(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
 }
 
 /* ========================================
@@ -463,5 +424,111 @@ function closeChatbot() {
     }
 }
 
+// ========================================
+// FUNCIONALIDADES ADICIONALES
+// ========================================
+
+// 1. CONTADORES ANIMADOS
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+        
+        if (current >= target) return;
+        
+        const increment = target / 200; // Velocidad de animación
+        const timer = setInterval(() => {
+            const currentValue = +counter.innerText;
+            
+            if (currentValue < target) {
+                counter.innerText = Math.ceil(currentValue + increment);
+            } else {
+                counter.innerText = target;
+                
+                // Agregar símbolo según el tipo
+                if (target === 15) {
+                    counter.innerText = target + '+';
+                } else if (target === 5000) {
+                    counter.innerText = target + '+';
+                } else if (target === 50) {
+                    counter.innerText = target + '+';
+                } else if (target === 100) {
+                    counter.innerText = target + '%';
+                }
+                
+                clearInterval(timer);
+            }
+        }, 10);
+    });
+}
+
+// Inicializar contadores cuando la sección sea visible
+function initCounters() {
+    const statsSection = document.querySelector('.about');
+    
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    }
+}
+
+// 2. MODAL DE CUIDADO VISUAL
+function showEyeCareModal() {
+    const modal = document.getElementById('eye-care-modal');
+    if (modal) {
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
+    }
+}
+
+function closeEyeCareModal() {
+    const modal = document.getElementById('eye-care-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+        
+        // Marcar como visto para no mostrar en futuras visitas
+        localStorage.setItem('clara-vision-modal-shown', 'true');
+    }
+}
+
+// Mostrar modal al cargar la página (solo la primera vez)
+function initEyeCareModal() {
+    const hasSeenModal = localStorage.getItem('clara-vision-modal-shown');
+    
+    if (!hasSeenModal) {
+        setTimeout(() => {
+            showEyeCareModal();
+        }, 2000); // Mostrar después de 2 segundos
+    }
+}
+
+// 3. GOOGLE MAPS
+function openGoogleMaps() {
+    const address = "Bv. España 327, Villa María, Córdoba, Argentina";
+    const encodedAddress = encodeURIComponent(address);
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+    
+    // Abrir en nueva pestaña
+    window.open(googleMapsUrl, '_blank');
+}
+
+// Ya no se usa initSiteComponents, todo se inicializa arriba correctamente
+
 console.log('🤖 Clara Vision - Chatbot Script Cargado');
 console.log('💡 Comandos disponibles: debugChatbot(), openChatbot(), closeChatbot()');
+console.log('✨ Funcionalidades adicionales: contadores animados, modal de cuidado visual, Google Maps');

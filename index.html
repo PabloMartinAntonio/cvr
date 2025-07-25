@@ -54,7 +54,7 @@
         /* Critical CSS - Above the fold */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
-        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1030; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); height: 80px; }
+        /* .header eliminado del Critical CSS para permitir modo nocturno */
         .hero { margin-top: 80px; padding-top: 0; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; }
         .container { max-width: 1440px; margin: 0 auto; padding: 0 1rem; }
         .hero-text { margin-top: 0 !important; padding-top: 0 !important; }
@@ -125,7 +125,7 @@
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                     <li>
                         <button class="theme-toggle" id="theme-toggle" title="Cambiar tema" aria-label="Cambiar tema">
-                            <i id="theme-icon" class="fas fa-glasses"></i>
+                            <i id="theme-icon" class="fas fa-moon"></i>
                         </button>
                     </li>
                 </ul>
@@ -173,19 +173,19 @@
                 
                 <div class="stats-grid">
                     <div class="stat">
-                        <div class="stat-number">15+</div>
+                        <div class="stat-number" data-target="15">0</div>
                         <div class="stat-label">Años de experiencia</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">5000+</div>
+                        <div class="stat-number" data-target="5000">0</div>
                         <div class="stat-label">Clientes satisfechos</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">50+</div>
+                        <div class="stat-number" data-target="50">0</div>
                         <div class="stat-label">Marcas disponibles</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">100%</div>
+                        <div class="stat-number" data-target="100">0</div>
                         <div class="stat-label">Garantía</div>
                     </div>
                 </div>
@@ -388,7 +388,7 @@
                     <div class="social-links">
                         <h4>Síguenos</h4>
                         <div class="social-icons">
-                            <a href="#" class="social-icon">
+                            <a href="https://www.instagram.com/opticaclara.v/" class="social-icon" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-instagram"></i>
                             </a>
                             <a href="#" class="social-icon">

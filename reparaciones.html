@@ -10,6 +10,10 @@
 <body class="reparaciones-page">
 
 <!-- Menú de navegación desplegable -->
+<!-- Botón flotante de WhatsApp (arriba, restaurado) -->
+<div class="whatsapp-float" id="whatsapp-float-top">
+    <i class="fab fa-whatsapp"></i>
+</div>
 <div class="dropdown-nav">
     <button class="dropdown-btn" title="Menú de navegación">
         <i class="fas fa-bars"></i>
@@ -45,10 +49,7 @@
     </div>
 </div>
 
-<!-- Botón de WhatsApp flotante -->
-<div class="whatsapp-float" onclick="openWhatsApp()">
-    <i class="fab fa-whatsapp"></i>
-</div>
+
 
     <!-- Elementos de fondo profesionales -->
     <div class="professional-background">
@@ -133,7 +134,7 @@
                             <span>Garantía de satisfacción o reajuste gratuito</span>
                         </div>
 
-                        <button class="btn-service" onclick="openModal('modal-ajuste')">
+                        <button class="btn-service" data-modal="modal-ajuste">
                             <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -175,7 +176,7 @@
                             <span>Garantía total en cristales y montaje</span>
                         </div>
 
-                        <button class="btn-service" onclick="openModal('modal-cristales')">
+                        <button class="btn-service" data-modal="modal-cristales">
                             <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -217,7 +218,7 @@
                             <span>Limpieza completa y segura garantizada</span>
                         </div>
 
-                        <button class="btn-service" onclick="openModal('modal-limpieza')">
+                        <button class="btn-service" data-modal="modal-limpieza">
                             <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -259,7 +260,7 @@
                             <span>Evaluación profesional detallada</span>
                         </div>
 
-                        <button class="btn-service" onclick="openModal('modal-mantenimiento')">
+                        <button class="btn-service" data-modal="modal-mantenimiento">
                             <span>Ver Detalles</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -315,7 +316,7 @@
             <!-- Modal Ajuste de Monturas -->
             <div id="modal-ajuste" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeModal('modal-ajuste')">&times;</span>
+                    <span class="close" data-close="modal-ajuste">&times;</span>
                     <div class="modal-header">
                         <div class="modal-icon">
                             <i class="fas fa-adjust"></i>
@@ -371,10 +372,10 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button class="btn-whatsapp" onclick="contactWhatsApp('ajuste')">
+                        <a href="#" class="btn-whatsapp" data-consulta="ajuste" role="button">
                             <i class="fab fa-whatsapp"></i>
                             Solicitar Ajuste
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -382,7 +383,7 @@
             <!-- Modal Cambio de Cristales -->
             <div id="modal-cristales" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeModal('modal-cristales')">&times;</span>
+                    <span class="close" data-close="modal-cristales">&times;</span>
                     <div class="modal-header">
                         <div class="modal-icon">
                             <i class="fas fa-eye-dropper"></i>
@@ -438,10 +439,10 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button class="btn-whatsapp" onclick="contactWhatsApp('cristales')">
+                        <a href="#" class="btn-whatsapp" data-consulta="cristales" role="button">
                             <i class="fab fa-whatsapp"></i>
                             Cambiar Cristales
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -449,7 +450,7 @@
             <!-- Modal Limpieza Profunda -->
             <div id="modal-limpieza" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeModal('modal-limpieza')">&times;</span>
+                    <span class="close" data-close="modal-limpieza">&times;</span>
                     <div class="modal-header">
                         <div class="modal-icon">
                             <i class="fas fa-spray-can"></i>
@@ -505,10 +506,10 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button class="btn-whatsapp" onclick="contactWhatsApp('limpieza')">
+                        <a href="#" class="btn-whatsapp" data-consulta="limpieza" role="button">
                             <i class="fab fa-whatsapp"></i>
                             Solicitar Limpieza
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -516,7 +517,7 @@
             <!-- Modal Mantenimiento Preventivo -->
             <div id="modal-mantenimiento" class="modal">
                 <div class="modal-content">
-                    <span class="close" onclick="closeModal('modal-mantenimiento')">&times;</span>
+                    <span class="close" data-close="modal-mantenimiento">&times;</span>
                     <div class="modal-header">
                         <div class="modal-icon">
                             <i class="fas fa-cogs"></i>
@@ -572,41 +573,198 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button class="btn-whatsapp" onclick="contactWhatsApp('mantenimiento')">
+                        <a href="#" class="btn-whatsapp" data-consulta="mantenimiento" role="button">
                             <i class="fab fa-whatsapp"></i>
                             Programar Revisión
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Sección de proceso profesional -->
             <div class="process-section">
-                <h3>Nuestro Proceso Profesional</h3>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <div class="step-icon"><i class="fas fa-search"></i></div>
-                        <h4>Diagnóstico Preciso</h4>
-                        <p>Evaluación detallada con equipos especializados para identificar el problema exacto.</p>
+                <div class="process-header-row theme-aware-process" style="display: flex; align-items: center; justify-content: space-between; border-radius: 14px 14px 0 0; padding: 18px 24px 10px 24px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04); border-bottom: 1.5px solid var(--process-border, #e0e7ef); background: var(--process-bg, #f6fafd);">
+                    <h3 style="margin: 0; font-size: 1.5rem; color: var(--process-title, #1a3a5d); letter-spacing: 0.5px; font-weight: 700;">Nuestro Proceso Profesional</h3>
+                    <button class="btn-service process-btn" style="background: var(--process-btn-bg, #1a3a5d); color: var(--process-btn-color, #fff); border-radius: 8px; font-weight: 600; box-shadow: 0 2px 8px 0 rgba(26,58,93,0.08); padding: 8px 18px; font-size: 1rem; display: flex; align-items: center; gap: 8px; border: none; transition: background 0.2s;" data-modal="modal-proceso">
+                        <span>¿Cómo trabajamos?</span>
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </div>
+                <div style="height: 18px;"></div>
+                <div class="process-steps theme-aware-process" style="display: flex; flex-wrap: wrap; gap: 24px; border-radius: 0 0 14px 14px; padding: 24px; box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04); border-top: none; border: 1.5px solid var(--process-border, #e0e7ef); border-top: none; margin-bottom: 32px; background: var(--process-bg, #f6fafd);">
+                    <div class="process-step" style="flex: 1 1 180px; min-width: 180px; background: var(--process-card-bg, #fff); border-radius: 10px; box-shadow: 0 1px 4px 0 rgba(26,58,93,0.06); padding: 18px 14px; text-align: center; border: 1px solid var(--process-border, #e0e7ef);">
+                        <div class="step-number" style="font-size: 1.3rem; font-weight: 700; color: var(--process-title, #1a3a5d); background: var(--process-badge-bg, #e3f0fa); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto;">1</div>
+                        <div class="step-icon" style="font-size: 1.5rem; color: var(--process-title, #1a3a5d); margin-bottom: 6px;"><i class="fas fa-search"></i></div>
+                        <h4 style="margin: 0 0 6px 0; font-size: 1.1rem; color: var(--process-title, #1a3a5d); font-weight: 600;">Diagnóstico Preciso</h4>
+                        <p style="font-size: 0.97rem; color: var(--process-text, #3a4a5d);">Evaluación detallada con equipos especializados para identificar el problema exacto.</p>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
-                        <h4>Presupuesto Transparente</h4>
-                        <p>Cotización clara con todos los detalles, sin sorpresas ni costos ocultos.</p>
+                    <div class="process-step" style="flex: 1 1 180px; min-width: 180px; background: var(--process-card-bg, #fff); border-radius: 10px; box-shadow: 0 1px 4px 0 rgba(26,58,93,0.06); padding: 18px 14px; text-align: center; border: 1px solid var(--process-border, #e0e7ef);">
+                        <div class="step-number" style="font-size: 1.3rem; font-weight: 700; color: var(--process-title, #1a3a5d); background: var(--process-badge-bg, #e3f0fa); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto;">2</div>
+                        <div class="step-icon" style="font-size: 1.5rem; color: var(--process-title, #1a3a5d); margin-bottom: 6px;"><i class="fas fa-clipboard-list"></i></div>
+                        <h4 style="margin: 0 0 6px 0; font-size: 1.1rem; color: var(--process-title, #1a3a5d); font-weight: 600;">Presupuesto Transparente</h4>
+                        <p style="font-size: 0.97rem; color: var(--process-text, #3a4a5d);">Cotización clara con todos los detalles, sin sorpresas ni costos ocultos.</p>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <div class="step-icon"><i class="fas fa-tools"></i></div>
-                        <h4>Reparación Experta</h4>
-                        <p>Trabajo realizado con herramientas profesionales y técnicas especializadas.</p>
+                    <div class="process-step" style="flex: 1 1 180px; min-width: 180px; background: var(--process-card-bg, #fff); border-radius: 10px; box-shadow: 0 1px 4px 0 rgba(26,58,93,0.06); padding: 18px 14px; text-align: center; border: 1px solid var(--process-border, #e0e7ef);">
+                        <div class="step-number" style="font-size: 1.3rem; font-weight: 700; color: var(--process-title, #1a3a5d); background: var(--process-badge-bg, #e3f0fa); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto;">3</div>
+                        <div class="step-icon" style="font-size: 1.5rem; color: var(--process-title, #1a3a5d); margin-bottom: 6px;"><i class="fas fa-tools"></i></div>
+                        <h4 style="margin: 0 0 6px 0; font-size: 1.1rem; color: var(--process-title, #1a3a5d); font-weight: 600;">Reparación Experta</h4>
+                        <p style="font-size: 0.97rem; color: var(--process-text, #3a4a5d);">Trabajo realizado con herramientas profesionales y técnicas especializadas.</p>
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
-                        <h4>Control de Calidad</h4>
-                        <p>Verificación rigurosa de la reparación antes de devolver tus lentes.</p>
+                    <div class="process-step" style="flex: 1 1 180px; min-width: 180px; background: var(--process-card-bg, #fff); border-radius: 10px; box-shadow: 0 1px 4px 0 rgba(26,58,93,0.06); padding: 18px 14px; text-align: center; border: 1px solid var(--process-border, #e0e7ef);">
+                        <div class="step-number" style="font-size: 1.3rem; font-weight: 700; color: var(--process-title, #1a3a5d); background: var(--process-badge-bg, #e3f0fa); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto;">4</div>
+                        <div class="step-icon" style="font-size: 1.5rem; color: var(--process-title, #1a3a5d); margin-bottom: 6px;"><i class="fas fa-check-circle"></i></div>
+                        <h4 style="margin: 0 0 6px 0; font-size: 1.1rem; color: var(--process-title, #1a3a5d); font-weight: 600;">Control de Calidad</h4>
+                        <p style="font-size: 0.97rem; color: var(--process-text, #3a4a5d);">Verificación rigurosa de la reparación antes de devolver tus lentes.</p>
+                    </div>
+                </div>
+    <style>
+    /* Variables para modo claro y oscuro */
+    :root {
+        --process-bg: #f6fafd;
+        --process-title: #1a3a5d;
+        --process-text: #3a4a5d;
+        --process-card-bg: #fff;
+        --process-badge-bg: #e3f0fa;
+        --process-border: #e0e7ef;
+        --process-btn-bg: #1a3a5d;
+        --process-btn-color: #fff;
+    }
+    body.dark-mode, body[data-theme="dark"] {
+        --process-bg: #1a2330;
+        --process-title: #e3eaf7;
+        --process-text: #b6c2d1;
+        --process-card-bg: #232f3e;
+        --process-badge-bg: #2a3a4d;
+        --process-border: #2e3a4a;
+        --process-btn-bg: #2a3a4d;
+        --process-btn-color: #fff;
+    }
+    /* Ajuste para la sección proceso profesional */
+    .theme-aware-process {
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    /* Animación para el botón ¿Cómo trabajamos? */
+    .process-btn {
+        position: relative;
+        animation: processHeartbeat 1.8s infinite cubic-bezier(.4,0,.6,1);
+        outline: none;
+        cursor: pointer;
+    }
+    .process-btn.no-heartbeat {
+        animation: none !important;
+    }
+    @keyframes processHeartbeat {
+        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(26,58,93,0.13); }
+        10% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(26,58,93,0.10); }
+        20% { transform: scale(1); box-shadow: 0 0 0 0 rgba(26,58,93,0.13); }
+        30% { transform: scale(1.06); box-shadow: 0 0 0 4px rgba(26,58,93,0.08); }
+        40% { transform: scale(1); box-shadow: 0 0 0 0 rgba(26,58,93,0.13); }
+        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(26,58,93,0.13); }
+    }
+    .process-btn:focus, .process-btn:hover {
+        transform: scale(1.06);
+        background: var(--process-title, #1a3a5d);
+        box-shadow: 0 4px 16px 0 rgba(26,58,93,0.13);
+    }
+    .whatsapp-float-disabled {
+      pointer-events: none !important;
+      opacity: 0.4 !important;
+      filter: grayscale(1);
+      transition: opacity 0.2s, filter 0.2s;
+    }
+    </style>
+            </div>
+
+    <!-- CSS para modales visibles y centrados -->
+    <style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0; top: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(20,30,40,0.65);
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s;
+        pointer-events: auto;
+    }
+    .modal .modal-content {
+        background: var(--process-card-bg, #fff);
+        color: var(--process-title, #1a3a5d);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px 0 rgba(26,58,93,0.18);
+        max-width: 95vw;
+        width: 420px;
+        padding: 32px 24px 24px 24px;
+        position: relative;
+        animation: modalPopIn 0.25s;
+    }
+    /* Bloquear eventos fuera del modal cuando está abierto */
+    body.modal-open > *:not(.modal):not(script):not(style) {
+        pointer-events: none !important;
+        user-select: none !important;
+    }
+    body.modal-open .modal {
+        pointer-events: auto !important;
+    }
+    @keyframes modalPopIn {
+        0% { transform: scale(0.92); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    .modal .close {
+        position: absolute;
+        top: 18px; right: 18px;
+        font-size: 1.6rem;
+        color: #888;
+        cursor: pointer;
+        z-index: 2;
+        transition: color 0.2s;
+    }
+    .modal .close:hover {
+        color: #e74c3c;
+    }
+    @media (max-width: 600px) {
+        .modal .modal-content {
+            width: 98vw;
+            padding: 18px 6vw 18px 6vw;
+        }
+    }
+    .whatsapp-float-disabled {
+        pointer-events: none !important;
+        opacity: 0.4 !important;
+        filter: grayscale(1);
+        transition: opacity 0.2s, filter 0.2s;
+    }
+    </style>
+
+            <!-- Modal Proceso Profesional -->
+            <div id="modal-proceso" class="modal">
+                <div class="modal-content">
+                    <span class="close" data-close="modal-proceso">&times;</span>
+                    <div class="modal-header">
+                        <div class="modal-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h2>Nuestro Proceso Profesional</h2>
+                        <p>Transparencia, precisión y calidad en cada paso</p>
+                    </div>
+                    <div class="modal-body">
+                        <p>En Clara Visión, cada reparación sigue un proceso profesional cuidadosamente diseñado para garantizar resultados óptimos y tu total tranquilidad:</p>
+                        <ol class="modal-process-list">
+                            <li><strong>Diagnóstico preciso:</strong> Analizamos tu problema con equipos de última generación.</li>
+                            <li><strong>Presupuesto transparente:</strong> Te informamos cada detalle antes de comenzar.</li>
+                            <li><strong>Reparación experta:</strong> Técnicos certificados y herramientas especializadas.</li>
+                            <li><strong>Control de calidad:</strong> Verificamos que todo quede perfecto antes de entregarte tus lentes.</li>
+                        </ol>
+                        <p>¡Confía en nuestro equipo para cuidar tus lentes como si fueran propios!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn-whatsapp" data-consulta="proceso" role="button">
+                            <i class="fab fa-whatsapp"></i>
+                            Consultar Proceso
+                        </a>
                     </div>
                 </div>
             </div>
@@ -641,8 +799,8 @@
         </section>
     </div>
 
-    <!-- Botón flotante de WhatsApp -->
-    <div class="whatsapp-float" onclick="contactWhatsApp('consulta')">
+    <!-- Botón flotante de WhatsApp (abajo) -->
+    <div class="whatsapp-float" id="whatsapp-float-bottom">
         <i class="fab fa-whatsapp"></i>
     </div>
 
